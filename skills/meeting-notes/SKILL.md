@@ -5,11 +5,18 @@ description: Turn a recorder transcript (Fireflies, Granola, Read AI), pasted no
 
 # Meeting notes
 
-Version: v1.0 — 2026-10 · Licence: MIT
+Version: v1.1 — 2026-10 · Licence: MIT
 
 Triggers: meeting notes, process this transcript, summarise my meeting with …, notes from today's call, notes from the design review.
 
-Naming and folders follow the shared `conventions.md` from the project-repo-setup skill (read the project's `CLAUDE.md` first; it records the date format). If that file is not available, use the defaults below.
+Naming and folders follow `project-repo-setup/references/conventions.md` (read the project's `CLAUDE.md` first; it records the date format). If that file is not available, use the defaults below.
+
+## Works with (Project Workflow Skills)
+This skill is one of three that share `project-repo-setup/references/conventions.md`:
+- **project-repo-setup**: creates the repo, workspace, `CLAUDE.md` and folders the others use.
+- **meeting-notes**: saves notes to `01-meeting-notes/` and feeds decisions, TODOs and open questions into the repo docs.
+- **brand-style-profile**: keeps brand originals in `06-brand-assets/` and builds a reusable style profile for on-brand designs.
+When a handoff below suggests a skill that is not installed, say so in one line and point to https://github.com/fareezidzuan/project-workflow-skills . Never block on it; continue with this skill's own defaults.
 
 ## Defaults (change to suit you)
 - File name: `YYMMDD-topic.md` (kebab-case topic, 2–5 words).
@@ -70,6 +77,10 @@ Show the note before saving. Save after the user says yes. If a note for the sam
 - **Action items** → add to the project's `docs/TODO.md` under the right feature, with owner, due date, and a link back to the note.
 - **Open questions** → add to `docs/OPEN-QUESTIONS.md` with the next number, owner, and a link back to the note.
 No project yet: skip follow-ups and say they can be run once the project exists.
+
+**Handoffs:**
+- No project yet → offer "Set up a project for this? (project-repo-setup)".
+- The meeting discussed brand, visual style, or design feedback on look and feel, and no brand profile exists → offer "Capture this in a brand style profile? (brand-style-profile)".
 
 ### 6. Moving inbox notes later
 When a project is set up and inbox notes clearly belong to it, offer to move them into its `01-meeting-notes/` (move, never delete; show the list first).

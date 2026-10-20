@@ -5,11 +5,18 @@ description: Analyse brand and design assets (Figma, images, brand PDF, website)
 
 # Brand style profile
 
-Version: v1.0 — 2026-10 · Licence: MIT
+Version: v1.1 — 2026-10 · Licence: MIT
 
 Triggers: analyse our brand, build a style profile, learn our design style, make a variant of this, design this in our style, update the brand profile.
 
 Claude is not trained by this; it writes what it learns into a profile (a recipe card) that every later design reads. Two modes: **Build / update the profile** and **Create from the profile**.
+
+## Works with (Project Workflow Skills)
+This skill is one of three that share `project-repo-setup/references/conventions.md`:
+- **project-repo-setup**: creates the repo, workspace, `CLAUDE.md` and folders the others use.
+- **meeting-notes**: saves notes to `01-meeting-notes/` and feeds decisions, TODOs and open questions into the repo docs.
+- **brand-style-profile**: keeps brand originals in `06-brand-assets/` and builds a reusable style profile for on-brand designs.
+When a handoff below suggests a skill that is not installed, say so in one line and point to https://github.com/fareezidzuan/project-workflow-skills . Never block on it; continue with this skill's own defaults.
 
 ## Mode 1: Build or update the profile
 
@@ -42,6 +49,10 @@ Show a short summary: palette swatches with hex, type scale, 5–10 key rules, a
 1. **Design System artifact:** create from the Design System artifact type when the app offers it (list the types first); otherwise publish the profile as a page. This is what new designs read.
 2. **File backup:** `<workspace>/06-brand-assets/brand-profile.md` (same content, with sources and confidence), so it survives outside Claude and can be versioned.
 Record in the profile: version (`v01`, `v02`…), date, and a change-log line.
+
+**Handoffs:**
+- No project workspace (no `CLAUDE.md`, no `06-brand-assets/`) → offer "Set up the project workspace first? (project-repo-setup)"; if declined, save the backup file where the user says.
+- Brand decisions came from a meeting → offer "Log the meeting too? (meeting-notes)".
 
 ### 5. Update
 When the user corrects something ("our blue is darker", "never use rounded icons"), update both copies, bump the version, and add a change-log line. Never silently overwrite an Exact value with an Estimated one.

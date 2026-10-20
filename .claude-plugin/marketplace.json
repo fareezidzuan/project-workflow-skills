@@ -1,0 +1,11 @@
+{
+  "name": "project-workflow-skills",
+  "owner": { "name": "Fareez" },
+  "plugins": [
+    {
+      "name": "project-workflow-skills",
+      "source": "./",
+      "description": "Repo setup and health checks, meeting notes, and brand style profiles for design-led projects."
+    }
+  ]
+}
