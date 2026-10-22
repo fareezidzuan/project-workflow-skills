@@ -5,7 +5,7 @@ description: Turn a recorder transcript (Fireflies, Granola, Read AI), pasted no
 
 # Meeting notes
 
-Version: v1.1 — 2026-10 · Licence: MIT
+Version: v1.2 — 2026-10 · Licence: MIT
 
 Triggers: meeting notes, process this transcript, summarise my meeting with …, notes from today's call, notes from the design review.
 
@@ -21,7 +21,8 @@ When a handoff below suggests a skill that is not installed, say so in one line 
 ## Defaults (change to suit you)
 - File name: `YYMMDD-topic.md` (kebab-case topic, 2–5 words).
 - Project folder: `<workspace>/01-meeting-notes/`.
-- No project yet: an inbox folder you choose, e.g. `00-inbox/meeting-notes/`.
+- Cleaned transcript: `YYMMDD-topic-transcript.md` in `<workspace>/01-meeting-notes/transcripts/` (workspace, outside git).
+- No project yet: an inbox folder you choose, e.g. `00-inbox/meeting-notes/` (transcripts in its `transcripts/`).
 
 ## Workflow
 
@@ -41,6 +42,7 @@ Every time: English / another language the team uses / same as the meeting. What
 ```markdown
 # <Topic> — <yyyy-mm-dd>
 Source: <Fireflies | Granola | Read AI | pasted | Figma comments> · <link to recording or file>
+Transcript: <relative link to the cleaned transcript file | none>
 Attendees: <names, roles>
 Project: <project | none yet> · Language: <…>
 
@@ -51,10 +53,23 @@ Project: <project | none yet> · Language: <…>
 - <decision> — decided by <who> — <confirmed | pending written confirmation>
 
 ## Action items
-- [ ] <task> — <owner> — <due>
+| Task | Owner | Due date | Context |
+|---|---|---|---|
+| <task> | <owner> | <due> | <why / where it came up> |
 
 ## Open questions
 - <question> — <who answers>
+
+## Risks
+- <risk> — <impact> — <raised by>
+
+## Product feedback
+### User problems
+- <problem, in the user's terms> — <who raised it>
+### Opportunities
+- <opportunity linked to a problem above>
+### Suggested next steps
+- <step> — <owner, or (unclear — confirm)>
 
 ## Design feedback
 - <frame link> → <comment> — <open | resolved>
@@ -62,19 +77,32 @@ Project: <project | none yet> · Language: <…>
 ## Key quotes
 - "<exact words>" — <who>
 ```
-Leave out sections that are empty (Design feedback only for Figma input).
+Leave out sections that are empty (Design feedback only for Figma input; Product feedback only when the meeting contains product feedback).
 
 **Rules:**
 - Never invent. If an owner, date, or decision is not clear from the input, write `(unclear — confirm)`.
+- Clean obvious transcription errors (misheard words, filler, broken sentences) without changing meaning. If a fix is uncertain, keep the original wording and mark it `[?]`.
 - Only explicit agreements go under Decisions; anything awaiting sign-off is "pending written confirmation". Discussion without agreement goes under Summary or Open questions.
-- Do not copy the full transcript. Link to the recording; the recorder keeps it.
-- Raw transcripts and recordings never go in a repo.
+- Do not copy the transcript into the note. It goes in its own file (see 4a) and the note links to it.
+- Transcripts and recordings never go in a repo, cleaned or raw.
 
 Show the note before saving. Save after the user says yes. If a note for the same date and topic exists, append a new `## Session 2` section instead of creating a second file.
 
+### 4a. Save the cleaned transcript (transcript input only; skip for Figma comments)
+Write the cleaned transcript, with the same corrections as above, to the transcript path in Defaults:
+```markdown
+# <Topic> — transcript — <yyyy-mm-dd>
+Source: <recorder | pasted> · <link to recording>
+Note: <relative link to the meeting note>
+Cleaned: obvious transcription errors only; uncertain fixes marked [?]
+
+**<Speaker>:** <text>
+```
+Keep speaker order and wording; do not summarise. Show it with the note and save both after the user says yes. If the target folder sits inside a git repo, stop and ask for a workspace path instead. If a transcript for the same date and topic exists, append `## Session 2`.
+
 ### 5. Follow-ups (offer each separately; the user approves or skips)
 - **Decisions** → run the project's `/log-decision` for each confirmed decision (one file each, `docs/decisions/nnn-short-title.md`). Pending ones are not logged as decisions; add them to Open questions instead.
-- **Action items** → add to the project's `docs/TODO.md` under the right feature, with owner, due date, and a link back to the note.
+- **Action items** → add each table row to the project's `docs/TODO.md` under the right feature, with owner, due date, context, and a link back to the note.
 - **Open questions** → add to `docs/OPEN-QUESTIONS.md` with the next number, owner, and a link back to the note.
 No project yet: skip follow-ups and say they can be run once the project exists.
 

@@ -5,7 +5,7 @@ Three Claude skills for designers who work with Figma, code, and clients. Instal
 | Skill | What it does | Version |
 |---|---|---|
 | [`project-repo-setup`](skills/project-repo-setup/) | Sets up and health-checks a project's repo and workspace: Full or Lite setup, read-only audit, health check with impact previews (changes, risk, token savings, undo), dry runs | v2.1 |
-| [`meeting-notes`](skills/meeting-notes/) | Turns Fireflies, Granola, or Read AI transcripts, pasted notes, or Figma comments into a structured note, then offers decisions, action items, and open questions as follow-ups | v1.1 |
+| [`meeting-notes`](skills/meeting-notes/) | Turns Fireflies, Granola, or Read AI transcripts, pasted notes, or Figma comments into a structured note, then offers decisions, action items, and open questions as follow-ups; saves a cleaned transcript outside the repo | v1.2 |
 | [`brand-style-profile`](skills/brand-style-profile/) | Analyses Figma files, brand guides, websites, and images into a reusable style profile, then creates matching social posts, UI, marketing, icons, and illustrations | v1.1 |
 
 ## Install
