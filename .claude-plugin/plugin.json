@@ -1,8 +1,8 @@
 {
   "name": "project-workflow-skills",
-  "version": "1.1.0",
-  "description": "Claude skills for designers: set up and health-check project repos and workspaces, turn meetings into structured notes, and build brand style profiles for on-brand designs. Shared conventions keep everything consistent.",
+  "version": "1.2.0",
+  "description": "Claude skills for designers: set up and health-check project repos and workspaces, turn meetings into structured notes, build brand style profiles for on-brand designs, and write and test security documents. Shared conventions keep everything consistent.",
   "author": { "name": "Fareez" },
   "license": "MIT",
-  "keywords": ["design", "figma", "workflow", "meeting-notes", "brand", "repo-setup"]
+  "keywords": ["design", "figma", "workflow", "meeting-notes", "brand", "repo-setup", "security"]
 }

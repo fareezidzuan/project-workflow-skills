@@ -5,7 +5,7 @@
     {
       "name": "project-workflow-skills",
       "source": "./",
-      "description": "Repo setup and health checks, meeting notes, and brand style profiles for design-led projects."
+      "description": "Repo setup and health checks, meeting notes, brand style profiles, and security docs for design-led projects."
     }
   ]
 }

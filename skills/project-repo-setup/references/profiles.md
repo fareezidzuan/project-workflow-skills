@@ -13,6 +13,7 @@ Starting points for the Step 4 table. Adjust to the answers; drop what does not 
 | `docs/handoff/` | Someone else builds from your design |
 | `docs/uat/` | Formal test rounds |
 | `docs/ARCHITECTURE.md` | Backend, monorepo, or more than one app |
+| `docs/security/` | Logins, a database, a backend or API, or third-party services (written by security-docs) |
 | `docs/SITEMAP.md`, `docs/SEO.md` | Website profile |
 | `docs/specs/` | Full setup, or the first spec is written |
 | `docs/archive/` | First archive move |

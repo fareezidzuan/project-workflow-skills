@@ -1,22 +1,23 @@
 # Project Workflow Skills
 
-Three Claude skills for designers who work with Figma, code, and clients. Install them together: they share one set of naming and folder conventions and hand off to each other at the right moments.
+Four Claude skills for designers who work with Figma, code, and clients. Install them together: they share one set of naming and folder conventions and hand off to each other at the right moments.
 
 | Skill | What it does | Version |
 |---|---|---|
 | [`project-repo-setup`](skills/project-repo-setup/) | Sets up and health-checks a project's repo and workspace: Full or Lite setup, read-only audit, health check with impact previews (changes, risk, token savings, undo), dry runs | v2.1 |
 | [`meeting-notes`](skills/meeting-notes/) | Turns Fireflies, Granola, or Read AI transcripts, pasted notes, or Figma comments into a structured note, then offers decisions, action items, and open questions as follow-ups; saves a cleaned transcript outside the repo | v1.2 |
 | [`brand-style-profile`](skills/brand-style-profile/) | Analyses Figma files, brand guides, websites, and images into a reusable style profile, then creates matching social posts, UI, marketing, icons, and illustrations | v1.1 |
+| [`security-docs`](skills/security-docs/) | Writes five security documents (rules, auth and permissions, data protection, threat model, pre-launch checklist) in `docs/security/`, then turns one rule at a time into a tested control | v1.0 |
 
 ## Install
 
-**As a plugin (recommended, all three at once)**
+**As a plugin (recommended, all four at once)**
 - Claude Code: `/plugin marketplace add fareezidzuan/project-workflow-skills`, then `/plugin install project-workflow-skills@project-workflow-skills`.
 - **Updates:** in `/plugin` → **Marketplaces**, select this marketplace and choose **Enable auto-update**. Or update by hand with `/plugin marketplace update project-workflow-skills`.
 - Claude apps that support plugins: add this repo as a plugin source, or upload the plugin from **Releases**.
 
 **As separate skills**
-Download the repo (**Code → Download ZIP**), then add each folder in `skills/` as a skill. Keep `project-repo-setup` installed: the other two read its `references/conventions.md`. Each skill still works alone with its own defaults.
+Download the repo (**Code → Download ZIP**), then add each folder in `skills/` as a skill. Keep `project-repo-setup` installed: the others read its `references/conventions.md`. Each skill still works alone with its own defaults.
 
 ## Getting started: one project, start to finish
 
@@ -28,7 +29,9 @@ Download the repo (**Code → Download ZIP**), then add each folder in `skills/`
    You review the colours, type, and rules, then it is saved as a Design System and as `brand-profile.md`.
 4. **Create on-brand designs:** "Make three Instagram post variants announcing our opening."
    Built from the profile, checked against it, and saved to `05-design-files/exports/`.
-5. **Keep it tidy:** "Health check my repo" every few weeks. It finds drift, oversized docs and images, and safety gaps, and shows the impact of each fix before changing anything.
+5. **Secure the app:** once it has logins, a database, or outside services, say "Write the security docs."
+   Claude drafts an app brief from the repo, interviews you one document at a time, and saves them to `docs/security/`. Then "Turn rule R1 into code" makes and tests one control at a time.
+6. **Keep it tidy:** "Health check my repo" every few weeks. It finds drift, oversized docs and images, and safety gaps, and shows the impact of each fix before changing anything.
 
 ## How they connect
 
@@ -39,6 +42,7 @@ project-repo-setup ──creates──▶ CLAUDE.md · workspace folders · docs
         ▼                               │            │
 meeting-notes ──writes──▶ 01-meeting-notes/ · decisions · TODO · open questions
 brand-style-profile ──writes──▶ 06-brand-assets/brand-profile.md · exports/
+security-docs ──writes──▶ docs/security/ · TODO · open questions · decisions
 ```
 
 ## Make it yours

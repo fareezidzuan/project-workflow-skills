@@ -5,7 +5,7 @@ This file is the single source for naming and folder rules. Any skill that write
 House defaults (`house-defaults.md`) may override the items marked *(house default)*.
 
 ## 1. Repo docs naming (`docs/`, inside or outside the repo)
-1. Folders and subfolders under `docs/` are lowercase kebab-case: `specs/`, `decisions/`, `session-logs/`, `uat/`, `handoff/`, `archive/`, `specs/feature-a/`.
+1. Folders and subfolders under `docs/` are lowercase kebab-case: `specs/`, `decisions/`, `session-logs/`, `uat/`, `handoff/`, `security/`, `archive/`, `specs/feature-a/`.
 2. Files directly in `docs/` are ALL CAPS with hyphens: `PRD.md`, `TODO.md`, `FIGMA-MAP.md`, `OPEN-QUESTIONS.md`.
 3. Files inside any folder or subfolder are lowercase kebab-case: `decisions/001-short-title.md`, `specs/feature-a/sub-feature.md`.
 4. `README.md` keeps its name everywhere. The `.md` extension is always lowercase.
