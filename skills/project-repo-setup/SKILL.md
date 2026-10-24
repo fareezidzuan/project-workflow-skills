@@ -10,10 +10,11 @@ Version: v2.1 — 2026-10 · Licence: MIT (see `LICENSE`)
 Turn a project into a repo and workspace that give Claude (and people) the right context, and keep them healthy over time. Nothing is created, moved, renamed, or committed without the user's explicit approval.
 
 ## Works with (Project Workflow Skills)
-This skill is one of three that share `project-repo-setup/references/conventions.md`:
+This skill is one of four that share `project-repo-setup/references/conventions.md`:
 - **project-repo-setup**: creates the repo, workspace, `CLAUDE.md` and folders the others use.
 - **meeting-notes**: saves notes to `01-meeting-notes/` and feeds decisions, TODOs and open questions into the repo docs.
 - **brand-style-profile**: keeps brand originals in `06-brand-assets/` and builds a reusable style profile for on-brand designs.
+- **security-docs**: writes the five security documents in `docs/security/` and turns their rules into tested controls.
 When a handoff below suggests a skill that is not installed, say so in one line and point to https://github.com/fareezidzuan/project-workflow-skills . Never block on it; continue with this skill's own defaults.
 
 ## What this skill does
@@ -151,6 +152,7 @@ A few lines: what was created, what still needs the user (secrets, GitHub, Figma
 **Handoffs (offer, one line each, only when relevant):**
 - A kickoff or client meeting already happened → "Want me to turn it into notes? (meeting-notes)"
 - Brand files, a brand guide, or a Figma design system exist → "Want a brand style profile for on-brand designs? (brand-style-profile)"
+- The app will have logins, a database, a backend or API, or third-party services → "Want to write the security docs now? (security-docs)"
 
 
 ---
@@ -163,7 +165,7 @@ Use when a repo was already set up and the user wants it checked again. Skip the
 - **H2 Check (read-only), four groups:** A structure drift, B naming, C safety, D size (docs and assets).
 - **H3 Report:** one table (# | Group | Finding | Where | Fix | Risk) plus a count per group. Mark findings New or Still open against the last logged health check.
 - **H4 Fix one group at a time:** show the **impact preview** for the group (the parts listed in `references/health-check.md`, leaving out rows that do not apply), then ask Fix all / Pick items / Skip. After fixing, show the result: changes, skipped items and why, links updated, verification outcome, score after, tokens saved, commit name. Moves never deletes; nothing committed without a yes.
-- **Handoff:** if `06-brand-assets/` has files but no `brand-profile.md`, suggest brand-style-profile; if `01-meeting-notes/` is empty but the session logs mention meetings, suggest meeting-notes.
+- **Handoff:** if `06-brand-assets/` has files but no `brand-profile.md`, suggest brand-style-profile; if `01-meeting-notes/` is empty but the session logs mention meetings, suggest meeting-notes; if the app has logins, a database, a backend or API, or third-party services but no `docs/security/`, suggest security-docs.
 - **H5 Record:** append a "Health check" section to today's session log with counts, fixed, skipped, and the last history-scanned commit.
 
 ## Upgrade to full setup

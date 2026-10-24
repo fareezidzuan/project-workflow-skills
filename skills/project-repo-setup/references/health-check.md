@@ -29,6 +29,11 @@ Used by Step 2 (audit) and Health check mode. All checks are read-only. Skip any
 - **Repo in a synced folder:** if the choice is recorded, check only the Drive safety rules: conflict copies in `.git` (files with "(1)" or "conflicted"), unpushed commits. If not recorded, show the repo-location table.
 - **GitHub backup missing:** repo in a synced folder and `GitHub Repo: pending` or no remote → **Med**; **High** if there are also unpushed commits older than 7 days. "Can't be fixed here" when the user must create an account or sign in.
 - Raw files in the repo with no workspace (see group A).
+- **Security docs** (only when the app has logins, a database, a backend or API, or third-party services):
+  - No `docs/security/` → **Med**; suggest security-docs.
+  - A document is missing sections from security-docs `references/templates.md`, or the stack has parts with no matching stack add-on rows → **Low**.
+  - `security-checklist.md` has launch-blocking items not `PASS` → **High** before a release, otherwise **Med**.
+  - A security document's `Updated` date is older than the last commit touching migrations or schema, auth config, or a new service in the package manifest → **Med** ("Needs update").
 
 ## Group D: Size
 **Docs** (see `archiving.md` for actions):

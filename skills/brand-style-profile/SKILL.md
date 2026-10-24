@@ -12,10 +12,11 @@ Triggers: analyse our brand, build a style profile, learn our design style, make
 Claude is not trained by this; it writes what it learns into a profile (a recipe card) that every later design reads. Two modes: **Build / update the profile** and **Create from the profile**.
 
 ## Works with (Project Workflow Skills)
-This skill is one of three that share `project-repo-setup/references/conventions.md`:
+This skill is one of four that share `project-repo-setup/references/conventions.md`:
 - **project-repo-setup**: creates the repo, workspace, `CLAUDE.md` and folders the others use.
 - **meeting-notes**: saves notes to `01-meeting-notes/` and feeds decisions, TODOs and open questions into the repo docs.
 - **brand-style-profile**: keeps brand originals in `06-brand-assets/` and builds a reusable style profile for on-brand designs.
+- **security-docs**: writes the five security documents in `docs/security/` and turns their rules into tested controls.
 When a handoff below suggests a skill that is not installed, say so in one line and point to https://github.com/fareezidzuan/project-workflow-skills . Never block on it; continue with this skill's own defaults.
 
 ## Mode 1: Build or update the profile
