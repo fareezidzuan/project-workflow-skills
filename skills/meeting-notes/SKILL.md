@@ -5,7 +5,7 @@ description: Turn a recorder transcript (Fireflies, Granola, Read AI), pasted no
 
 # Meeting notes
 
-Version: v1.2 — 2026-10 · Licence: MIT
+Version: v1.3 — 2026-10 · Licence: MIT
 
 Triggers: meeting notes, process this transcript, summarise my meeting with …, notes from today's call, notes from the design review.
 
@@ -28,8 +28,8 @@ When a handoff below suggests a skill that is not installed, say so in one line 
 ## Workflow
 
 ### 1. Find the input
-- **Recorder app:** list the most recent meetings from the connected recorder (Fireflies, Granola, Read AI) and let the user pick one. Fetch its transcript and summary.
-- **Pasted transcript or notes:** use what the user pasted.
+- **Recorder app:** list the most recent meetings from the connected recorder (Fireflies, Granola, Read AI) and let the user pick one. Fetch its transcript, summary, organiser, and participants.
+- **Pasted transcript or notes:** use what the user pasted. If it does not name the organiser or who was invited, ask once (or read the calendar invite when a calendar is connected).
 - **Figma / FigJam comments:** from a file link, read the comment threads (frame, comment, author, resolved or not).
 If nothing is connected or attached, ask the user to paste the notes.
 
@@ -44,7 +44,9 @@ Every time: English / another language the team uses / same as the meeting. What
 # <Topic> — <yyyy-mm-dd>
 Source: <Fireflies | Granola | Read AI | pasted | Figma comments> · <link to recording or file>
 Transcript: <relative link to the cleaned transcript file | none>
-Attendees: <names, roles>
+Organiser: <name, role>
+Attendees: <names, roles — who joined>
+Invited: <names, roles — on the invite but did not join | none>
 Project: <project | none yet> · Language: <…>
 
 ## Summary
@@ -81,9 +83,10 @@ Project: <project | none yet> · Language: <…>
 Leave out sections that are empty (Design feedback only for Figma input; Product feedback only when the meeting contains product feedback).
 
 **Rules:**
-- Never invent. If an owner, date, or decision is not clear from the input, write `(unclear — confirm)`.
+- Never invent. If an owner, date, or decision is not clear from the input, write `(unclear — confirm)`. The same applies to Organiser, Attendees, and Invited: take them from the recorder or the calendar invite, never guess from the transcript alone.
 - Clean obvious transcription errors (misheard words, filler, broken sentences) without changing meaning. If a fix is uncertain, keep the original wording and mark it `[?]`.
 - Only explicit agreements go under Decisions; anything awaiting sign-off is "pending written confirmation". Discussion without agreement goes under Summary or Open questions.
+- An action item owned by someone listed under Invited (not at the meeting) gets `(owner not present — confirm)` in its Context column.
 - Do not copy the transcript into the note. It goes in its own file (see 4a) and the note links to it.
 - Transcripts and recordings never go in a repo, cleaned or raw.
 
