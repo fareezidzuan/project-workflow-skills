@@ -5,7 +5,7 @@ description: Set up, audit, or health-check the repo and workspace for a project
 
 # Project repo setup
 
-Version: v2.1 — 2026-10 · Licence: MIT (see `LICENSE`)
+Version: v2.2 — 2026-10 · Licence: MIT (see `LICENSE`)
 
 Turn a project into a repo and workspace that give Claude (and people) the right context, and keep them healthy over time. Nothing is created, moved, renamed, or committed without the user's explicit approval.
 

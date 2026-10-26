@@ -5,11 +5,12 @@ This file is the single source for naming and folder rules. Any skill that write
 House defaults (`house-defaults.md`) may override the items marked *(house default)*.
 
 ## 1. Repo docs naming (`docs/`, inside or outside the repo)
-1. Folders and subfolders under `docs/` are lowercase kebab-case: `specs/`, `decisions/`, `session-logs/`, `uat/`, `handoff/`, `security/`, `archive/`, `specs/feature-a/`.
+1. Folders and subfolders under `docs/` are lowercase kebab-case: `features/`, `decisions/`, `session-logs/`, `uat/`, `handoff/`, `security/`, `archive/`, `features/feature-a/`.
 2. Files directly in `docs/` are ALL CAPS with hyphens: `PRD.md`, `TODO.md`, `FIGMA-MAP.md`, `OPEN-QUESTIONS.md`.
-3. Files inside any folder or subfolder are lowercase kebab-case: `decisions/001-short-title.md`, `specs/feature-a/sub-feature.md`.
+3. Files inside any folder or subfolder are lowercase kebab-case: `decisions/001-short-title.md`, `features/feature-a/sub-feature.md`.
 4. `README.md` keeps its name everywhere. The `.md` extension is always lowercase.
 5. Outside `docs/`, repo folders and files are kebab-case; root files `CLAUDE.md`, `README.md`, `DESIGN.md`, `LICENSE` keep their conventional names.
+6. Feature specs live in `docs/features/` (one file per feature, or a folder per feature). Repos set up before v2.2 may have `docs/specs/`; record `Docs names: legacy (kept by choice)` in the repo `CLAUDE.md` to keep it.
 
 ## 2. Workspace folder set (outside git)
 Core folders keep the same number in every project.
@@ -41,7 +42,7 @@ Core folders keep the same number in every project.
 - **Decisions:** `docs/decisions/nnn-short-title.md`, numbered in order, never renumbered. Use the folder or a single `DECISIONS.md`, not both; once a single file passes about 20 entries, split it into the folder.
 
 ## 4. Source-of-truth precedence (Figma-first projects)
-Figma for layout, visuals, and final copy · spec (`docs/specs/`) for behaviour, rules, and states · `docs/decisions/` overrides both until they are updated · the prototype is never the source of truth.
+Figma for layout, visuals, and final copy · spec (`docs/features/`) for behaviour, rules, and states · `docs/decisions/` overrides both until they are updated · the prototype is never the source of truth.
 
 ## 5. What belongs in `CLAUDE.md`
 `CLAUDE.md` is the lobby directory, not the offices.
@@ -49,7 +50,7 @@ Figma for layout, visuals, and final copy · spec (`docs/specs/`) for behaviour,
 | Belongs | Goes elsewhere, with a one-line pointer |
 |---|---|
 | What the project is (2–3 lines) | Decision details → `docs/decisions/` |
-| Platform, stack, run commands | Feature rules and states → `docs/specs/` |
+| Platform, stack, run commands | Feature rules and states → `docs/features/` |
 | Folder or code map | Figma links and frame status → `docs/FIGMA-MAP.md` |
 | Source-of-truth precedence | Dates, tickets, blockers → `docs/PRD.md`, `docs/TODO.md`, spec headers |
 | Hard rules that apply to every task | Gotchas and corrections → `docs/LESSONS.md` |
@@ -59,7 +60,7 @@ Figma for layout, visuals, and final copy · spec (`docs/specs/`) for behaviour,
 | **Must-know lines:** at most 5, each one line with a link to its lesson or decision | |
 
 Feature index lines carry links only (status lives in the status table):
-`- feature-a: spec docs/specs/feature-a/ · decisions 011, 015 · Figma: FIGMA-MAP § feature-a`
+`- feature-a: spec docs/features/feature-a/ · decisions 011, 015 · Figma: FIGMA-MAP § feature-a`
 
 Size: warn above 10 KB.
 
