@@ -18,6 +18,7 @@ Used by Step 2 (audit) and Health check mode. All checks are read-only. Skip any
 ## Group B: Naming
 - `docs/` rules from `conventions.md`: a file directly in `docs/` not in ALL CAPS; a file inside a folder with capitals (except `README.md`); a folder under `docs/` not lowercase kebab-case. Each is a Rename; case-only renames use the two-step method.
 - Mixed naming schemes (dates vs features, kebab vs Title Case, `specs/` vs `features/`).
+- **Legacy specs folder:** `docs/specs/` exists and `Docs names: legacy` is not recorded → offer a rename to `docs/features/` (two-step `git mv`, then update every reference; impact preview lists each file that mentions `docs/specs`) or "keep legacy names".
 - Session logs: more than one scheme, undated files, per-feature logs → list older files and offer to move them to `docs/archive/session-logs/`.
 - Meeting notes not matching the project's date format.
 

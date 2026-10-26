@@ -53,7 +53,7 @@ Raw files: <yes | no>   <!-- Lite only -->
 | Module | Design | Dev |
 |---|---|---|
 ## Features
-- <feature>: spec `docs/specs/<feature>.md` · decisions <nnn> · Figma: FIGMA-MAP § <feature>
+- <feature>: spec `docs/features/<feature>.md` · decisions <nnn> · Figma: FIGMA-MAP § <feature>
 ## Docs
 | File | Purpose |
 |---|---|

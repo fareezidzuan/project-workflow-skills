@@ -11,7 +11,7 @@ Large docs cost context (roughly 4 characters per token: a 200 KB file is about 
 | Session logs | Whole files older than 3 months | The last 3 months |
 | Session log for the current period over 100 KB | Nothing; switch the project to the daily scheme | — |
 | `DECISIONS.md` | Not archived: split into `decisions/nnn-*.md`; only superseded decisions move to `archive/decisions/` | Active decisions |
-| `PRD.md` | Not archived: split into a short product map plus `specs/` per feature; old versions stay in git history | The map |
+| `PRD.md` | Not archived: split into a short product map plus `features/` per feature; old versions stay in git history | The map |
 | `LESSONS.md` | Not archived: condensed and grouped by topic | Everything, tidied |
 | `CLAUDE.md` (> 10 KB) | Detail moves to the right doc per the scope rule in `conventions.md`; a one-line pointer stays | Pointers and rules |
 

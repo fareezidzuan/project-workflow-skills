@@ -15,7 +15,7 @@ Starting points for the Step 4 table. Adjust to the answers; drop what does not 
 | `docs/ARCHITECTURE.md` | Backend, monorepo, or more than one app |
 | `docs/security/` | Logins, a database, a backend or API, or third-party services (written by security-docs) |
 | `docs/SITEMAP.md`, `docs/SEO.md` | Website profile |
-| `docs/specs/` | Full setup, or the first spec is written |
+| `docs/features/` | Full setup, or the first spec is written |
 | `docs/archive/` | First archive move |
 | `.claude/commands/`, `.claude/rules/` | Always (at least `/log-session`, `/log-decision`, inputs access rule) |
 
@@ -30,7 +30,7 @@ Files that do not apply are listed in the Step 4 table as "Not created" with the
 | `LESSONS.md` | Corrections and gotchas so they are not repeated |
 | `OPEN-QUESTIONS.md` | Numbered open questions, owner, status |
 | `decisions/` | One file per decision: context, options, decision, approver, date, related frame. Overrides spec and Figma until they are updated |
-| `specs/` | One file per feature, or a folder with `README.md` + sub-feature files. Each spec header lists its inputs (and `Untraced` if written without them) |
+| `features/` | One spec per feature, or a folder with `README.md` + sub-feature files. Each spec header lists its inputs (and `Untraced` if written without them) |
 | `uat/` | Round files and checklist; each issue records which source needs fixing (spec, Figma, prototype, build) |
 | `session-logs/` | One scheme; sessions appended |
 
