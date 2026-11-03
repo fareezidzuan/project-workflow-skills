@@ -9,7 +9,10 @@ Replace `<…>` placeholders. Never invent product facts.
 <One or two lines: what the project is and for whom.>
 
 Repo: `<path to repo>` (code map in its CLAUDE.md).
-Setup: project-repo-setup v2.0
+Setup: project-repo-setup v2.3
+Git: yes
+Docs: `<repo>/docs/`   <!-- or the docs path when outside or split -->
+Explain: <plain | standard>
 Workspace names: canonical   <!-- or: legacy (kept by choice) -->
 
 ## Folder map (outside git)
@@ -25,13 +28,42 @@ Workspace names: canonical   <!-- or: legacy (kept by choice) -->
 - No credentials in this folder tree.
 ```
 
+## Workspace `CLAUDE.md` — Folders only (no Git)
+```markdown
+# <Project> — Workspace
+
+<One or two lines: what the project is and for whom.>
+
+Setup: project-repo-setup v2.3 (folders only)
+Git: none   <!-- say "add Git" to set up version history later -->
+Docs: `docs/`   <!-- TODO, open questions, decisions; DESIGN.md sits at this folder's root -->
+Explain: <plain | standard>
+Figma: <link | none yet>
+Workspace names: canonical
+
+## Folder map
+- `docs/` — project docs: `TODO.md`, `OPEN-QUESTIONS.md`, `decisions/`, `FIGMA-MAP.md`
+- `01-meeting-notes/` — notes and transcripts, `<date format>-topic.md`
+- `02-ideation/` — sketches, moodboards, early ideas
+- `03-media/` — screenshots, photos, reference images
+- `04-documents/` — briefs, proposals, requirements as received
+- `05-design-files/` — source design files; `exports/` for finished exports
+- `06-brand-assets/` — logos, brand guide, fonts; `brand-profile.md`
+- `09-deprecated/` — retired work, each with DEPRECATED.md
+
+## Rules
+- Decisions are files in `docs/decisions/` (template below), written directly; there are no slash commands in this setup.
+- No passwords, keys or other credentials anywhere in this folder.
+```
+
 ## Repo `CLAUDE.md`
 ```markdown
 # <Project>
 
 <2–3 lines: what it is.>
 
-Setup: project-repo-setup v2.0
+Setup: project-repo-setup v2.3
+Git: yes · Docs: `docs/` · Explain: <plain | standard>
 GitHub Repo: <url | pending> · default branch <main>
 Repo location: <path> (chosen: <reason>). <Drive safety rules apply.>
 Workspace: <path>  (see its CLAUDE.md)

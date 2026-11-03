@@ -1,3 +1,6 @@
 # Personal settings: never commit
 skills/*/references/house-defaults.md
 .DS_Store
+
+# Built ZIPs (scripts/build-skill-zips.sh)
+dist/
