@@ -4,6 +4,20 @@ This file is the single source for naming and folder rules. Any skill that write
 
 House defaults (`house-defaults.md`) may override the items marked *(house default)*.
 
+Edit this file only here, in `project-repo-setup/references/`. The downloadable skill ZIPs carry a copy of it (and of `plain-language.md`) in each skill's own `references/` folder, so a skill uploaded on its own still finds it. Skills look for `references/conventions.md` in their own folder first, then `project-repo-setup/references/conventions.md`.
+
+## 0. Where project docs live
+Every project records its docs folder in `CLAUDE.md` as `Docs: <path>`. Skills that write `TODO.md`, `OPEN-QUESTIONS.md`, `decisions/`, `security/` or `DESIGN.md` write them there, never somewhere else.
+
+| Setup | `Git:` line | Docs folder | `DESIGN.md` |
+|---|---|---|---|
+| Full or Lite, docs inside | `Git: yes` | `<repo>/docs/` | repo root |
+| Full, docs outside or split | `Git: yes` | the recorded docs path | repo root |
+| **Folders only** (no Git) | `Git: none` | `<workspace>/docs/` | workspace root |
+| No project yet | — | none: show the content in chat, or save where the user says | where the user says |
+
+Folders only uses the same names inside `docs/` as a repo (section 1), so adding Git later is a move, not a rename. When Claude cannot write to any folder (for example the web app without a connected folder), give the file as a download and say where it belongs.
+
 ## 1. Repo docs naming (`docs/`, inside or outside the repo)
 1. Folders and subfolders under `docs/` are lowercase kebab-case: `features/`, `decisions/`, `session-logs/`, `uat/`, `handoff/`, `security/`, `archive/`, `features/feature-a/`.
 2. Files directly in `docs/` are ALL CAPS with hyphens: `PRD.md`, `TODO.md`, `FIGMA-MAP.md`, `OPEN-QUESTIONS.md`.
@@ -31,6 +45,7 @@ Core folders keep the same number in every project.
 - All lowercase kebab-case.
 - Per-feature inputs: `02-feature-a/` with `00-meetings/`, `01-ideation/`, `02-documents/` inside.
 - Lite with raw files: only `CLAUDE.md`, `03-media/`, `09-deprecated/`.
+- Folders only (no Git): the same set, plus `docs/` (project docs, named as in section 1) and, once written, `DESIGN.md` at the root. No `00-dev/` until Git is added.
 - Existing projects may keep legacy names. Record `Workspace names: legacy (kept by choice)` in the workspace `CLAUDE.md`; the health check then stops flagging them.
 
 ## 3. Dated files
@@ -39,7 +54,16 @@ Core folders keep the same number in every project.
   - Daily: `yyyy-mm-dd.md`, no topic in the name.
   - Monthly: `<project>-log-mm-yy.md`.
   - Another session in the same period is appended as a new `## Session N` section, never a new file.
-- **Decisions:** `docs/decisions/nnn-short-title.md`, numbered in order, never renumbered. Use the folder or a single `DECISIONS.md`, not both; once a single file passes about 20 entries, split it into the folder.
+- **Decisions:** `docs/decisions/nnn-short-title.md`, numbered in order, never renumbered. Use the folder or a single `DECISIONS.md`, not both; once a single file passes about 20 entries, split it into the folder. Each file uses this template (same as `templates.md`):
+  ```markdown
+  # nnn — <Title>
+  Status: Proposed | Accepted | Superseded by nnn
+  Date: <yyyy-mm-dd> · Approver: <name/role>
+  Context:
+  Options:
+  Decision:
+  Related: <spec / frame link>
+  ```
 
 ## 4. Source-of-truth precedence (Figma-first projects)
 Figma for layout, visuals, and final copy · spec (`docs/features/`) for behaviour, rules, and states · `docs/decisions/` overrides both until they are updated · the prototype is never the source of truth.

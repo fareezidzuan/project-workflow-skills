@@ -5,11 +5,11 @@ description: Write, update, and put into practice a project's five security docu
 
 # Security docs
 
-Version: v1.0 — 2026-10 · Licence: MIT
+Version: v1.1 — 2026-11 · Licence: MIT
 
 Triggers: security docs, write our security rules, threat model, permission table, who can do what, data security, security checklist, launch check, update the security docs, turn this rule into code.
 
-Naming and folders follow `project-repo-setup/references/conventions.md` (read the project's `CLAUDE.md` first). If that file is not available, use the defaults below. Document templates are in `references/templates.md`; load it at step 4.
+Naming and folders follow the shared conventions (read the project's `CLAUDE.md` first). If the conventions file is not available, use the defaults below. Document templates are in `references/templates.md`; load it at step 4.
 
 Inspired by the MIKENWO "Five Security Documents" quick start. Written documents are a starting point: a rule only counts once the code enforces it and a check proves it.
 
@@ -21,11 +21,18 @@ This skill is one of four that share `project-repo-setup/references/conventions.
 - **security-docs**: writes the five security documents in `docs/security/` and turns their rules into tested controls.
 When a handoff below suggests a skill that is not installed, say so in one line and point to https://github.com/fareezidzuan/project-workflow-skills . Never block on it; continue with this skill's own defaults.
 
+## Shared files and plain language
+- **Conventions:** read `references/conventions.md` in this skill's folder (bundled in the downloadable ZIP); if it is not there, `project-repo-setup/references/conventions.md`. Section 0 says where project docs live: always use the `Docs:` path in the project's `CLAUDE.md`. `Git: none` (Folders only) is a normal setup, not a problem to fix.
+- **Plain language:** if `CLAUDE.md` has `Explain: plain`, or the user is new to Git or code, follow `references/plain-language.md` (same lookup). Outcome first, no unexplained jargon, no commands unless the user must run them.
+- **Decisions:** if the project's `/log-decision` command is not available (Folders only, or an app without slash commands), write the decision file directly in `<Docs>/decisions/nnn-short-title.md` from the decision template in `conventions.md` §3, numbered after the last one.
+- **No folder access:** give each file as a download and say which folder it belongs in. Never claim a file was saved.
+
 ## Defaults (change to suit you)
-- Folder: `docs/security/` in the repo (inside `docs/`, so files are lowercase kebab-case).
+- Folder: `<Docs>/security/`: `docs/security/` in the repo, or in the workspace for Folders only (inside `docs/`, so files are lowercase kebab-case).
 - Files, in this order: `security-rules.md`, `auth.md`, `data-security.md`, `threat-model.md`, `security-checklist.md`, plus `app-brief.md` for the shared context.
 - Check results: `NOT RUN` (start), `PASS`, `FAIL`, `BLOCKED`, `N/A` (with a reason).
-- No repo yet: write the documents in the chat and offer to save them once the project exists.
+- Folders only (no repo yet): write and save the documents as requirements (every control `Planned`) for the developer handoff; steps 6–7 wait until there is code, and then suggest "add Git" (project-repo-setup).
+- No project yet: write the documents in the chat and offer to save them once the project exists.
 
 ## Workflow
 
@@ -58,7 +65,7 @@ Use the matching template in `references/templates.md`. Every rule names **where
 - Use the project's real features, roles, and data. No generic attack lists.
 - Secret values never appear in any document; name where they live (vault, hosting env settings) instead.
 
-Show the document before saving. Save to `docs/security/<file>` after the user says yes. If the file exists, show a diff and update only the changed sections; add a `Changed: <yyyy-mm-dd> — <what>` line at the top.
+Show the document before saving. Save to `<Docs>/security/<file>` after the user says yes. If the file exists, show a diff and update only the changed sections; add a `Changed: <yyyy-mm-dd> — <what>` line at the top.
 
 ### 5. Close the loop on the documents
 After each save, check the earlier documents: a new threat that needs a missing rule, or a new data type with no access rule, is shown as a proposed edit to that document.
@@ -76,8 +83,8 @@ Never touch production, never expose real secrets, never mark an unrun check as 
 For each item, in the agreed test environment: record setup, action, expected, actual, result, and evidence, with the tested version or commit. A setting that cannot be inspected stays `BLOCKED`. List launch-blocking items that are not `PASS` first. Failures get fixed through step 6, then the affected checks are rerun.
 
 ### 8. Follow-ups (offer each separately; the user approves or skips)
-- **Open questions** → add to `docs/OPEN-QUESTIONS.md` with the next number, owner, and a link to the document.
-- **Fixes and unbuilt controls** → add to `docs/TODO.md` under a Security heading, with owner and a link to the rule or risk.
+- **Open questions** → add to `<Docs>/OPEN-QUESTIONS.md` with the next number, owner, and a link to the document.
+- **Fixes and unbuilt controls** → add to `<Docs>/TODO.md` under a Security heading, with owner and a link to the rule or risk.
 - **Choices made** (auth provider, retention period, accepted risk) → run the project's `/log-decision` for each.
 No project yet: skip follow-ups and say they can be run once the project exists.
 

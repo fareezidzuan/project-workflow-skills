@@ -5,7 +5,7 @@ description: "Analyse brand and design assets (Figma, codebase tokens, images, b
 
 # Brand style profile
 
-Version: v1.2 — 2026-11 · Licence: MIT
+Version: v1.3 — 2026-11 · Licence: MIT
 
 Triggers: analyse our brand, build a style profile, learn our design style, make a variant of this, design this in our style, update the brand profile, write our DESIGN.md, pull tokens from Figma or code, check Figma against code.
 
@@ -20,6 +20,12 @@ This skill is one of four that share `project-repo-setup/references/conventions.
 It also writes the project `DESIGN.md` read by [project-design-kraf](https://github.com/fareezidzuan/project-design-kraf) (design-direction, typography, motion, ui-review, fintech-review). If those skills are not installed, `DESIGN.md` is still a useful reference for people and other tools.
 
 When a handoff below suggests a skill that is not installed, say so in one line and point to https://github.com/fareezidzuan/project-workflow-skills . Never block on it; continue with this skill's own defaults.
+
+## Shared files and plain language
+- **Conventions:** read `references/conventions.md` in this skill's folder (bundled in the downloadable ZIP); if it is not there, `project-repo-setup/references/conventions.md`. Section 0 says where project docs live: always use the `Docs:` path in the project's `CLAUDE.md`. `Git: none` (Folders only) is a normal setup, not a problem to fix.
+- **Plain language:** if `CLAUDE.md` has `Explain: plain`, or the user is new to Git or code, follow `references/plain-language.md` (same lookup). Outcome first, no unexplained jargon, no commands unless the user must run them.
+- **Decisions:** if the project's `/log-decision` command is not available (Folders only, or an app without slash commands), write the decision file directly in `<Docs>/decisions/nnn-short-title.md` from the decision template in `conventions.md` §3, numbered after the last one.
+- **No folder access:** give each file as a download and say which folder it belongs in. Never claim a file was saved.
 
 ## Mode 1: Build or update the profile
 
@@ -60,7 +66,7 @@ Show a short summary: palette swatches with hex, type scale, 5–10 key rules, a
 ### 5. Save in three places
 1. **Design System artifact:** create from the Design System artifact type when the app offers it (list the types first); otherwise publish the profile as a page. This is what new designs read.
 2. **File backup:** `<workspace>/06-brand-assets/brand-profile.md` (same content, with sources and confidence), so it survives outside Claude and can be versioned.
-3. **Project `DESIGN.md`** in the repo root (or `.design/system.md` if the repo already uses it), in the section format in [references/design-md-format.md](references/design-md-format.md). This is what coding agents and the project-design-kraf skills read.
+3. **Project `DESIGN.md`** at the project root: the repo root, or the workspace root when `CLAUDE.md` says `Git: none` (or `.design/system.md` if the project already uses it). With no project at all, save it next to `brand-profile.md`. Use the section format in [references/design-md-format.md](references/design-md-format.md). This is what coding agents and the project-design-kraf skills read.
    - **Append or merge; never overwrite** what is already there. Add new sections below the existing content.
    - Mark each value **Figma**, **Code** or **Proposed** (not found in any source). Proposed values need the user's confirmation.
    - Domain rules (banking, health, legal) are **placeholders only**, marked TODO, for the user's own team to fill in. Never invent them.
@@ -92,4 +98,4 @@ When the user corrects something ("our blue is darker", "never use rounded icons
 - Never copy another brand's or artist's work, logo, or character; describing a style in words is fine, reproducing protected designs is not.
 - Do not invent brand rules; unknown values stay marked as Estimated or Unknown until the user confirms.
 - Keep client profiles private; do not mix one client's profile into another's designs.
-- A project `DESIGN.md` may contain client details: write it only into that project's own repo, never into a shared or public one.
+- A project `DESIGN.md` may contain client details: write it only into that project's own repo or workspace, never into a shared or public one.
