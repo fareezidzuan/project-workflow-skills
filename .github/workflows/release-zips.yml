@@ -1,6 +1,6 @@
 name: Release ZIPs
 
-# When a release is published, build one ZIP per skill (plus an all-in-one
+# When a release is published, build one ZIP per skill (plus a plugin
 # ZIP) and attach them to the release, so people can download and upload
 # skills without using Git or the terminal.
 on:
