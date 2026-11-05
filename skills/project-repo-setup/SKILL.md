@@ -10,11 +10,13 @@ Version: v2.3 — 2026-11 · Licence: MIT (see `LICENSE`)
 Turn a project into a workspace (and, when wanted, a repo) that gives Claude and people the right context, and keep it healthy over time. Nothing is created, moved, renamed, or committed without the user's explicit approval. Git and GitHub are optional: **Folders only** works without them, and they can be added later.
 
 ## Works with (Project Workflow Skills)
-This skill is one of four that share `project-repo-setup/references/conventions.md`:
+This skill is one of six that share `project-repo-setup/references/conventions.md`:
 - **project-repo-setup**: creates the repo, workspace, `CLAUDE.md` and folders the others use.
 - **meeting-notes**: saves notes to `01-meeting-notes/` and feeds decisions, TODOs and open questions into the repo docs.
 - **brand-style-profile**: keeps brand originals in `06-brand-assets/` and builds a reusable style profile for on-brand designs.
 - **security-docs**: writes the five security documents in `docs/security/` and turns their rules into tested controls.
+- **feature-brief**: writes one feature spec in `docs/features/` with its inputs traced.
+- **feature-delivery-loop**: takes an approved spec through plan, build, second-pass reviews, test, PR review and docs.
 When a handoff below suggests a skill that is not installed, say so in one line and point to https://github.com/fareezidzuan/project-workflow-skills . Never block on it; continue with this skill's own defaults.
 
 ## What this skill does
@@ -167,6 +169,7 @@ A few lines: what was created, what still needs the user (secrets, GitHub, Figma
 - A kickoff or client meeting already happened → "Want me to turn it into notes? (meeting-notes)"
 - Brand files, a brand guide, or a Figma design system exist → "Want a brand style profile for on-brand designs? (brand-style-profile)"
 - The app will have logins, a database, a backend or API, or third-party services → "Want to write the security docs now? (security-docs)"
+- A first feature is ready to be specified or built → "Want to write the feature spec, or plan the build? (feature-brief, feature-delivery-loop)"
 
 
 ---

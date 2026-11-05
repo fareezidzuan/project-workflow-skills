@@ -3,7 +3,7 @@
 # who install by upload (Claude desktop and web apps, Cowork) instead of the
 # Claude Code plugin command.
 #   <skill>.zip                        upload as a skill (one folder, SKILL.md inside)
-#   project-workflow-skills-plugin.zip upload as a plugin (all four skills)
+#   project-workflow-skills-plugin.zip upload as a plugin (every skill)
 #
 # Each skill ZIP gets copies of the shared files from project-repo-setup
 # (conventions.md, plain-language.md) so it still works when uploaded on

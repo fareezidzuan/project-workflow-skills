@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.6.0 — 2026-11-05
+- **feature-brief v1.0 (new):** writes one feature spec in `docs/features/` with the project's spec header (Status, Inputs, Untraced), the inputs access rule, and Figma-wins-visuals precedence. Open questions and decisions go where the project keeps them.
+- **feature-delivery-loop v1.0 (new):** plan, build one task, second-pass UI and backend reviews, test, PR review, update docs. Reviews report first and never edit until approved. The backend review reads `docs/security/`. In Folders-only projects it offers to add Git before building.
+- Both new skills follow the shared-files and plain-language rules from 1.5.0, and get their own release ZIPs.
+- **meeting-notes v1.5:** new handoff to `feature-brief`.
+- **project-repo-setup:** handoff line only; version stays v2.3 so the health check doesn't flag every project's setup stamp as outdated.
+- Works-with block in every skill lists all six; README, download links, `plugin.json` and marketplace description updated.
+
 ## 1.5.0 — 2026-11-03
 For designers with no GitHub experience.
 

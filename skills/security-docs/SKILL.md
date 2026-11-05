@@ -14,11 +14,13 @@ Naming and folders follow the shared conventions (read the project's `CLAUDE.md`
 Inspired by the MIKENWO "Five Security Documents" quick start. Written documents are a starting point: a rule only counts once the code enforces it and a check proves it.
 
 ## Works with (Project Workflow Skills)
-This skill is one of four that share `project-repo-setup/references/conventions.md`:
+This skill is one of six that share `project-repo-setup/references/conventions.md`:
 - **project-repo-setup**: creates the repo, workspace, `CLAUDE.md` and folders the others use.
 - **meeting-notes**: saves notes to `01-meeting-notes/` and feeds decisions, TODOs and open questions into the repo docs.
 - **brand-style-profile**: keeps brand originals in `06-brand-assets/` and builds a reusable style profile for on-brand designs.
 - **security-docs**: writes the five security documents in `docs/security/` and turns their rules into tested controls.
+- **feature-brief**: writes one feature spec in `docs/features/` with its inputs traced.
+- **feature-delivery-loop**: takes an approved spec through plan, build, second-pass reviews, test, PR review and docs.
 When a handoff below suggests a skill that is not installed, say so in one line and point to https://github.com/fareezidzuan/project-workflow-skills . Never block on it; continue with this skill's own defaults.
 
 ## Shared files and plain language
