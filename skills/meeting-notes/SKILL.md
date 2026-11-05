@@ -5,18 +5,20 @@ description: Turn a recorder transcript (Fireflies, Granola, Read AI), pasted no
 
 # Meeting notes
 
-Version: v1.3 — 2026-10 · Licence: MIT
+Version: v1.4 — 2026-11 · Licence: MIT
 
 Triggers: meeting notes, process this transcript, summarise my meeting with …, notes from today's call, notes from the design review.
 
 Naming and folders follow `project-repo-setup/references/conventions.md` (read the project's `CLAUDE.md` first; it records the date format). If that file is not available, use the defaults below.
 
 ## Works with (Project Workflow Skills)
-This skill is one of four that share `project-repo-setup/references/conventions.md`:
+This skill is one of six that share `project-repo-setup/references/conventions.md`:
 - **project-repo-setup**: creates the repo, workspace, `CLAUDE.md` and folders the others use.
 - **meeting-notes**: saves notes to `01-meeting-notes/` and feeds decisions, TODOs and open questions into the repo docs.
 - **brand-style-profile**: keeps brand originals in `06-brand-assets/` and builds a reusable style profile for on-brand designs.
 - **security-docs**: writes the five security documents in `docs/security/` and turns their rules into tested controls.
+- **feature-brief**: writes one feature spec in `docs/features/` with its inputs traced.
+- **feature-delivery-loop**: takes an approved spec through plan, build, second-pass reviews, test, PR review and docs.
 When a handoff below suggests a skill that is not installed, say so in one line and point to https://github.com/fareezidzuan/project-workflow-skills . Never block on it; continue with this skill's own defaults.
 
 ## Defaults (change to suit you)
@@ -114,6 +116,7 @@ No project yet: skip follow-ups and say they can be run once the project exists.
 - No project yet → offer "Set up a project for this? (project-repo-setup)".
 - The meeting discussed brand, visual style, or design feedback on look and feel, and no brand profile exists → offer "Capture this in a brand style profile? (brand-style-profile)".
 - A decision or action item changes user roles, stored data, login, or a third-party service → offer "Update the security docs for this? (security-docs)".
+- A decision or action item describes a new feature, or changes what an existing feature does → offer "Write or update the feature spec? (feature-brief)".
 
 ### 6. Moving inbox notes later
 When a project is set up and inbox notes clearly belong to it, offer to move them into its `01-meeting-notes/` (move, never delete; show the list first).
