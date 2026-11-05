@@ -2,6 +2,8 @@
 
 Used by Step 2 (audit) and Health check mode. All checks are read-only. Skip any check whose subject is recorded as a deliberate choice in `CLAUDE.md` (legacy names, repo location, Lite with no workspace).
 
+**Folders only (`Git: none`):** run groups A, B and D against the workspace and its `docs/`. In group C run only the secrets scan (no `.gitignore`, history or GitHub checks), and never flag "no repo" or "no GitHub" as a finding. If code has appeared in the workspace, suggest "add Git" once.
+
 ## Group A: Structure drift
 - Every path named in either `CLAUDE.md` exists, in the exact case.
 - Every real top-level folder (workspace and repo) appears in the folder map.

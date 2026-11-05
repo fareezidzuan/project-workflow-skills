@@ -2,16 +2,17 @@
 
 Show the relevant table before asking the question. Adapt wording to the project; use the user's real folder names.
 
-## Full vs Lite (Step 1)
+## Which setup (Step 1)
 
-| | Full | Lite |
-|---|---|---|
-| For | Client work, team projects, apps, long-running work | Landing pages, experiments, side projects, one-offs |
-| Questions | All of F1–F10 | 5: type and stack, GitHub, repo location, where Claude runs, raw files |
-| Defaults | Chosen in the interview | Docs inside the repo, daily logs, solo, synced folder allowed with safety rules |
-| Files | Per create-when (`profiles.md`) | `CLAUDE.md`, `README.md`, `.gitignore`, `docs/TODO.md`, `docs/decisions/`, `docs/session-logs/` (+ minimal workspace if raw files) |
-| Always kept | Approval gate, safety scan, no push without a yes | Same |
-| Later | — | "Upgrade to full setup" asks only the missing questions |
+| | Folders only | Lite | Full |
+|---|---|---|---|
+| For | Design-only work (brand, social, Figma UI, print), or anyone new to Git | Landing pages, experiments, side projects, one-offs with code | Client work, team projects, apps, long-running work with code |
+| Needs Git / GitHub | No | Yes (GitHub optional) | Yes (GitHub optional) |
+| Questions | 5 plain ones: name, kind of work, folder location, date format, Figma | 5: type and stack, GitHub, repo location, where Claude runs, raw files | All of F1–F10 |
+| Files | Workspace folders, `CLAUDE.md`, `docs/TODO.md`, `docs/OPEN-QUESTIONS.md`, `docs/decisions/` (+ `FIGMA-MAP.md`) | `CLAUDE.md`, `README.md`, `.gitignore`, `docs/TODO.md`, `docs/decisions/`, `docs/session-logs/` (+ minimal workspace if raw files) | Per create-when (`profiles.md`) |
+| Version history | Only what the folder's cloud drive keeps | Every saved version, in Git | Same as Lite |
+| Always kept | Approval gate; nothing created without a yes | Approval gate, safety scan, no push without a yes | Same as Lite |
+| Later | "Add Git" moves `docs/` into a new repo | "Upgrade to full setup" asks only the missing questions | — |
 
 ## Docs placement (F8)
 

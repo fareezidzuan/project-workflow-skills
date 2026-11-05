@@ -2,6 +2,8 @@
 
 Starting points for the Step 4 table. Adjust to the answers; drop what does not apply. Naming follows `conventions.md`.
 
+Folders-only setups don't use these profiles: they get the workspace folder set plus `docs/` (see the SKILL's Folders-only setup). On "add Git", pick the profile here as usual.
+
 ## Create-when (all profiles)
 
 | File / folder | Created when |

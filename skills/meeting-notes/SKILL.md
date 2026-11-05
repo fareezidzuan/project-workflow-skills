@@ -5,11 +5,11 @@ description: Turn a recorder transcript (Fireflies, Granola, Read AI), pasted no
 
 # Meeting notes
 
-Version: v1.4 — 2026-11 · Licence: MIT
+Version: v1.5 — 2026-11 · Licence: MIT
 
 Triggers: meeting notes, process this transcript, summarise my meeting with …, notes from today's call, notes from the design review.
 
-Naming and folders follow `project-repo-setup/references/conventions.md` (read the project's `CLAUDE.md` first; it records the date format). If that file is not available, use the defaults below.
+Naming and folders follow the shared conventions (read the project's `CLAUDE.md` first; it records the date format and the docs folder). If the conventions file is not available, use the defaults below.
 
 ## Works with (Project Workflow Skills)
 This skill is one of six that share `project-repo-setup/references/conventions.md`:
@@ -20,6 +20,12 @@ This skill is one of six that share `project-repo-setup/references/conventions.m
 - **feature-brief**: writes one feature spec in `docs/features/` with its inputs traced.
 - **feature-delivery-loop**: takes an approved spec through plan, build, second-pass reviews, test, PR review and docs.
 When a handoff below suggests a skill that is not installed, say so in one line and point to https://github.com/fareezidzuan/project-workflow-skills . Never block on it; continue with this skill's own defaults.
+
+## Shared files and plain language
+- **Conventions:** read `references/conventions.md` in this skill's folder (bundled in the downloadable ZIP); if it is not there, `project-repo-setup/references/conventions.md`. Section 0 says where project docs live: always use the `Docs:` path in the project's `CLAUDE.md`. `Git: none` (Folders only) is a normal setup, not a problem to fix.
+- **Plain language:** if `CLAUDE.md` has `Explain: plain`, or the user is new to Git or code, follow `references/plain-language.md` (same lookup). Outcome first, no unexplained jargon, no commands unless the user must run them.
+- **Decisions:** if the project's `/log-decision` command is not available (Folders only, or an app without slash commands), write the decision file directly in `<Docs>/decisions/nnn-short-title.md` from the decision template in `conventions.md` §3, numbered after the last one.
+- **No folder access:** give each file as a download and say which folder it belongs in. Never claim a file was saved.
 
 ## Defaults (change to suit you)
 - File name: `YYMMDD-topic.md` (kebab-case topic, 2–5 words).
@@ -36,7 +42,7 @@ When a handoff below suggests a skill that is not installed, say so in one line 
 If nothing is connected or attached, ask the user to paste the notes.
 
 ### 2. Find the project
-Match the meeting to a project from its title, attendees, or the user's words, and read that project's `CLAUDE.md` for the workspace path and date format. If unsure, ask with the likely options plus "No project yet" (→ the inbox folder).
+Match the meeting to a project from its title, attendees, or the user's words, and read that project's `CLAUDE.md` for the workspace path, docs folder (`Docs:`) and date format. If unsure, ask with the likely options plus "No project yet" (→ the inbox folder).
 
 ### 3. Ask the language
 Every time: English / another language the team uses / same as the meeting. Whatever is chosen, keep exact client or stakeholder wording in quotes under Key quotes when it matters (labels, commitments, numbers).
@@ -104,12 +110,12 @@ Cleaned: obvious transcription errors only; uncertain fixes marked [?]
 
 **<Speaker>:** <text>
 ```
-Keep speaker order and wording; do not summarise. Show it with the note and save both after the user says yes. If the target folder sits inside a git repo, stop and ask for a workspace path instead. If a transcript for the same date and topic exists, append `## Session 2`.
+Keep speaker order and wording; do not summarise. Show it with the note and save both after the user says yes. If the target folder sits inside a git repo, stop and ask for a workspace path instead. (In Folders only there is no repo; the workspace path is always fine.) If a transcript for the same date and topic exists, append `## Session 2`.
 
 ### 5. Follow-ups (offer each separately; the user approves or skips)
-- **Decisions** → run the project's `/log-decision` for each confirmed decision (one file each, `docs/decisions/nnn-short-title.md`). Pending ones are not logged as decisions; add them to Open questions instead.
-- **Action items** → add each table row to the project's `docs/TODO.md` under the right feature, with owner, due date, context, and a link back to the note.
-- **Open questions** → add to `docs/OPEN-QUESTIONS.md` with the next number, owner, and a link back to the note.
+- **Decisions** → run the project's `/log-decision` for each confirmed decision, or write the file directly (see Shared files) — one file each, `<Docs>/decisions/nnn-short-title.md`. Pending ones are not logged as decisions; add them to Open questions instead.
+- **Action items** → add each table row to `<Docs>/TODO.md` under the right feature, with owner, due date, context, and a link back to the note.
+- **Open questions** → add to `<Docs>/OPEN-QUESTIONS.md` with the next number, owner, and a link back to the note.
 No project yet: skip follow-ups and say they can be run once the project exists.
 
 **Handoffs:**

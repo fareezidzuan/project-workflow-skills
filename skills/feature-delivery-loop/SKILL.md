@@ -23,6 +23,13 @@ This skill is one of six that share `project-repo-setup/references/conventions.m
 - **feature-delivery-loop**: takes an approved spec through plan, build, second-pass reviews, test, PR review and docs.
 When a handoff below suggests a skill that is not installed, say so in one line and point to https://github.com/fareezidzuan/project-workflow-skills . Never block on it; continue with this skill's own defaults.
 
+## Shared files and plain language
+- **Conventions:** read `references/conventions.md` in this skill's folder (bundled in the downloadable ZIP); if it is not there, `project-repo-setup/references/conventions.md`. Section 0 says where project docs live: always use the `Docs:` path in the project's `CLAUDE.md`. `Git: none` (Folders only) is a normal setup, not a problem to fix.
+- **Plain language:** if `CLAUDE.md` has `Explain: plain`, or the user is new to Git or code, follow `references/plain-language.md` (same lookup). Outcome first, no unexplained jargon, no commands unless the user must run them.
+- **Decisions:** if the project's `/log-decision` command is not available (Folders only, or an app without slash commands), write the decision file directly in `<Docs>/decisions/nnn-short-title.md` from the decision template in `conventions.md` §3, numbered after the last one.
+- **No folder access:** give each file as a download and say which folder it belongs in. Never claim a file was saved.
+- **Folders only (`Git: none`):** specs, TODO and session logs still work, but branches and PRs need Git. Before the build step, offer "Add Git to this project? (project-repo-setup)" and continue with docs-only steps if declined.
+
 ## Defaults (change to suit you)
 - Source of truth: the feature spec in `docs/features/`. No spec → stop and offer "Write the spec first? (feature-brief)".
 - Branch: `feature/<feature-name>`, kebab-case.
