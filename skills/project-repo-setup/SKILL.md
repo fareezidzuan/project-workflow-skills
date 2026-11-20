@@ -1,11 +1,11 @@
 ---
 name: project-repo-setup
-description: Set up, audit, or health-check the folders and repo for a project (Figma-first design hub, web app or dashboard, mobile app, website, or design-only client work). Folders-only setup with no Git or GitHub, Full or Lite setup (Full includes Spec-Driven AGENTS.md and docs/PROGRESS-TRACKER.md), read-only audit, health check with impact previews, add Git later, upgrade Lite to Full, and dry runs. Use when the user says new project, start a new client project, set up a project folder, organise my project files, tidy my files, set up a repo, project structure, audit my repo, health check my project or repo, re-audit, is my repo still clean, add Git, upgrade to full setup, dry run, folder organization, or what goes in the repo.
+description: Set up, audit, or health-check the folders and repo for a project (Figma-first design hub, web app or dashboard, mobile app, website, or design-only client work). Folders-only setup with no Git or GitHub, Full or Lite setup (Full includes Spec-Driven AGENTS.md, context/ pack, and docs/PROGRESS-TRACKER.md), read-only audit, health check with impact previews, add Git later, upgrade Lite to Full, and dry runs. Use when the user says new project, start a new client project, set up a project folder, organise my project files, tidy my files, set up a repo, project structure, audit my repo, health check my project or repo, re-audit, is my repo still clean, add Git, upgrade to full setup, dry run, folder organization, context pack, or what goes in the repo.
 ---
 
 # Project repo setup
 
-Version: v2.4 — 2026-11 · Licence: MIT (see `LICENSE`)
+Version: v2.5 — 2026-11 · Licence: MIT (see `LICENSE`)
 
 Turn a project into a workspace (and, when wanted, a repo) that gives Claude and people the right context, and keep it healthy over time. Nothing is created, moved, renamed, or committed without the user's explicit approval. Git and GitHub are optional: **Folders only** works without them, and they can be added later.
 
@@ -40,7 +40,8 @@ When a handoff below suggests a skill that is not installed, say so in one line 
 | `references/house-defaults.md` (or `house-defaults.example.md`) | Step 1, if present: the user's own defaults become the recommended options |
 | `references/impact-tables.md` | Step 3 (docs placement, repo location, cloud access, Full vs Lite) |
 | `references/profiles.md` | End of Step 3, to pick a starting layout |
-| `references/templates.md` | Step 6 (CLAUDE.md, READMEs, headers) |
+| `references/templates.md` | Step 6 (CLAUDE.md, AGENTS.md, PROGRESS-TRACKER, headers) |
+| `references/context-pack.md` | Step 6 Full only (six-file `context/` pack) |
 | `references/gitignore-template.md` | Step 6 and every safety scan |
 | `references/health-check.md` | Audit and Health check modes |
 | `references/archiving.md` | Health check group D fixes |
@@ -138,15 +139,15 @@ Ask: "Do you agree with this organisation?" (Yes / No / Other) and "Are these th
 ### Step 6: Scaffold
 1. Request folder access once for the parent paths. Create only what the table lists.
 2. Write both `CLAUDE.md` files from `references/templates.md`, following the scope rule in `references/conventions.md` (a directory, not a copy of other docs). Always include:
-   - `Setup: project-repo-setup v2.4` (the health check compares this to the installed skill version).
+   - `Setup: project-repo-setup v2.5` (the health check compares this to the installed skill version).
    - `Git: yes`, `Docs: <path>`, and `Explain: <plain | standard>` (see `references/conventions.md` section 0).
    - `Repo location:` with the choice and reason, and "Drive safety rules apply" when synced.
    - `Inputs (outside the repo):` local path, plus the cloud-drive link when F9 includes cloud sessions, plus the access-check line.
    - `Assets:` originals in `<workspace>/05-design-files/`, optimised in `<repo asset folder>`.
    - The skip-archive rule: "Skip `docs/archive/` unless asked."
-   - **Full only:** `Agents:` and `Progress:` lines pointing at `AGENTS.md` and `docs/PROGRESS-TRACKER.md`, plus the Spec-Driven one-unit rule.
+   - **Full only:** `Agents:`, `Context:`, and `Progress:` lines pointing at `AGENTS.md`, `context/`, and `docs/PROGRESS-TRACKER.md`, plus the Spec-Driven one-unit rule.
 3. Write `.gitignore` from `references/gitignore-template.md` (base blocks plus the stack blocks that apply). Never ignore all of `.claude/`.
-4. Add starter docs per create-when, with templates from `references/templates.md`. Placeholders only; never invent product facts. **Full only:** also write root `AGENTS.md` and `docs/PROGRESS-TRACKER.md` from those templates (Spec-Driven agent gateway + living progress). Skip both on Lite and Folders only.
+4. Add starter docs per create-when, with templates from `references/templates.md`. Placeholders only; never invent product facts. **Full only:** write root `AGENTS.md`, `docs/PROGRESS-TRACKER.md`, and the full `context/` pack from `references/context-pack.md` (Spec-Driven gateway + agent memory + living progress pointer). Skip all of these on Lite and Folders only.
 5. Add `.claude/commands/` and `.claude/rules/` from the profile, always including the **inputs access rule**: before writing or updating a spec, open every cited input; if any cannot be opened, say which and ask "Attach / Link the computer / Continue as Untraced". Untraced specs get the header from `references/templates.md` and cannot be handed off as final.
 6. **Renames (existing repos, after approval):** two steps through a temporary name, because macOS, Windows and cloud drives ignore case: `git mv docs/prd.md docs/tmp-prd.md && git mv docs/tmp-prd.md docs/PRD.md`. Then search case-sensitively for old paths in `CLAUDE.md`, commands, rules, decisions, logs and specs and update every reference. Commit renames on their own. In a synced folder, check no duplicate with the old case appeared.
 7. Show the final tree.
@@ -209,7 +210,7 @@ Use when a repo was already set up and the user wants it checked again. Skip the
 
 ## Upgrade to full setup
 
-Read `CLAUDE.md` to see what Lite recorded. Ask only the Full questions not yet answered, propose the added files and folders as a Step 4 table (Status New) — include `AGENTS.md` and `docs/PROGRESS-TRACKER.md` when missing — then follow Steps 5 and 6. After scaffolding, set `Agents:` and `Progress:` lines in the repo `CLAUDE.md`.
+Read `CLAUDE.md` to see what Lite recorded. Ask only the Full questions not yet answered, propose the added files and folders as a Step 4 table (Status New) — include `AGENTS.md`, `docs/PROGRESS-TRACKER.md`, and `context/` when missing — then follow Steps 5 and 6. After scaffolding, set `Agents:`, `Context:`, and `Progress:` lines in the repo `CLAUDE.md`.
 
 ## Add Git later (Folders only → Lite or Full)
 

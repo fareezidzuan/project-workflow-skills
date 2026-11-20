@@ -5,7 +5,7 @@ Load only the step you are running. The shared rules in `SKILL.md` apply to ever
 Contents: plan · build · second-pass-ui · second-pass-backend · test · review-pr · update-docs
 
 ## plan
-Read: `CLAUDE.md`, `AGENTS.md` (when present), `docs/PROGRESS-TRACKER.md` (when present), the spec, `DESIGN.md`, `docs/FIGMA-MAP.md` (Figma-first), `docs/PRD.md`, `docs/ARCHITECTURE.md`, relevant `docs/decisions/` and `docs/security/` entries, and the source and reusable components the feature will touch.
+Read: `CLAUDE.md`, `AGENTS.md` (when present), `context/` in order when present, `docs/PROGRESS-TRACKER.md` (when present), the spec, `DESIGN.md`, `docs/FIGMA-MAP.md` (Figma-first), `docs/PRD.md`, `docs/ARCHITECTURE.md`, relevant `docs/decisions/` and `docs/security/` entries, and the source and reusable components the feature will touch.
 
 Do not edit source, database or configuration files. Produce:
 1. Feature summary and an acceptance-criteria check: are the criteria testable and complete? Is the spec header Final, In review, Draft or Untraced? Do Non-negotiables and Implementation units (when present) look buildable?
@@ -20,7 +20,7 @@ Do not edit source, database or configuration files. Produce:
 End with: `Plan ready for approval. No code changed.` After approval, save the tracker update only if the user says yes.
 
 ## build
-Read: `CLAUDE.md`, `AGENTS.md` (when present), `docs/PROGRESS-TRACKER.md` (when present), the spec (Non-negotiables + current Implementation unit), `DESIGN.md`, the Figma frames in `docs/FIGMA-MAP.md` for the task's screens, the approved plan (this conversation, or the task list in `docs/TODO.md`), relevant `.claude/rules/`, and the existing components, endpoints, tests and git diff.
+Read: `CLAUDE.md`, `AGENTS.md` (when present), `context/architecture.md`, `context/code-standards.md`, and `context/ai-workflow-rules.md` when present, `docs/PROGRESS-TRACKER.md` (when present), the spec (Non-negotiables + current Implementation unit), `DESIGN.md` / `context/ui-context.md` when present, the Figma frames in `docs/FIGMA-MAP.md` for the task's screens, the approved plan (this conversation, or the task list in `docs/TODO.md`), relevant `.claude/rules/`, and the existing components, endpoints, tests and git diff.
 
 No approved plan, or the task is ambiguous → stop and propose the smallest sensible task before editing. If the task would cross a non-negotiable → stop and ask.
 
@@ -101,6 +101,6 @@ Update documentation only. Record confirmed facts from the diff, test results an
 | A gotcha or correction | One line in `docs/LESSONS.md`; only the most important becomes a must-know line in `CLAUDE.md` (at most five) |
 | Test results | `docs/uat/`, or the spec's Checks section |
 | Spec behaviour changed | The spec itself, and the header status if it moved |
-| Architecture, Figma map or security facts changed | The matching document, confirmed changes only |
+| Architecture, Figma map or security facts changed | The matching document, confirmed changes only; also refresh `context/architecture.md` or `context/ui-context.md` when those files exist and the change affects agent invariants or UI rules |
 
 Keep entries short, dated, and useful to a future session with no memory of this one. `CLAUDE.md` and `AGENTS.md` stay gateways, not copies of other docs; `CLAUDE.md` under about 10 KB. Report the files updated, what remains open, and the next step.

@@ -4,12 +4,12 @@ Six Claude skills for designers who work with Figma, code, and clients. No GitHu
 
 | Skill | What it does | Version |
 |---|---|---|
-| [`project-repo-setup`](skills/project-repo-setup/) | Sets up and health-checks a project's folders and repo: Folders only (no Git), Full or Lite setup, add Git later, read-only audit, health check with impact previews (changes, risk, token savings, undo), dry runs. Full setups also get Spec-Driven `AGENTS.md` + `docs/PROGRESS-TRACKER.md` | v2.4 |
+| [`project-repo-setup`](skills/project-repo-setup/) | Sets up and health-checks a project's folders and repo: Folders only (no Git), Full or Lite setup, add Git later, read-only audit, health check with impact previews (changes, risk, token savings, undo), dry runs. Full setups also get Spec-Driven `AGENTS.md`, `context/` pack, and `docs/PROGRESS-TRACKER.md` | v2.5 |
 | [`meeting-notes`](skills/meeting-notes/) | Turns Fireflies, Granola, or Read AI transcripts, pasted notes, or Figma comments into a structured note, then offers decisions, action items, and open questions as follow-ups; saves a cleaned transcript outside the repo | v1.5 |
-| [`brand-style-profile`](skills/brand-style-profile/) | Analyses Figma files, codebase tokens, brand guides, websites, and images into a reusable style profile and a project `DESIGN.md`, flags Figma/code mismatches, then creates matching social posts, UI, marketing, icons, and illustrations | v1.3 |
+| [`brand-style-profile`](skills/brand-style-profile/) | Analyses Figma files, codebase tokens, brand guides, websites, and images into a reusable style profile and a project `DESIGN.md`, flags Figma/code mismatches, refreshes `context/ui-context.md` when present, then creates matching social posts, UI, marketing, icons, and illustrations | v1.4 |
 | [`security-docs`](skills/security-docs/) | Writes five security documents (rules, auth and permissions, data protection, threat model, pre-launch checklist) in `docs/security/`, then turns one rule at a time into a tested control | v1.1 |
-| [`feature-brief`](skills/feature-brief/) | Writes one feature spec in `docs/features/`: objective, scope, non-negotiables, flow, states, rules, implementation units, acceptance criteria, verification checklist. Opens and cites its inputs (or marks the spec Untraced), keeps Figma as the source for visuals, and files open questions and decisions where the project keeps them | v1.1 |
-| [`feature-delivery-loop`](skills/feature-delivery-loop/) | Takes an approved spec through plan, build (one unit at a time), second-pass UI and backend reviews, test, PR review, and a docs update — including `docs/PROGRESS-TRACKER.md` on Full setups. Reviews report first and never edit until you approve | v1.1 |
+| [`feature-brief`](skills/feature-brief/) | Writes one feature spec in `docs/features/`: objective, scope, non-negotiables, flow, states, rules, implementation units, acceptance criteria, verification checklist. Opens and cites its inputs (or marks the spec Untraced), keeps Figma as the source for visuals, and files open questions and decisions where the project keeps them | v1.2 |
+| [`feature-delivery-loop`](skills/feature-delivery-loop/) | Takes an approved spec through plan, build (one unit at a time), second-pass UI and backend reviews, test, PR review, and a docs update — including `docs/PROGRESS-TRACKER.md` and `context/` on Full setups. Reviews report first and never edit until you approve | v1.2 |
 
 ## Install
 
@@ -77,22 +77,23 @@ Setup asks once how familiar you are with Git. If you're new to it, every skill 
 For apps you will build with coding agents, choose **Full** setup. You get the usual `CLAUDE.md` lobby plus:
 
 - **`AGENTS.md`** — gateway for Cursor, Codex, Copilot, and similar tools; same read order as Claude
-- **`docs/PROGRESS-TRACKER.md`** — living "where we are" file agents read and update every unit
+- **`context/`** — six-file agent memory pack (overview, architecture, code standards, AI workflow rules, UI context, progress pointer)
+- **`docs/PROGRESS-TRACKER.md`** — living "where we are" file agents read and update every unit (`context/progress-tracker.md` points here)
 
-Workflow: planning conversation → feature spec (with units and verification) → plan → build one unit → review → test → update docs/tracker. Folders-only and Lite projects stay unchanged; say "upgrade to full setup" later if you need the gateways.
+Workflow: planning conversation → fill `context/` → feature spec (with units and verification) → plan → build one unit → review → test → update docs/tracker. Folders-only and Lite projects stay unchanged; say "upgrade to full setup" later if you need the gateways. A health check offers to add or refresh a missing/stale context pack on older Full repos.
 
 ## How they connect
 
 ```
-project-repo-setup ──creates──▶ CLAUDE.md · AGENTS.md (Full) · workspace · docs/
+project-repo-setup ──creates──▶ CLAUDE.md · AGENTS.md · context/ (Full) · workspace · docs/
         │                               ▲            ▲
         │ conventions.md                │            │
         ▼                               │            │
 meeting-notes ──writes──▶ 01-meeting-notes/ · decisions · TODO · open questions
-brand-style-profile ──writes──▶ 06-brand-assets/brand-profile.md · DESIGN.md · exports/
+brand-style-profile ──writes──▶ brand-profile.md · DESIGN.md · context/ui-context.md · exports/
 security-docs ──writes──▶ docs/security/ · TODO · open questions · decisions
 feature-brief ──writes──▶ docs/features/ · index lines · open questions · progress (Full)
-feature-delivery-loop ──reads──▶ spec · DESIGN.md · docs/security/ · PROGRESS-TRACKER
+feature-delivery-loop ──reads──▶ context/ · spec · DESIGN.md · docs/security/ · PROGRESS-TRACKER
                      ──updates──▶ status table · TODO · session log · PROGRESS-TRACKER
 ```
 

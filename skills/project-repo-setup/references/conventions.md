@@ -23,9 +23,14 @@ Folders only uses the same names inside `docs/` as a repo (section 1), so adding
 2. Files directly in `docs/` are ALL CAPS with hyphens: `PRD.md`, `TODO.md`, `FIGMA-MAP.md`, `OPEN-QUESTIONS.md`, `PROGRESS-TRACKER.md`.
 3. Files inside any folder or subfolder are lowercase kebab-case: `decisions/001-short-title.md`, `features/feature-a/sub-feature.md`.
 4. `README.md` keeps its name everywhere. The `.md` extension is always lowercase.
-5. Outside `docs/`, repo folders and files are kebab-case; root files `CLAUDE.md`, `AGENTS.md`, `README.md`, `DESIGN.md`, `LICENSE` keep their conventional names.
+5. Outside `docs/`, repo folders and files are kebab-case; root files `CLAUDE.md`, `AGENTS.md`, `README.md`, `DESIGN.md`, `LICENSE` keep their conventional names. The Spec-Driven pack folder is `context/` (lowercase).
 6. Feature specs live in `docs/features/` (one file per feature, or a folder per feature). Repos set up before v2.2 may have `docs/specs/`; record `Docs names: legacy (kept by choice)` in the repo `CLAUDE.md` to keep it.
-7. **Spec-Driven agent memory (Full setups only):** `AGENTS.md` at the repo root is the gateway for Cursor, Codex, Copilot, and similar tools; `CLAUDE.md` remains the lobby for Claude apps. Both point at the same docs. `docs/PROGRESS-TRACKER.md` is the living "where we are" file agents read and update each unit. Do not create these for Folders only or Lite unless the user asks.
+7. **Spec-Driven agent memory (Full setups only):**
+   - `AGENTS.md` at the repo root is the gateway for Cursor, Codex, Copilot, and similar tools; `CLAUDE.md` remains the lobby for Claude apps. Both point at the same pack.
+   - `context/` holds the six-file agent memory pack: `project-overview.md`, `architecture.md`, `code-standards.md`, `ai-workflow-rules.md`, `ui-context.md`, `progress-tracker.md` (templates in `context-pack.md`). Files inside `context/` are kebab-case.
+   - Living progress stays in `docs/PROGRESS-TRACKER.md` (updated every unit). `context/progress-tracker.md` is a pointer to that file so the pack stays complete without a second copy of phase state.
+   - Do not create `AGENTS.md`, `context/`, or `docs/PROGRESS-TRACKER.md` for Folders only or Lite unless the user asks.
+8. **Do not duplicate long docs into `context/`.** Overview links to `docs/PRD.md`; architecture links to `docs/ARCHITECTURE.md` when that file exists; ui-context links to `DESIGN.md`. Product behaviour stays in `docs/features/`.
 
 ## 2. Workspace folder set (outside git)
 Core folders keep the same number in every project.
@@ -80,7 +85,7 @@ Figma for layout, visuals, and final copy · spec (`docs/features/`) for behavio
 | Source-of-truth precedence | Dates, tickets, blockers → `docs/PRD.md`, `docs/TODO.md`, spec headers |
 | Hard rules that apply to every task | Gotchas and corrections → `docs/LESSONS.md` |
 | Doc index, inputs paths, GitHub, repo location, setup version, assets line | Session history → `docs/session-logs/` |
-| Pointer to `AGENTS.md` and `docs/PROGRESS-TRACKER.md` (Full) | Current build phase / in-progress unit → `docs/PROGRESS-TRACKER.md` |
+| Pointer to `AGENTS.md`, `context/`, and `docs/PROGRESS-TRACKER.md` (Full) | Current build phase / in-progress unit → `docs/PROGRESS-TRACKER.md`; agent memory pack → `context/` |
 | Workflow commands in order | |
 | **Status table:** one row per module, status words only | |
 | **Must-know lines:** at most 5, each one line with a link to its lesson or decision | |

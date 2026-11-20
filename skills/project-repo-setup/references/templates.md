@@ -9,7 +9,7 @@ Replace `<…>` placeholders. Never invent product facts.
 <One or two lines: what the project is and for whom.>
 
 Repo: `<path to repo>` (code map in its CLAUDE.md).
-Setup: project-repo-setup v2.4
+Setup: project-repo-setup v2.5
 Git: yes
 Docs: `<repo>/docs/`   <!-- or the docs path when outside or split -->
 Explain: <plain | standard>
@@ -34,7 +34,7 @@ Workspace names: canonical   <!-- or: legacy (kept by choice) -->
 
 <One or two lines: what the project is and for whom.>
 
-Setup: project-repo-setup v2.4 (folders only)
+Setup: project-repo-setup v2.5 (folders only)
 Git: none   <!-- say "add Git" to set up version history later -->
 Docs: `docs/`   <!-- TODO, open questions, decisions; DESIGN.md sits at this folder's root -->
 Explain: <plain | standard>
@@ -62,12 +62,13 @@ Workspace names: canonical
 
 <2–3 lines: what it is.>
 
-Setup: project-repo-setup v2.4
+Setup: project-repo-setup v2.5
 Git: yes · Docs: `docs/` · Explain: <plain | standard>
 GitHub Repo: <url | pending> · default branch <main>
 Repo location: <path> (chosen: <reason>). <Drive safety rules apply.>
 Workspace: <path>  (see its CLAUDE.md)
 Agents: `AGENTS.md` (gateway for Cursor / Codex / Copilot; same rules)   <!-- Full only; omit on Lite -->
+Context: `context/`   <!-- Full only; omit on Lite -->
 Progress: `docs/PROGRESS-TRACKER.md`   <!-- Full only; omit on Lite -->
 Inputs (outside the repo):
 - Local: <path>
@@ -82,7 +83,7 @@ Raw files: <yes | no>   <!-- Lite only -->
 ## Source of truth
 ## Rules
 - Skip `docs/archive/` unless asked.
-- Spec-Driven: plan before build; one implementation unit at a time; update `docs/PROGRESS-TRACKER.md` after every unit (Full).
+- Spec-Driven: read `context/` before coding; plan before build; one implementation unit at a time; update `docs/PROGRESS-TRACKER.md` after every unit (Full).
 ## Must-know (max 5, one line + link each)
 ## Status
 | Module | Design | Dev |
@@ -93,21 +94,23 @@ Raw files: <yes | no>   <!-- Lite only -->
 | File | Purpose |
 |---|---|
 | `PROGRESS-TRACKER.md` | Current phase, active unit, blockers (Full) |
+| `../context/` | Spec-Driven agent memory pack (Full) |
 ## Commands
 ```
 
 ## Repo `AGENTS.md` (Full setups only)
-Gateway for coding agents that read `AGENTS.md` (Cursor, Codex, Copilot, Next.js managed blocks). Keep it short; point at living docs instead of copying them. When Next.js or another tool owns a marked section, leave that section alone and keep these project directives outside it.
+Gateway for coding agents that read `AGENTS.md` (Cursor, Codex, Copilot, Next.js managed blocks). Keep it short; point at living docs instead of copying them. When Next.js or another tool owns a marked section, leave that section alone and keep these project directives outside it. Context file bodies live in `references/context-pack.md`.
 ```markdown
 # Agent directives
 
 Before implementing any feature or modifying code:
 1. Read `CLAUDE.md` (project lobby: stack, status, doc index).
-2. Read `docs/PROGRESS-TRACKER.md` and continue from the current phase / unit.
-3. Read the active feature spec under `docs/features/` (and `DESIGN.md`, `docs/ARCHITECTURE.md`, `docs/security/` when they exist and the task touches them).
-4. Follow accepted decisions in `docs/decisions/` over conflicting spec or Figma notes.
-5. Work one scoped implementation unit at a time. If the request is ambiguous or crosses a non-negotiable, stop and ask — do not invent product or architecture decisions.
-6. After each completed unit, update `docs/PROGRESS-TRACKER.md` (phase, in-progress, completed, session notes).
+2. Read all files in `context/` in order: `project-overview.md`, `architecture.md`, `code-standards.md`, `ai-workflow-rules.md`, `ui-context.md`, `progress-tracker.md`.
+3. Read `docs/PROGRESS-TRACKER.md` (living progress) and continue from the current phase / unit.
+4. Read the active feature spec under `docs/features/` (and `DESIGN.md`, `docs/ARCHITECTURE.md`, `docs/security/` when they exist and the task touches them).
+5. Follow accepted decisions in `docs/decisions/` over conflicting spec or Figma notes. Honour `context/architecture.md` invariants.
+6. Work one scoped implementation unit at a time. If the request is ambiguous or crosses a non-negotiable, stop and ask — do not invent product or architecture decisions.
+7. After each completed unit, update `docs/PROGRESS-TRACKER.md` (phase, in-progress, completed, session notes).
 
 Do not commit, push, merge, or change production systems unless the user explicitly asks.
 ```

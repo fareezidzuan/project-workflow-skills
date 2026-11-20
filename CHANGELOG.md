@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.8.0 — 2026-11-20
+Spec-Driven P1: Full `context/` agent memory pack (Folders only and Lite unchanged unless upgraded).
+
+- **project-repo-setup v2.5:** Full scaffolds write `context/` (overview, architecture, code-standards, ai-workflow-rules, ui-context, progress pointer + README) from new `references/context-pack.md`. `CLAUDE.md` stamps `Context: context/`. `AGENTS.md` requires reading `context/` in order before coding. Health check covers pack completeness and freshness vs PRD / ARCHITECTURE / DESIGN / living progress tracker.
+- **feature-delivery-loop v1.2:** reads `context/` before plan/build; offers to add a missing pack on Full projects.
+- **feature-brief v1.2:** loads `context/project-overview.md` and `context/architecture.md` when present; non-negotiables cite context architecture invariants.
+- **brand-style-profile v1.4:** when `context/` exists, refreshes `context/ui-context.md` as a short pointer to `DESIGN.md` (does not create the pack).
+- **README** / **starter-prompts** updated for the context pack. Plugin version `1.8.0`.
+
 ## 1.7.0 — 2026-11-20
 Spec-Driven P0 for Full setups (Folders only and Lite unchanged unless upgraded).
 

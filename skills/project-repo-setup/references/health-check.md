@@ -10,7 +10,13 @@ Used by Step 2 (audit) and Health check mode. All checks are read-only. Skip any
 - The workspace and repo `CLAUDE.md` link to each other.
 - Standard files exist for the setup level (see `profiles.md`, create-when). A missing doc that has become relevant is suggested, e.g. a Figma link with no `FIGMA-MAP.md`, a second UI language with no `GLOSSARY.md`.
 - **Setup version:** `Setup: project-repo-setup vX` in `CLAUDE.md` is older than the installed skill → offer to update commands, rules and templates to the current version (show each changed file as a diff).
-- **Spec-Driven gateways (Full only):** repo has Full docs (e.g. `docs/PRD.md`) and is missing root `AGENTS.md` or `docs/PROGRESS-TRACKER.md` → **Low**; offer to add from `templates.md` and add `Agents:` / `Progress:` lines to `CLAUDE.md`. Do not flag on Lite or Folders only (`Git: none`).
+- **Spec-Driven gateways (Full only):** repo has Full docs (e.g. `docs/PRD.md`) and is missing root `AGENTS.md`, `docs/PROGRESS-TRACKER.md`, or `context/` → **Low**; offer to add from `templates.md` + `context-pack.md` and add `Agents:` / `Context:` / `Progress:` lines to `CLAUDE.md`. Do not flag on Lite or Folders only (`Git: none`).
+- **Context pack completeness (Full only):** `context/` exists but is missing any of `README.md`, `project-overview.md`, `architecture.md`, `code-standards.md`, `ai-workflow-rules.md`, `ui-context.md`, `progress-tracker.md` → **Low**; offer to add only the missing files from `context-pack.md` without overwriting filled ones.
+- **Context freshness (Full only):**
+  - `context/project-overview.md` still all placeholders while `docs/PRD.md` has real goals/users → **Low**; offer to fill overview from PRD (show draft; save only after yes).
+  - `docs/ARCHITECTURE.md` exists with content and `context/architecture.md` has empty Invariants (or is missing) → **Low**; offer to copy boundaries/invariants into the context file and keep the longer doc as the detail link.
+  - `DESIGN.md` exists and `context/ui-context.md` still has empty Pointer / layout stubs → **Low**; offer to refresh the pointer and key constraints from `DESIGN.md` (do not copy the whole design system).
+  - `context/progress-tracker.md` does not point at `docs/PROGRESS-TRACKER.md`, or the living tracker is missing while the pointer exists → **Med**; restore the pointer template and/or create the living tracker.
 - **Progress tracker stale shape:** `docs/PROGRESS-TRACKER.md` exists but lacks Current phase / In progress / Completed sections → **Low**; offer to restore the template headings without wiping session notes.
 - **Duplicated content:** a `CLAUDE.md` paragraph that repeats a decision, spec, or FIGMA-MAP entry. Fix: first merge any detail found only in `CLAUDE.md` into the target doc, then replace the paragraph with a one-line pointer.
 - **Must-know lines:** more than 5 → flag for review.
