@@ -1,13 +1,13 @@
 ---
 name: feature-delivery-loop
-description: Take one feature from an approved spec to merged and documented, one small Spec-Driven step at a time - plan, build one implementation unit, second-pass UI review, second-pass backend review, test against acceptance criteria and the verification checklist, review the branch or PR, update the project docs and docs/PROGRESS-TRACKER.md. Reads context/ when present. Use when the user says plan this feature, build the next task, second pass, review my UI or backend, test the feature, review the PR or branch, update the docs, or asks what is next on a feature that has a spec in docs/features - even if they never name a step.
+description: Take one feature from an approved spec to merged and documented, one small Spec-Driven step at a time - plan, build one implementation unit, second-pass UI review, second-pass backend review, test against acceptance criteria and the verification checklist (optional runtime verify), optional bot-review, review the branch or PR, update the project docs and docs/PROGRESS-TRACKER.md. Reads context/ when present. Use when the user says plan this feature, build the next task, second pass, review my UI or backend, test the feature, bot review, verify in the running app, review the PR or branch, update the docs, or asks what is next on a feature that has a spec in docs/features - even if they never name a step.
 ---
 
 # Feature delivery loop
 
-Version: v1.3 — 2026-11 · Licence: MIT
+Version: v1.4 — 2026-11 · Licence: MIT
 
-Triggers: plan this feature, build task 1, second pass, review my UI, review the backend, test the feature, review the branch, update the docs after this feature, what's next on this feature.
+Triggers: plan this feature, build task 1, second pass, review my UI, review the backend, test the feature, bot review, verify in the running app, review the branch, update the docs after this feature, what's next on this feature.
 
 Naming and folders follow `project-repo-setup/references/conventions.md` (read the project's `CLAUDE.md` first). If that file is not available, use the defaults below. The detail of each step is in `references/steps.md`; load only the step you are running.
 
@@ -34,6 +34,7 @@ When a handoff below suggests a skill that is not installed, say so in one line 
 - Source of truth: the feature spec in `docs/features/`. No spec → stop and offer "Write the spec first? (feature-brief)". Prefer the spec's Implementation units as the build task list when present.
 - Progress: `docs/PROGRESS-TRACKER.md` when it exists (Full Spec-Driven setups). Read it before choosing a step; update it after every completed unit (and after plan / test / docs with the user's yes). Missing on a Full project → offer to create it from project-repo-setup `templates.md`; never invent history.
 - Context pack: when `context/` exists, read it (overview → architecture → code-standards → ai-workflow-rules → ui-context → progress pointer) before plan or build. Missing on a Full project that already has `AGENTS.md` → offer "Add the context pack? (project-repo-setup)".
+- Tooling: honour `Agent skills:` / `PR bot:` lines in `CLAUDE.md` when present. Prefer version-matched framework/SDK docs over inventing APIs. Do not install skills or bots without the user's yes (see project-repo-setup `agent-tooling.md`).
 - Branch: `feature/<feature-name>`, kebab-case.
 - Commands the project already has (project-repo-setup creates `/log-session` and `/log-decision` in every project, `/second-pass` for mock-first web apps, and `/brief-feature` and `/design-second-pass` for Figma-first apps) do their own jobs. Use them for those jobs and use this skill for the loop around them; do not write a second copy of what they produce.
 
@@ -45,11 +46,12 @@ When a handoff below suggests a skill that is not installed, say so in one line 
 | build | After plan approval | Yes, one task | Small tested change, diff checked |
 | second-pass-ui | After the UI works | No | Ranked findings and a verdict |
 | second-pass-backend | After API, database, auth or server work | No | Ranked findings and a verdict |
-| test | Before merge | No | Acceptance criteria mapped to evidence |
+| test | Before merge | No | Acceptance criteria mapped to evidence; optional runtime verify |
+| bot-review | Optional; when a PR review bot is configured or the user asks | No | Bot findings summarised; no edits until approved |
 | review-pr | Before merge | No | Merge verdict on the diff |
 | update-docs | End of session, after QA, after release | Docs only | Project docs reflect confirmed facts |
 
-Fixes from a review go back through `build`, one approved task at a time.
+Fixes from a review go back through `build`, one approved task at a time. Skip `bot-review` when no bot is configured and the user did not ask for one.
 
 ## Choosing the step
 If the user names a step, run it. If not, read `docs/PROGRESS-TRACKER.md` (when present), the spec header status, the `CLAUDE.md` status row and the git state (branch, diff, whether a plan was approved in this conversation) and propose the single next step with one sentence on why. Do not chain steps without the user's go-ahead; the approval gates are what keep the loop from drifting.
@@ -75,6 +77,8 @@ Offer each separately; the user approves or skips.
 - A gotcha worth never repeating → add one line to `docs/LESSONS.md`.
 - second-pass-backend finds that auth, roles, stored data or a third-party service changed → offer "Update the security docs for this? (security-docs)".
 - second-pass-ui finds colours, type or components that are not in `DESIGN.md`, or code tokens that disagree with Figma → offer "Reconcile Figma and code tokens? (brand-style-profile)".
+- A PR exists and `PR bot: configured` (or the user asks) → offer "Run bot-review on this PR?"
+- The unit needs a running app to prove (auth redirect, realtime, job status) → include runtime verify in `test`, or offer it explicitly.
 - The spec is missing, outdated or Untraced → offer "Update the spec? (feature-brief)".
 - No project yet → offer "Set up a project for this? (project-repo-setup)".
 

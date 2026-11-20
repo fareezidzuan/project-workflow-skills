@@ -9,7 +9,7 @@ Replace `<…>` placeholders. Never invent product facts.
 <One or two lines: what the project is and for whom.>
 
 Repo: `<path to repo>` (code map in its CLAUDE.md).
-Setup: project-repo-setup v2.6
+Setup: project-repo-setup v2.7
 Git: yes
 Docs: `<repo>/docs/`   <!-- or the docs path when outside or split -->
 Explain: <plain | standard>
@@ -34,7 +34,7 @@ Workspace names: canonical   <!-- or: legacy (kept by choice) -->
 
 <One or two lines: what the project is and for whom.>
 
-Setup: project-repo-setup v2.6 (folders only)
+Setup: project-repo-setup v2.7 (folders only)
 Git: none   <!-- say "add Git" to set up version history later -->
 Docs: `docs/`   <!-- TODO, open questions, decisions; DESIGN.md sits at this folder's root -->
 Explain: <plain | standard>
@@ -62,7 +62,7 @@ Workspace names: canonical
 
 <2–3 lines: what it is.>
 
-Setup: project-repo-setup v2.6
+Setup: project-repo-setup v2.7
 Git: yes · Docs: `docs/` · Explain: <plain | standard>
 GitHub Repo: <url | pending> · default branch <main>
 Repo location: <path> (chosen: <reason>). <Drive safety rules apply.>
@@ -71,6 +71,8 @@ Agents: `AGENTS.md` (gateway for Cursor / Codex / Copilot; same rules)   <!-- Fu
 Context: `context/`   <!-- Full only; omit on Lite -->
 Progress: `docs/PROGRESS-TRACKER.md`   <!-- Full only; omit on Lite -->
 Profile: <A–F>   <!-- e.g. F full-stack AI -->
+Agent skills: <none yet | names the user approved>   <!-- Full / code; from agent-tooling.md -->
+PR bot: <none | configured>   <!-- optional -->
 Inputs (outside the repo):
 - Local: <path>
 - Drive: <folder link>
@@ -86,6 +88,7 @@ Raw files: <yes | no>   <!-- Lite only -->
 ## Rules
 - Skip `docs/archive/` unless asked.
 - Spec-Driven: read `context/` before coding; plan before build; one implementation unit at a time; update `docs/PROGRESS-TRACKER.md` after every unit (Full).
+- Prefer version-matched framework/SDK docs (or approved Agent skills) over training-data guesses; leave framework-managed `AGENTS.md` regions intact.
 <!-- Profile F: honour context/architecture.md invariants (authz, hybrid storage, durable jobs, tool-calling). -->
 ## Must-know (max 5, one line + link each)
 ## Status

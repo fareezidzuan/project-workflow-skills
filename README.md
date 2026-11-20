@@ -4,12 +4,12 @@ Six Claude skills for designers who work with Figma, code, and clients. No GitHu
 
 | Skill | What it does | Version |
 |---|---|---|
-| [`project-repo-setup`](skills/project-repo-setup/) | Sets up and health-checks a project's folders and repo: Folders only (no Git), Full or Lite setup, add Git later, read-only audit, health check with impact previews (changes, risk, token savings, undo), dry runs. Full setups also get Spec-Driven `AGENTS.md`, `context/` pack, and `docs/PROGRESS-TRACKER.md`; **Profile F** covers full-stack AI apps | v2.6 |
+| [`project-repo-setup`](skills/project-repo-setup/) | Sets up and health-checks a project's folders and repo: Folders only (no Git), Full or Lite setup, add Git later, read-only audit, health check with impact previews (changes, risk, token savings, undo), dry runs. Full setups also get Spec-Driven `AGENTS.md`, `context/` pack, and `docs/PROGRESS-TRACKER.md`; **Profile F** covers full-stack AI apps; wrap-up offers agent-tooling guidance | v2.7 |
 | [`meeting-notes`](skills/meeting-notes/) | Turns Fireflies, Granola, or Read AI transcripts, pasted notes, or Figma comments into a structured note, then offers decisions, action items, and open questions as follow-ups; saves a cleaned transcript outside the repo | v1.5 |
 | [`brand-style-profile`](skills/brand-style-profile/) | Analyses Figma files, codebase tokens, brand guides, websites, and images into a reusable style profile and a project `DESIGN.md`, flags Figma/code mismatches, refreshes `context/ui-context.md` when present, then creates matching social posts, UI, marketing, icons, and illustrations | v1.4 |
 | [`security-docs`](skills/security-docs/) | Writes five security documents (rules, auth and permissions, data protection, threat model, pre-launch checklist) in `docs/security/`, then turns one rule at a time into a tested control; Profile F handoff for auth-boundary specs | v1.2 |
 | [`feature-brief`](skills/feature-brief/) | Writes one feature spec in `docs/features/`: objective, scope, non-negotiables, flow, states, rules, implementation units, acceptance criteria, verification checklist. Opens and cites its inputs (or marks the spec Untraced), keeps Figma as the source for visuals, and files open questions and decisions where the project keeps them | v1.3 |
-| [`feature-delivery-loop`](skills/feature-delivery-loop/) | Takes an approved spec through plan, build (one unit at a time), second-pass UI and backend reviews, test, PR review, and a docs update — including `docs/PROGRESS-TRACKER.md` and `context/` on Full setups. Reviews report first and never edit until you approve | v1.3 |
+| [`feature-delivery-loop`](skills/feature-delivery-loop/) | Takes an approved spec through plan, build (one unit at a time), second-pass UI and backend reviews, test (optional runtime verify), optional bot-review, PR review, and a docs update — including `docs/PROGRESS-TRACKER.md` and `context/` on Full setups. Reviews report first and never edit until you approve | v1.4 |
 
 ## Install
 
@@ -83,6 +83,8 @@ For apps you will build with coding agents, choose **Full** setup. You get the u
 Workflow: planning conversation → fill `context/` → feature spec (with units and verification) → plan → build one unit → review → test → update docs/tracker. Folders-only and Lite projects stay unchanged; say "upgrade to full setup" later if you need the gateways. A health check offers to add or refresh a missing/stale context pack on older Full repos.
 
 **Profile F (full-stack AI app):** choose Full-stack AI at setup for apps with auth, hybrid storage (metadata DB + blob for large artifacts), realtime rooms, durable background AI jobs, or in-product tool-calling agents. Patterns only — no required vendors. You get richer `context/architecture.md`, `docs/ARCHITECTURE.md`, `.claude/rules/ai-app-rules.md`, and security-docs handoffs for membership-before-realtime.
+
+**Tooling (optional):** setup wrap-up can recommend version-matched framework/SDK docs or official Agent Skills (so agents do not invent outdated APIs), an optional PR review bot, and runtime verify in the delivery loop. Nothing is installed without your yes; no bot is required.
 
 ## How they connect
 

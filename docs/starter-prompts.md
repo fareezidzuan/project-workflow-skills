@@ -54,5 +54,11 @@ Things you can say to Claude once the skills are installed. You don't need to na
 - "Write the security docs, then a feature spec for auth + membership before realtime room tokens."
 - "Spec the in-product agent with tool-calling units (no giant single JSON dump)."
 
+## Agent tooling (optional)
+- "Recommend Agent Skills or docs for our stack so the coding agent stays current — don't install anything yet."
+- "We already use a PR review bot — mark that in CLAUDE.md and run bot-review on this PR."
+- "Verify the auth redirect in the running local app as part of the test step."
+- "Skip bot-review; just do the human PR review."
+
 ## Words you might see
 Claude avoids technical terms when you're new to Git, but if one comes up, the [plain-language glossary](../skills/project-repo-setup/references/plain-language.md) explains each one with a Figma comparison.
