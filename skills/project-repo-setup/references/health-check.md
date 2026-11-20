@@ -10,6 +10,8 @@ Used by Step 2 (audit) and Health check mode. All checks are read-only. Skip any
 - The workspace and repo `CLAUDE.md` link to each other.
 - Standard files exist for the setup level (see `profiles.md`, create-when). A missing doc that has become relevant is suggested, e.g. a Figma link with no `FIGMA-MAP.md`, a second UI language with no `GLOSSARY.md`.
 - **Setup version:** `Setup: project-repo-setup vX` in `CLAUDE.md` is older than the installed skill → offer to update commands, rules and templates to the current version (show each changed file as a diff).
+- **Spec-Driven gateways (Full only):** repo has Full docs (e.g. `docs/PRD.md`) and is missing root `AGENTS.md` or `docs/PROGRESS-TRACKER.md` → **Low**; offer to add from `templates.md` and add `Agents:` / `Progress:` lines to `CLAUDE.md`. Do not flag on Lite or Folders only (`Git: none`).
+- **Progress tracker stale shape:** `docs/PROGRESS-TRACKER.md` exists but lacks Current phase / In progress / Completed sections → **Low**; offer to restore the template headings without wiping session notes.
 - **Duplicated content:** a `CLAUDE.md` paragraph that repeats a decision, spec, or FIGMA-MAP entry. Fix: first merge any detail found only in `CLAUDE.md` into the target doc, then replace the paragraph with a one-line pointer.
 - **Must-know lines:** more than 5 → flag for review.
 - **Status table** disagrees with `docs/PRD.md` (status section) → flag.

@@ -10,6 +10,7 @@ Folders-only setups don't use these profiles: they get the workspace folder set 
 |---|---|
 | `CLAUDE.md`, `README.md`, `.gitignore`, `docs/TODO.md`, `docs/decisions/`, `docs/session-logs/` (+ `README.md`) | Always |
 | `docs/PRD.md`, `docs/OPEN-QUESTIONS.md`, `docs/LESSONS.md` | Always in Full; Lite adds them on upgrade |
+| `AGENTS.md`, `docs/PROGRESS-TRACKER.md` | Always in Full (Spec-Driven agent gateway + living progress); Lite and Folders only skip unless the user asks; added on Lite → Full upgrade |
 | `docs/FIGMA-MAP.md`, `DESIGN.md` | A Figma file exists or the source of truth is Figma |
 | `docs/GLOSSARY.md`, `docs/CONTENT-RULES.md` | Second UI language, or a domain with special terms |
 | `docs/handoff/` | Someone else builds from your design |
@@ -29,12 +30,15 @@ Files that do not apply are listed in the Step 4 table as "Not created" with the
 |---|---|
 | `PRD.md` | Short product map: goals, users, scope, non-goals, phases, status section, feature index linking to specs |
 | `TODO.md` | Active tasks grouped by feature or area |
+| `PROGRESS-TRACKER.md` | Living Spec-Driven handoff: current phase, active feature/unit, blockers, short session notes. Agents read and update this every unit; detail stays in `session-logs/` |
 | `LESSONS.md` | Corrections and gotchas so they are not repeated |
 | `OPEN-QUESTIONS.md` | Numbered open questions, owner, status |
 | `decisions/` | One file per decision: context, options, decision, approver, date, related frame. Overrides spec and Figma until they are updated |
 | `features/` | One spec per feature, or a folder with `README.md` + sub-feature files. Each spec header lists its inputs (and `Untraced` if written without them) |
 | `uat/` | Round files and checklist; each issue records which source needs fixing (spec, Figma, prototype, build) |
 | `session-logs/` | One scheme; sessions appended |
+
+Root gateway (Full): `AGENTS.md` — mandatory read order for non-Claude agents; mirrors the Spec-Driven pointers in `CLAUDE.md` without duplicating long docs.
 
 ## Profile A: Figma-first app (design hub)
 Figma is the shared source of truth across teams and clients; a prototype only communicates a signed-off design to developers.

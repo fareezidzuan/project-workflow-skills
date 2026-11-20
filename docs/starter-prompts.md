@@ -35,5 +35,14 @@ Things you can say to Claude once the skills are installed. You don't need to na
 - "Write the security docs." (once the app has logins, a database or outside services)
 - "Explain what a commit is, using Figma as an example."
 
+## Spec-Driven features (Full setups)
+- "Set up a Full repo for [our workspace app]. We'll build it with coding agents."
+- "Before we code: help me plan the architecture for [feature] — boundaries, non-negotiables, and out of scope."
+- "Write the spec for [auth on the workspace route], with implementation units and a verification checklist."
+- "What's next on this feature?" (uses `docs/PROGRESS-TRACKER.md` when present)
+- "Plan [feature], then we'll build unit 1 only."
+- "Build the next implementation unit."
+- "Update the progress tracker for this session."
+
 ## Words you might see
 Claude avoids technical terms when you're new to Git, but if one comes up, the [plain-language glossary](../skills/project-repo-setup/references/plain-language.md) explains each one with a Figma comparison.

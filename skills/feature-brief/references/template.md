@@ -34,6 +34,11 @@ Problem:
 In scope:
 Out of scope:
 
+## Non-negotiables
+Boundaries the build must not cross. Cite `docs/ARCHITECTURE.md` invariants when they exist. Prefer hard limits over soft wishes.
+- <Files, routes, modules, or UX areas that must not change>
+- <Auth, data, or provider rules that are already decided>
+
 ## User stories
 - As a <user>, I want <action> so that <outcome>.
 
@@ -69,8 +74,19 @@ Validation rules:
 ## Analytics
 - <Events, if the project tracks them>
 
+## Implementation units
+Ordered, each small enough for one `feature-delivery-loop` build task. Name the limit for each unit.
+1. <Unit> — limit: <what not to do / what stays untouched>
+2. <Unit> — limit: …
+
 ## Acceptance criteria
 - [ ] <Testable statement; another person can mark it pass or fail without asking what it meant>
+
+## Verification checklist
+Observable checks for the units above (commands, UI checks, or AC references). Used by plan / build / test steps.
+- [ ] <Unit 1: how to prove it>
+- [ ] <Unit 2: how to prove it>
+- [ ] <Cross-cutting: lint / type-check / build / security control if relevant>
 
 ## Checks
 Results of the feature's second-pass reviews and tests that are not recorded in `docs/uat/` (for example: second-pass-ui, second-pass-backend, test), newest first, each with date and verdict.
@@ -82,6 +98,7 @@ Results of the feature's second-pass reviews and tests that are not recorded in 
 ## Quality bar
 
 - Acceptance criteria are testable and cover every state under "States and edge cases", or say which are deferred.
-- Nothing contradicts `DESIGN.md`, `CLAUDE.md`, or an accepted decision.
+- Implementation units are ordered, each has a limit, and the verification checklist covers every unit (or says which are deferred).
+- Non-negotiables do not contradict `DESIGN.md`, `CLAUDE.md`, `docs/ARCHITECTURE.md`, or an accepted decision.
 - Status is words only; no dates, tickets or blockers in the header.
 - No secrets, personal data, or production URLs.
