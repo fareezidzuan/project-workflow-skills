@@ -9,7 +9,7 @@ Replace `<…>` placeholders. Never invent product facts.
 <One or two lines: what the project is and for whom.>
 
 Repo: `<path to repo>` (code map in its CLAUDE.md).
-Setup: project-repo-setup v2.5
+Setup: project-repo-setup v2.6
 Git: yes
 Docs: `<repo>/docs/`   <!-- or the docs path when outside or split -->
 Explain: <plain | standard>
@@ -34,7 +34,7 @@ Workspace names: canonical   <!-- or: legacy (kept by choice) -->
 
 <One or two lines: what the project is and for whom.>
 
-Setup: project-repo-setup v2.5 (folders only)
+Setup: project-repo-setup v2.6 (folders only)
 Git: none   <!-- say "add Git" to set up version history later -->
 Docs: `docs/`   <!-- TODO, open questions, decisions; DESIGN.md sits at this folder's root -->
 Explain: <plain | standard>
@@ -62,7 +62,7 @@ Workspace names: canonical
 
 <2–3 lines: what it is.>
 
-Setup: project-repo-setup v2.5
+Setup: project-repo-setup v2.6
 Git: yes · Docs: `docs/` · Explain: <plain | standard>
 GitHub Repo: <url | pending> · default branch <main>
 Repo location: <path> (chosen: <reason>). <Drive safety rules apply.>
@@ -70,6 +70,7 @@ Workspace: <path>  (see its CLAUDE.md)
 Agents: `AGENTS.md` (gateway for Cursor / Codex / Copilot; same rules)   <!-- Full only; omit on Lite -->
 Context: `context/`   <!-- Full only; omit on Lite -->
 Progress: `docs/PROGRESS-TRACKER.md`   <!-- Full only; omit on Lite -->
+Profile: <A–F>   <!-- e.g. F full-stack AI -->
 Inputs (outside the repo):
 - Local: <path>
 - Drive: <folder link>
@@ -78,12 +79,14 @@ Assets: originals in <workspace>/05-design-files/, optimised in <repo asset fold
 Raw files: <yes | no>   <!-- Lite only -->
 
 ## Platform and stack
+<!-- Profile F: also note auth, storage mode, realtime, durable jobs, in-product agent -->
 ## Run
 ## Code map
 ## Source of truth
 ## Rules
 - Skip `docs/archive/` unless asked.
 - Spec-Driven: read `context/` before coding; plan before build; one implementation unit at a time; update `docs/PROGRESS-TRACKER.md` after every unit (Full).
+<!-- Profile F: honour context/architecture.md invariants (authz, hybrid storage, durable jobs, tool-calling). -->
 ## Must-know (max 5, one line + link each)
 ## Status
 | Module | Design | Dev |
@@ -95,7 +98,21 @@ Raw files: <yes | no>   <!-- Lite only -->
 |---|---|
 | `PROGRESS-TRACKER.md` | Current phase, active unit, blockers (Full) |
 | `../context/` | Spec-Driven agent memory pack (Full) |
+| `ARCHITECTURE.md` | System wiring (Profile F and backends) |
 ## Commands
+```
+
+## `.claude/rules/ai-app-rules.md` (Profile F only)
+```markdown
+# AI app rules
+
+- Read `context/` and `docs/PROGRESS-TRACKER.md` before coding.
+- Enforce auth and authorization on the server; never trust the client for membership or roles.
+- Realtime: issue room/channel tokens only after auth **and** a membership (or equivalent) check.
+- Hybrid storage: keep large or hot-rewritten artifacts out of oversized DB columns when blob/object storage was chosen.
+- Long-running AI (>~30–60s): enqueue a durable job; do not block the HTTP request handler.
+- In-product agents: mutate state through explicit validated tools, not arbitrary JSON dumps.
+- Never write secret values into source, specs, context files, or logs. Use `.env.example` for names only.
 ```
 
 ## Repo `AGENTS.md` (Full setups only)

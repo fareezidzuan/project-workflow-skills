@@ -47,5 +47,12 @@ Things you can say to Claude once the skills are installed. You don't need to na
 - "Update the progress tracker for this session."
 - "Health check my repo — include the context pack."
 
+## Full-stack AI app (Profile F)
+- "Set up a Full-stack AI app for [a collaborative canvas that generates specs]."
+- "We need hybrid storage: metadata in Postgres, large JSON in blob storage — put that in architecture."
+- "Long AI runs should use durable background jobs, not the API request — update the invariants."
+- "Write the security docs, then a feature spec for auth + membership before realtime room tokens."
+- "Spec the in-product agent with tool-calling units (no giant single JSON dump)."
+
 ## Words you might see
 Claude avoids technical terms when you're new to Git, but if one comes up, the [plain-language glossary](../skills/project-repo-setup/references/plain-language.md) explains each one with a Figma comparison.

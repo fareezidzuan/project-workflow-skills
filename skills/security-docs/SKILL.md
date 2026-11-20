@@ -5,7 +5,7 @@ description: Write, update, and put into practice a project's five security docu
 
 # Security docs
 
-Version: v1.1 — 2026-11 · Licence: MIT
+Version: v1.2 — 2026-11 · Licence: MIT
 
 Triggers: security docs, write our security rules, threat model, permission table, who can do what, data security, security checklist, launch check, update the security docs, turn this rule into code.
 
@@ -93,6 +93,7 @@ No project yet: skip follow-ups and say they can be run once the project exists.
 **Handoffs:**
 - No project yet → offer "Set up a project for this? (project-repo-setup)".
 - Security choices came from a meeting with no note yet → offer "Log the meeting too? (meeting-notes)".
+- **Profile F / AI apps** (realtime rooms, hybrid storage, or background AI): after auth.md is saved, offer "Write a feature spec for the auth boundary? (feature-brief)" covering public vs protected routes and membership checks before room or channel tokens; and remind the agent to keep matching invariants in `context/architecture.md`.
 
 ### 9. Keep them current
 Revisit the affected documents when the app adds users, roles, tables, file storage, payments, AI or third-party services. Keep one checklist run per release in the checklist's Runs section, newest first; move older runs to `docs/archive/security/` once there are more than five.

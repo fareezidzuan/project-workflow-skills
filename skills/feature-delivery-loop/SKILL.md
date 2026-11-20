@@ -5,7 +5,7 @@ description: Take one feature from an approved spec to merged and documented, on
 
 # Feature delivery loop
 
-Version: v1.2 — 2026-11 · Licence: MIT
+Version: v1.3 — 2026-11 · Licence: MIT
 
 Triggers: plan this feature, build task 1, second pass, review my UI, review the backend, test the feature, review the branch, update the docs after this feature, what's next on this feature.
 

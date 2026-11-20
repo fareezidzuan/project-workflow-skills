@@ -61,6 +61,7 @@ Do not edit code. Lenses:
 7. Secrets and configuration: environment variables, nothing in source or logs, safe defaults.
 8. Reliability: timeouts, retries, observability, useful logs without personal data, test coverage.
 9. Controls: which rules in `security-rules.md` this change implements, weakens or leaves untested.
+10. **Profile F / AI apps** (when `context/architecture.md` or `Profile: F` says so): realtime tokens only after membership; hybrid storage respected (no huge artifacts forced into DB); long AI work not blocking the HTTP handler; tool-calling mutations validated. Flag violations of architecture invariants as Critical or High.
 
 Output a table: Severity, Finding, Evidence, Risk, Recommended fix, Test to add or verify. Then: required product decisions; migration and deployment cautions; a verdict (`Ready for human QA`, `Needs fixes`, `Blocked by decision`); a numbered fix plan with no code changes. Never print secret values; mask them (`sk-••••3f2a`) and tell the user to rotate anything exposed.
 

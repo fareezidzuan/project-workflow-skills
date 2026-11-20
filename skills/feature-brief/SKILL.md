@@ -5,7 +5,7 @@ description: Write or update one feature spec in docs/features/ (objective, scop
 
 # Feature brief
 
-Version: v1.2 — 2026-11 · Licence: MIT
+Version: v1.3 — 2026-11 · Licence: MIT
 
 Triggers: feature brief, feature spec, brief this feature, write the spec for …, define acceptance criteria, turn this into something buildable, update the spec.
 
@@ -56,7 +56,7 @@ Use `references/template.md`. Four rules shape the draft:
 - **Figma wins visuals, the spec wins behaviour.** In a Figma-first project, layout, visuals and final copy live in Figma. The spec links the frames from `docs/FIGMA-MAP.md` and describes behaviour, rules and states only; it does not re-describe the layout. Elsewhere, fill in the UI and copy sections.
 - **Decisions override.** A relevant `docs/decisions/` entry overrides spec and Figma until they are updated. Cite it instead of contradicting it.
 - **Unknowns stay visible.** An undecided product rule goes under Open questions, never invented. A confident guess turns into a bug later; an open question gets decided.
-- **Units stay buildable.** Prefer a short Implementation units list with limits and a Verification checklist over a vague "build the feature" task. When `docs/PROGRESS-TRACKER.md` exists, offer a progress-tracker follow-up after save (do not clear other in-progress work).
+- **Units stay buildable.** Prefer a short Implementation units list with limits and a Verification checklist over a vague "build the feature" task. When `docs/PROGRESS-TRACKER.md` exists, offer a progress-tracker follow-up after save (do not clear other in-progress work). On **Profile F**, prefer units that separate concerns (e.g. auth/membership → data/storage adapter → UI → durable job or tool-calling), each with a hard limit.
 
 Scale to the feature: delete sections that do not apply instead of padding them. Tiny copy or content-only changes may omit Implementation units; say so under Scope.
 

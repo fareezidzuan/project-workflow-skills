@@ -1,11 +1,11 @@
 ---
 name: project-repo-setup
-description: Set up, audit, or health-check the folders and repo for a project (Figma-first design hub, web app or dashboard, mobile app, website, or design-only client work). Folders-only setup with no Git or GitHub, Full or Lite setup (Full includes Spec-Driven AGENTS.md, context/ pack, and docs/PROGRESS-TRACKER.md), read-only audit, health check with impact previews, add Git later, upgrade Lite to Full, and dry runs. Use when the user says new project, start a new client project, set up a project folder, organise my project files, tidy my files, set up a repo, project structure, audit my repo, health check my project or repo, re-audit, is my repo still clean, add Git, upgrade to full setup, dry run, folder organization, context pack, or what goes in the repo.
+description: Set up, audit, or health-check the folders and repo for a project (Figma-first design hub, web app or dashboard, mobile app, website, full-stack AI app, or design-only client work). Folders-only setup with no Git or GitHub, Full or Lite setup (Full includes Spec-Driven AGENTS.md, context/ pack, and docs/PROGRESS-TRACKER.md; Profile F adds AI-app architecture patterns), read-only audit, health check with impact previews, add Git later, upgrade Lite to Full, and dry runs. Use when the user says new project, start a new client project, set up a project folder, organise my project files, tidy my files, set up a repo, project structure, audit my repo, health check my project or repo, re-audit, is my repo still clean, add Git, upgrade to full setup, dry run, folder organization, context pack, full-stack AI, or what goes in the repo.
 ---
 
 # Project repo setup
 
-Version: v2.5 — 2026-11 · Licence: MIT (see `LICENSE`)
+Version: v2.6 — 2026-11 · Licence: MIT (see `LICENSE`)
 
 Turn a project into a workspace (and, when wanted, a repo) that gives Claude and people the right context, and keep it healthy over time. Nothing is created, moved, renamed, or committed without the user's explicit approval. Git and GitHub are optional: **Folders only** works without them, and they can be added later.
 
@@ -104,10 +104,11 @@ For a project with no repo, run only the workspace checks (groups A, B and D in 
 Lite defaults: docs inside the repo, daily session logs, solo.
 
 **Full asks, in order (skip anything already known):**
-- **F1 Project type:** Figma-first design hub / Web app or dashboard / Mobile app / Website / Other.
+- **F1 Project type:** Figma-first design hub / Web app or dashboard / Mobile app / Website / **Full-stack AI app** / Other. (Full-stack AI → Profile F; recommend Full setup, not Lite.)
 - **F2 Platform and stack:** mobile (iOS, Android, both; native or cross-platform); web (desktop- or mobile-first; framework; CSS approach); backend (none yet, mock-first, hosted service, other; who owns it).
+  - **Profile F follow-ups** (from `profiles.md`, one at a time): auth; storage (single DB vs hybrid); realtime; durable background jobs for long AI; in-product tool-calling agent. Record answers under Platform and stack; seed `context/architecture.md` with the Profile F template in `context-pack.md`.
 - **F3 Language:** UI/content language(s) and the language docs are written in. A second UI language turns on `GLOSSARY.md` and `CONTENT-RULES.md`.
-- **F4 Source of truth:** Figma first, spec first, or code first. Record the precedence line from `references/conventions.md`.
+- **F4 Source of truth:** Figma first, spec first, or code first. Record the precedence line from `references/conventions.md`. Profile F often starts **spec first** (or Figma first if design-led); ask.
 - **F5 Workflow stages and branches.**
 - **F6 GitHub:** ask only the decision here (Yes / No / Not sure). Account, sign-in, and URL come in Step 7.
 - **F7 Team:** solo, or others who will clone the repo. Also: will someone else build from your design (turns on `docs/handoff/`), and are there formal test rounds (turns on `docs/uat/`)?
@@ -118,7 +119,7 @@ Lite defaults: docs inside the repo, daily session logs, solo.
 - **F9 Where will you run Claude?** (multi-select) This computer only / also cloud sessions (web, phone, remote) / teammates' computers. If cloud is chosen and inputs live in a cloud drive, record the drive folder link next to the local path (see `references/impact-tables.md`).
 - **F10 Meeting-note date format:** use the house default if set; otherwise offer `YYMMDD-topic.md` or `YYYYMMDD-topic.md`.
 
-Then read `references/profiles.md` and pick the matching profile.
+Then read `references/profiles.md` and pick the matching profile (A–F).
 
 ### Step 4: Propose the structure as one review table
 Start with the confirmed root paths (workspace, repo, docs if outside). Then one table, every path relative to its root:
@@ -139,15 +140,15 @@ Ask: "Do you agree with this organisation?" (Yes / No / Other) and "Are these th
 ### Step 6: Scaffold
 1. Request folder access once for the parent paths. Create only what the table lists.
 2. Write both `CLAUDE.md` files from `references/templates.md`, following the scope rule in `references/conventions.md` (a directory, not a copy of other docs). Always include:
-   - `Setup: project-repo-setup v2.5` (the health check compares this to the installed skill version).
+   - `Setup: project-repo-setup v2.6` (the health check compares this to the installed skill version).
    - `Git: yes`, `Docs: <path>`, and `Explain: <plain | standard>` (see `references/conventions.md` section 0).
    - `Repo location:` with the choice and reason, and "Drive safety rules apply" when synced.
    - `Inputs (outside the repo):` local path, plus the cloud-drive link when F9 includes cloud sessions, plus the access-check line.
    - `Assets:` originals in `<workspace>/05-design-files/`, optimised in `<repo asset folder>`.
    - The skip-archive rule: "Skip `docs/archive/` unless asked."
-   - **Full only:** `Agents:`, `Context:`, and `Progress:` lines pointing at `AGENTS.md`, `context/`, and `docs/PROGRESS-TRACKER.md`, plus the Spec-Driven one-unit rule.
+   - **Full only:** `Agents:`, `Context:`, and `Progress:` lines pointing at `AGENTS.md`, `context/`, and `docs/PROGRESS-TRACKER.md`, plus the Spec-Driven one-unit rule. Record `Profile: A–F`.
 3. Write `.gitignore` from `references/gitignore-template.md` (base blocks plus the stack blocks that apply). Never ignore all of `.claude/`.
-4. Add starter docs per create-when, with templates from `references/templates.md`. Placeholders only; never invent product facts. **Full only:** write root `AGENTS.md`, `docs/PROGRESS-TRACKER.md`, and the full `context/` pack from `references/context-pack.md` (Spec-Driven gateway + agent memory + living progress pointer). Skip all of these on Lite and Folders only.
+4. Add starter docs per create-when, with templates from `references/templates.md`. Placeholders only; never invent product facts. **Full only:** write root `AGENTS.md`, `docs/PROGRESS-TRACKER.md`, and the full `context/` pack from `references/context-pack.md` (Spec-Driven gateway + agent memory + living progress pointer). **Profile F:** use the Profile F architecture body in `context-pack.md` for `context/architecture.md`, always create `docs/ARCHITECTURE.md` (same headings, more room for detail), and write `.claude/rules/ai-app-rules.md` from `templates.md`. Skip Spec-Driven gateways on Lite and Folders only.
 5. Add `.claude/commands/` and `.claude/rules/` from the profile, always including the **inputs access rule**: before writing or updating a spec, open every cited input; if any cannot be opened, say which and ask "Attach / Link the computer / Continue as Untraced". Untraced specs get the header from `references/templates.md` and cannot be handed off as final.
 6. **Renames (existing repos, after approval):** two steps through a temporary name, because macOS, Windows and cloud drives ignore case: `git mv docs/prd.md docs/tmp-prd.md && git mv docs/tmp-prd.md docs/PRD.md`. Then search case-sensitively for old paths in `CLAUDE.md`, commands, rules, decisions, logs and specs and update every reference. Commit renames on their own. In a synced folder, check no duplicate with the old case appeared.
 7. Show the final tree.
@@ -171,6 +172,7 @@ A few lines: what was created, what still needs the user (secrets, GitHub, Figma
 - A kickoff or client meeting already happened → "Want me to turn it into notes? (meeting-notes)"
 - Brand files, a brand guide, or a Figma design system exist → "Want a brand style profile for on-brand designs? (brand-style-profile)"
 - The app will have logins, a database, a backend or API, or third-party services → "Want to write the security docs now? (security-docs)"
+- **Profile F** → always offer security-docs; then "Fill context/architecture from your stack answers?"; then first feature via feature-brief (suggest units: auth boundaries → storage/API → UI → jobs/agent tools)
 - A first feature is ready to be specified or built → "Want to write the feature spec, or plan the build? (feature-brief, feature-delivery-loop)"
 
 
