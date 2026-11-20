@@ -5,7 +5,7 @@ description: "Analyse brand and design assets (Figma, codebase tokens, images, b
 
 # Brand style profile
 
-Version: v1.3 — 2026-11 · Licence: MIT
+Version: v1.4 — 2026-11 · Licence: MIT
 
 Triggers: analyse our brand, build a style profile, learn our design style, make a variant of this, design this in our style, update the brand profile, write our DESIGN.md, pull tokens from Figma or code, check Figma against code.
 
@@ -73,6 +73,7 @@ Show a short summary: palette swatches with hex, type scale, 5–10 key rules, a
    - Mark each value **Figma**, **Code** or **Proposed** (not found in any source). Proposed values need the user's confirmation.
    - Domain rules (banking, health, legal) are **placeholders only**, marked TODO, for the user's own team to fill in. Never invent them.
    - Add the reconcile findings from step 3 under "To resolve".
+4. **Spec-Driven `context/ui-context.md`** (only when `context/` already exists on a Full setup): refresh the Pointer to `DESIGN.md` and the short Layout / Component / Do not sections from what you just confirmed. Do not copy the whole design system into `context/`. Show the draft and save only after the user says yes. If `context/` is missing, skip this step (do not create the pack here; offer project-repo-setup instead).
 Record in the profile: version (`v01`, `v02`…), date, and a change-log line.
 
 **Handoffs:**
@@ -84,7 +85,7 @@ When the user corrects something ("our blue is darker", "never use rounded icons
 
 ## Mode 2: Create from the profile
 
-1. **Load** the brand's Design System artifact (list Design System artifacts and pick the brand; ask if more than one fits). Fall back to the project `DESIGN.md`, then `brand-profile.md`.
+1. **Load** the brand's Design System artifact (list Design System artifacts and pick the brand; ask if more than one fits). Fall back to the project `DESIGN.md`, then `context/ui-context.md` (pointer only), then `brand-profile.md`.
 2. **Clarify the job** in one question if missing: format and size, channel, copy, and how many variants.
    - Social: Instagram post 1080×1350, Story/Reel 1080×1920, LinkedIn 1200×627, X 1600×900, TikTok cover 1080×1920.
    - UI screens / web pages, marketing materials (poster, flyer, banner, deck), icon kits, illustrations.

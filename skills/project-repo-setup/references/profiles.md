@@ -10,7 +10,7 @@ Folders-only setups don't use these profiles: they get the workspace folder set 
 |---|---|
 | `CLAUDE.md`, `README.md`, `.gitignore`, `docs/TODO.md`, `docs/decisions/`, `docs/session-logs/` (+ `README.md`) | Always |
 | `docs/PRD.md`, `docs/OPEN-QUESTIONS.md`, `docs/LESSONS.md` | Always in Full; Lite adds them on upgrade |
-| `AGENTS.md`, `docs/PROGRESS-TRACKER.md` | Always in Full (Spec-Driven agent gateway + living progress); Lite and Folders only skip unless the user asks; added on Lite → Full upgrade |
+| `AGENTS.md`, `docs/PROGRESS-TRACKER.md`, `context/` (six-file pack + README) | Always in Full (Spec-Driven gateway, living progress, agent memory pack); Lite and Folders only skip unless the user asks; added on Lite → Full upgrade. Templates: `templates.md` + `context-pack.md` |
 | `docs/FIGMA-MAP.md`, `DESIGN.md` | A Figma file exists or the source of truth is Figma |
 | `docs/GLOSSARY.md`, `docs/CONTENT-RULES.md` | Second UI language, or a domain with special terms |
 | `docs/handoff/` | Someone else builds from your design |
@@ -39,6 +39,18 @@ Files that do not apply are listed in the Step 4 table as "Not created" with the
 | `session-logs/` | One scheme; sessions appended |
 
 Root gateway (Full): `AGENTS.md` — mandatory read order for non-Claude agents; mirrors the Spec-Driven pointers in `CLAUDE.md` without duplicating long docs.
+
+## Context pack (`context/`, Full only)
+
+| File | Role |
+|---|---|
+| `README.md` | Read order for the pack |
+| `project-overview.md` | Goals, audience, flows, out of scope; links `docs/PRD.md` |
+| `architecture.md` | Boundaries, storage, invariants; links `docs/ARCHITECTURE.md` when present |
+| `code-standards.md` | Language, framework, testing conventions |
+| `ai-workflow-rules.md` | One-unit scope, push back on ambiguity, evidence, safety |
+| `ui-context.md` | Agent UI rules; points at `DESIGN.md` |
+| `progress-tracker.md` | Pointer to living `docs/PROGRESS-TRACKER.md` |
 
 ## Profile A: Figma-first app (design hub)
 Figma is the shared source of truth across teams and clients; a prototype only communicates a signed-off design to developers.

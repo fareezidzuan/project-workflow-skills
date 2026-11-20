@@ -5,7 +5,7 @@ description: Write or update one feature spec in docs/features/ (objective, scop
 
 # Feature brief
 
-Version: v1.1 — 2026-11 · Licence: MIT
+Version: v1.2 — 2026-11 · Licence: MIT
 
 Triggers: feature brief, feature spec, brief this feature, write the spec for …, define acceptance criteria, turn this into something buildable, update the spec.
 
@@ -38,7 +38,7 @@ When a handoff below suggests a skill that is not installed, say so in one line 
 ## Workflow
 
 ### 1. Load
-Read the repo `CLAUDE.md` and the workspace `CLAUDE.md` it links to, then the files that exist: an existing spec for this feature, `docs/PRD.md` (feature index and status), `DESIGN.md`, `docs/FIGMA-MAP.md`, `docs/decisions/` entries that mention the feature, `docs/OPEN-QUESTIONS.md`. Note anything missing and carry on without it. No `CLAUDE.md` → say so and offer "Set up a project for this? (project-repo-setup)"; keep going in the chat.
+Read the repo `CLAUDE.md` and the workspace `CLAUDE.md` it links to, then the files that exist: an existing spec for this feature, `docs/PRD.md` (feature index and status), `context/project-overview.md` and `context/architecture.md` when present, `DESIGN.md`, `docs/FIGMA-MAP.md`, `docs/decisions/` entries that mention the feature, `docs/OPEN-QUESTIONS.md`. Note anything missing and carry on without it. No `CLAUDE.md` → say so and offer "Set up a project for this? (project-repo-setup)"; keep going in the chat.
 
 If the project has a `/brief-feature` command (project-repo-setup creates one for Figma-first projects), follow its pipeline and use this skill for the structure of the spec.
 

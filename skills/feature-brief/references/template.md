@@ -35,7 +35,7 @@ In scope:
 Out of scope:
 
 ## Non-negotiables
-Boundaries the build must not cross. Cite `docs/ARCHITECTURE.md` invariants when they exist. Prefer hard limits over soft wishes.
+Boundaries the build must not cross. Cite `context/architecture.md` invariants (and `docs/ARCHITECTURE.md` when present). Prefer hard limits over soft wishes.
 - <Files, routes, modules, or UX areas that must not change>
 - <Auth, data, or provider rules that are already decided>
 
@@ -99,6 +99,6 @@ Results of the feature's second-pass reviews and tests that are not recorded in 
 
 - Acceptance criteria are testable and cover every state under "States and edge cases", or say which are deferred.
 - Implementation units are ordered, each has a limit, and the verification checklist covers every unit (or says which are deferred).
-- Non-negotiables do not contradict `DESIGN.md`, `CLAUDE.md`, `docs/ARCHITECTURE.md`, or an accepted decision.
+- Non-negotiables do not contradict `DESIGN.md`, `CLAUDE.md`, `context/architecture.md`, `docs/ARCHITECTURE.md`, or an accepted decision.
 - Status is words only; no dates, tickets or blockers in the header.
 - No secrets, personal data, or production URLs.

@@ -1,11 +1,11 @@
 ---
 name: feature-delivery-loop
-description: Take one feature from an approved spec to merged and documented, one small Spec-Driven step at a time - plan, build one implementation unit, second-pass UI review, second-pass backend review, test against acceptance criteria and the verification checklist, review the branch or PR, update the project docs and docs/PROGRESS-TRACKER.md. Use when the user says plan this feature, build the next task, second pass, review my UI or backend, test the feature, review the PR or branch, update the docs, or asks what is next on a feature that has a spec in docs/features - even if they never name a step.
+description: Take one feature from an approved spec to merged and documented, one small Spec-Driven step at a time - plan, build one implementation unit, second-pass UI review, second-pass backend review, test against acceptance criteria and the verification checklist, review the branch or PR, update the project docs and docs/PROGRESS-TRACKER.md. Reads context/ when present. Use when the user says plan this feature, build the next task, second pass, review my UI or backend, test the feature, review the PR or branch, update the docs, or asks what is next on a feature that has a spec in docs/features - even if they never name a step.
 ---
 
 # Feature delivery loop
 
-Version: v1.1 — 2026-11 · Licence: MIT
+Version: v1.2 — 2026-11 · Licence: MIT
 
 Triggers: plan this feature, build task 1, second pass, review my UI, review the backend, test the feature, review the branch, update the docs after this feature, what's next on this feature.
 
@@ -33,6 +33,7 @@ When a handoff below suggests a skill that is not installed, say so in one line 
 ## Defaults (change to suit you)
 - Source of truth: the feature spec in `docs/features/`. No spec → stop and offer "Write the spec first? (feature-brief)". Prefer the spec's Implementation units as the build task list when present.
 - Progress: `docs/PROGRESS-TRACKER.md` when it exists (Full Spec-Driven setups). Read it before choosing a step; update it after every completed unit (and after plan / test / docs with the user's yes). Missing on a Full project → offer to create it from project-repo-setup `templates.md`; never invent history.
+- Context pack: when `context/` exists, read it (overview → architecture → code-standards → ai-workflow-rules → ui-context → progress pointer) before plan or build. Missing on a Full project that already has `AGENTS.md` → offer "Add the context pack? (project-repo-setup)".
 - Branch: `feature/<feature-name>`, kebab-case.
 - Commands the project already has (project-repo-setup creates `/log-session` and `/log-decision` in every project, `/second-pass` for mock-first web apps, and `/brief-feature` and `/design-second-pass` for Figma-first apps) do their own jobs. Use them for those jobs and use this skill for the loop around them; do not write a second copy of what they produce.
 
@@ -54,9 +55,9 @@ Fixes from a review go back through `build`, one approved task at a time.
 If the user names a step, run it. If not, read `docs/PROGRESS-TRACKER.md` (when present), the spec header status, the `CLAUDE.md` status row and the git state (branch, diff, whether a plan was approved in this conversation) and propose the single next step with one sentence on why. Do not chain steps without the user's go-ahead; the approval gates are what keep the loop from drifting.
 
 ## Rules for every step
-- **Read before acting.** `CLAUDE.md` (repo and workspace), `AGENTS.md` when present, `docs/PROGRESS-TRACKER.md` when present, the feature spec, `DESIGN.md`, and the files the step lists. Say which are missing and continue with what exists.
+- **Read before acting.** `CLAUDE.md` (repo and workspace), `AGENTS.md` when present, `context/` when present, `docs/PROGRESS-TRACKER.md` when present, the feature spec, `DESIGN.md`, and the files the step lists. Say which are missing and continue with what exists.
 - **Trace the spec.** A spec marked `Untraced` can be planned and reviewed, but say it is not handoff-ready until its inputs are opened.
-- **Honour non-negotiables.** If the requested work would violate the spec's Non-negotiables or an architecture invariant, stop and ask — do not silently expand scope.
+- **Honour non-negotiables.** If the requested work would violate the spec's Non-negotiables or a `context/architecture.md` / `docs/ARCHITECTURE.md` invariant, stop and ask — do not silently expand scope.
 - **Figma wins visuals, the spec wins behaviour,** and an accepted decision in `docs/decisions/` overrides both until they are updated.
 - **Stay in scope.** Unrelated cleanups, even good ones, become follow-ups in `docs/TODO.md`.
 - **One unit.** Build only the current Implementation unit (or the single approved plan task). Do not start the next unit in the same step.
