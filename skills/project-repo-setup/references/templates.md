@@ -9,7 +9,7 @@ Replace `<…>` placeholders. Never invent product facts.
 <One or two lines: what the project is and for whom.>
 
 Repo: `<path to repo>` (code map in its CLAUDE.md).
-Setup: project-repo-setup v2.3
+Setup: project-repo-setup v2.4
 Git: yes
 Docs: `<repo>/docs/`   <!-- or the docs path when outside or split -->
 Explain: <plain | standard>
@@ -34,7 +34,7 @@ Workspace names: canonical   <!-- or: legacy (kept by choice) -->
 
 <One or two lines: what the project is and for whom.>
 
-Setup: project-repo-setup v2.3 (folders only)
+Setup: project-repo-setup v2.4 (folders only)
 Git: none   <!-- say "add Git" to set up version history later -->
 Docs: `docs/`   <!-- TODO, open questions, decisions; DESIGN.md sits at this folder's root -->
 Explain: <plain | standard>
@@ -62,11 +62,13 @@ Workspace names: canonical
 
 <2–3 lines: what it is.>
 
-Setup: project-repo-setup v2.3
+Setup: project-repo-setup v2.4
 Git: yes · Docs: `docs/` · Explain: <plain | standard>
 GitHub Repo: <url | pending> · default branch <main>
 Repo location: <path> (chosen: <reason>). <Drive safety rules apply.>
 Workspace: <path>  (see its CLAUDE.md)
+Agents: `AGENTS.md` (gateway for Cursor / Codex / Copilot; same rules)   <!-- Full only; omit on Lite -->
+Progress: `docs/PROGRESS-TRACKER.md`   <!-- Full only; omit on Lite -->
 Inputs (outside the repo):
 - Local: <path>
 - Drive: <folder link>
@@ -80,6 +82,7 @@ Raw files: <yes | no>   <!-- Lite only -->
 ## Source of truth
 ## Rules
 - Skip `docs/archive/` unless asked.
+- Spec-Driven: plan before build; one implementation unit at a time; update `docs/PROGRESS-TRACKER.md` after every unit (Full).
 ## Must-know (max 5, one line + link each)
 ## Status
 | Module | Design | Dev |
@@ -89,7 +92,48 @@ Raw files: <yes | no>   <!-- Lite only -->
 ## Docs
 | File | Purpose |
 |---|---|
+| `PROGRESS-TRACKER.md` | Current phase, active unit, blockers (Full) |
 ## Commands
+```
+
+## Repo `AGENTS.md` (Full setups only)
+Gateway for coding agents that read `AGENTS.md` (Cursor, Codex, Copilot, Next.js managed blocks). Keep it short; point at living docs instead of copying them. When Next.js or another tool owns a marked section, leave that section alone and keep these project directives outside it.
+```markdown
+# Agent directives
+
+Before implementing any feature or modifying code:
+1. Read `CLAUDE.md` (project lobby: stack, status, doc index).
+2. Read `docs/PROGRESS-TRACKER.md` and continue from the current phase / unit.
+3. Read the active feature spec under `docs/features/` (and `DESIGN.md`, `docs/ARCHITECTURE.md`, `docs/security/` when they exist and the task touches them).
+4. Follow accepted decisions in `docs/decisions/` over conflicting spec or Figma notes.
+5. Work one scoped implementation unit at a time. If the request is ambiguous or crosses a non-negotiable, stop and ask — do not invent product or architecture decisions.
+6. After each completed unit, update `docs/PROGRESS-TRACKER.md` (phase, in-progress, completed, session notes).
+
+Do not commit, push, merge, or change production systems unless the user explicitly asks.
+```
+
+## `docs/PROGRESS-TRACKER.md` (Full setups only)
+Living Spec-Driven handoff. Coding agents read this first every session and update it after every unit. Keep it short; put narrative detail in `docs/session-logs/`.
+```markdown
+# Progress tracker
+
+## Current phase
+- Phase: idle   <!-- planning | building | reviewing | testing | released | idle -->
+- Active feature: none
+- Spec: none
+- Branch: main
+
+## In progress
+- [ ] none
+
+## Completed (this feature)
+<!-- Move ticks here as units finish; clear or archive when the feature ships -->
+
+## Blockers and decisions needed
+- none
+
+## Session notes
+<!-- Newest first: `- YYYY-MM-DD: one line` -->
 ```
 
 ## `docs/session-logs/README.md` (daily scheme)

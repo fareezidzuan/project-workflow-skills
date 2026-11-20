@@ -5,29 +5,31 @@ Load only the step you are running. The shared rules in `SKILL.md` apply to ever
 Contents: plan · build · second-pass-ui · second-pass-backend · test · review-pr · update-docs
 
 ## plan
-Read: `CLAUDE.md`, the spec, `DESIGN.md`, `docs/FIGMA-MAP.md` (Figma-first), `docs/PRD.md`, `docs/ARCHITECTURE.md`, relevant `docs/decisions/` and `docs/security/` entries, and the source and reusable components the feature will touch.
+Read: `CLAUDE.md`, `AGENTS.md` (when present), `docs/PROGRESS-TRACKER.md` (when present), the spec, `DESIGN.md`, `docs/FIGMA-MAP.md` (Figma-first), `docs/PRD.md`, `docs/ARCHITECTURE.md`, relevant `docs/decisions/` and `docs/security/` entries, and the source and reusable components the feature will touch.
 
 Do not edit source, database or configuration files. Produce:
-1. Feature summary and an acceptance-criteria check: are the criteria testable and complete? Is the spec header Final, In review, Draft or Untraced?
-2. Open questions, assumptions, risks.
+1. Feature summary and an acceptance-criteria check: are the criteria testable and complete? Is the spec header Final, In review, Draft or Untraced? Do Non-negotiables and Implementation units (when present) look buildable?
+2. Open questions, assumptions, risks. Flag any plan step that would violate a non-negotiable.
 3. Files likely to change, grouped: frontend, backend, database, tests, docs.
-4. A numbered build plan in small, reviewable tasks.
+4. A numbered build plan in small, reviewable tasks — prefer the spec's Implementation units order when that section exists; otherwise derive equivalent units.
 5. Dependencies and migration or deployment considerations.
-6. A test plan mapped to the acceptance criteria.
+6. A test plan mapped to the acceptance criteria and the Verification checklist when present.
 7. A branch name: `feature/<feature-name>`.
+8. Proposed `docs/PROGRESS-TRACKER.md` update (when the file exists): Phase `planning` → after approval `building`, Active feature, Spec path, Branch, In progress = first unit.
 
-End with: `Plan ready for approval. No code changed.`
+End with: `Plan ready for approval. No code changed.` After approval, save the tracker update only if the user says yes.
 
 ## build
-Read: `CLAUDE.md`, the spec, `DESIGN.md`, the Figma frames in `docs/FIGMA-MAP.md` for the task's screens, the approved plan (this conversation, or the task list in `docs/TODO.md`), relevant `.claude/rules/`, and the existing components, endpoints, tests and git diff.
+Read: `CLAUDE.md`, `AGENTS.md` (when present), `docs/PROGRESS-TRACKER.md` (when present), the spec (Non-negotiables + current Implementation unit), `DESIGN.md`, the Figma frames in `docs/FIGMA-MAP.md` for the task's screens, the approved plan (this conversation, or the task list in `docs/TODO.md`), relevant `.claude/rules/`, and the existing components, endpoints, tests and git diff.
 
-No approved plan, or the task is ambiguous → stop and propose the smallest sensible task before editing.
+No approved plan, or the task is ambiguous → stop and propose the smallest sensible task before editing. If the task would cross a non-negotiable → stop and ask.
 
-1. State the exact task and the files you expect to change.
+1. State the exact unit/task and the files you expect to change; quote the unit limit from the spec when present.
 2. Make the change. Use semantic tokens from `DESIGN.md` and existing components; include loading, empty, error, disabled and success states where they apply; validate on the client for UX and on the server for trust boundaries.
-3. Run the most relevant lint, type-check, test and build commands the project has.
+3. Run the most relevant lint, type-check, test and build commands the project has, plus any Verification checklist items for this unit that can run locally.
 4. Inspect the final git diff for unrelated changes and remove them.
 5. Report: what changed and why, files changed, commands run with results, remaining assumptions or follow-ups, and which second-pass step comes next.
+6. Proposed progress-tracker edit (when the file exists): move the finished unit to Completed, set In progress to the next unit or clear it, Phase `building` or `reviewing`, one Session notes line. Save only after the user says yes.
 
 ## second-pass-ui
 Read: `CLAUDE.md`, the spec, `DESIGN.md`, `docs/FIGMA-MAP.md`, the git diff and all changed frontend files. If the project has `/design-second-pass` or `/second-pass`, run it as part of this step and add the lenses below that it does not cover.
@@ -63,16 +65,16 @@ Do not edit code. Lenses:
 Output a table: Severity, Finding, Evidence, Risk, Recommended fix, Test to add or verify. Then: required product decisions; migration and deployment cautions; a verdict (`Ready for human QA`, `Needs fixes`, `Blocked by decision`); a numbered fix plan with no code changes. Never print secret values; mask them (`sk-••••3f2a`) and tell the user to rotate anything exposed.
 
 ## test
-Read: `CLAUDE.md`, the spec, `docs/uat/` if it exists, the git diff, test configuration and relevant tests.
+Read: `CLAUDE.md`, `docs/PROGRESS-TRACKER.md` (when present), the spec (acceptance criteria + Verification checklist), `docs/uat/` if it exists, the git diff, test configuration and relevant tests.
 
 Do not change product code. Run only safe local checks.
-1. Extract the acceptance criteria and the edge cases from the spec.
+1. Extract the acceptance criteria, Verification checklist items, and the edge cases from the spec.
 2. Map each to an automated test, a command, or a manual QA scenario.
 3. Run the relevant lint, type-check, unit and integration tests and the production build.
 4. Review the changed areas for regressions and missing coverage.
 5. Confirm second-pass findings are fixed or explicitly deferred.
 
-A test that cannot run → say exactly why and what is needed. Output a table: criterion or scenario, method, result (`PASS`, `FAIL`, `BLOCKED`, `MANUAL`), evidence, source to fix for each failure (spec, Figma, prototype or build). Then: commands run and a result summary; a remaining manual checklist; a status (`Ready to merge`, `Fix required`, `Blocked`). Save results to `docs/uat/` when the project has formal test rounds (one round file, issues listing the source to fix); otherwise add a dated line under the spec's Checks section. Do this only after the user says yes.
+A test that cannot run → say exactly why and what is needed. Output a table: criterion or scenario, method, result (`PASS`, `FAIL`, `BLOCKED`, `MANUAL`), evidence, source to fix for each failure (spec, Figma, prototype or build). Then: commands run and a result summary; a remaining manual checklist; a status (`Ready to merge`, `Fix required`, `Blocked`). Save results to `docs/uat/` when the project has formal test rounds (one round file, issues listing the source to fix); otherwise add a dated line under the spec's Checks section. When `docs/PROGRESS-TRACKER.md` exists, propose Phase `testing` (or keep `reviewing` if fixes remain) and a session note. Do this only after the user says yes.
 
 ## review-pr
 Read: `CLAUDE.md`, the spec, `docs/ARCHITECTURE.md`, `DESIGN.md`, relevant rules and decisions, git status, the diff against the base branch, changed files and tests.
@@ -84,13 +86,14 @@ Output findings ranked Critical / High / Medium / Low with location, impact and 
 ## update-docs
 The user may give a mode: `session` (end of a working session), `qa` (after test), or `released` (after merge or release).
 
-Read: `CLAUDE.md`, the spec, `docs/PRD.md`, `docs/TODO.md`, `docs/session-logs/`, `docs/OPEN-QUESTIONS.md`, `docs/LESSONS.md`, `docs/uat/` if it exists, the git diff and this conversation. Read `ARCHITECTURE`, `FIGMA-MAP` or `security/` only when the feature changed those areas.
+Read: `CLAUDE.md`, `AGENTS.md` (when present), `docs/PROGRESS-TRACKER.md` (when present), the spec, `docs/PRD.md`, `docs/TODO.md`, `docs/session-logs/`, `docs/OPEN-QUESTIONS.md`, `docs/LESSONS.md`, `docs/uat/` if it exists, the git diff and this conversation. Read `ARCHITECTURE`, `FIGMA-MAP` or `security/` only when the feature changed those areas.
 
 Update documentation only. Record confirmed facts from the diff, test results and decisions. Do not mark work complete while tests or human QA are pending. Show every change and save only after the user says yes.
 
 | What happened | Where it goes |
 |---|---|
 | Working session ended | The project's `/log-session`; without it, today's file in `docs/session-logs/` following the project's scheme, appending a `## Session N` section rather than a new file |
+| Progress / phase changed | `docs/PROGRESS-TRACKER.md` when it exists (phase, active feature, in progress, completed, session notes). On `released`, set Phase `released` or `idle` and clear In progress |
 | A choice was made | The project's `/log-decision` (`docs/decisions/nnn-short-title.md`, numbered, never renumbered) |
 | Module status changed | The `CLAUDE.md` status table row (status words only) and the status section of `docs/PRD.md`, together; the health check flags them when they disagree |
 | Tasks done or new | `docs/TODO.md`, under the feature |
@@ -100,4 +103,4 @@ Update documentation only. Record confirmed facts from the diff, test results an
 | Spec behaviour changed | The spec itself, and the header status if it moved |
 | Architecture, Figma map or security facts changed | The matching document, confirmed changes only |
 
-Keep entries short, dated, and useful to a future session with no memory of this one. `CLAUDE.md` stays a directory, not a copy of other docs, and under about 10 KB. Report the files updated, what remains open, and the next step.
+Keep entries short, dated, and useful to a future session with no memory of this one. `CLAUDE.md` and `AGENTS.md` stay gateways, not copies of other docs; `CLAUDE.md` under about 10 KB. Report the files updated, what remains open, and the next step.

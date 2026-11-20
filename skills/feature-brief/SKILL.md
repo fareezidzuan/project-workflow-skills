@@ -1,17 +1,17 @@
 ---
 name: feature-brief
-description: Write or update one feature spec in docs/features/ (objective, scope, user flow, states, rules, UI notes, data and API needs, acceptance criteria) with its inputs listed in the header. Use when the user says feature brief, feature spec, brief this feature, write the spec for, define acceptance criteria, turn this idea or meeting into something buildable, or describes a feature they want built - even if they never say "spec".
+description: Write or update one feature spec in docs/features/ (objective, scope, non-negotiables, user flow, states, rules, UI notes, data and API needs, implementation units, acceptance criteria, verification checklist) with its inputs listed in the header. Use when the user says feature brief, feature spec, brief this feature, write the spec for, define acceptance criteria, turn this idea or meeting into something buildable, or describes a feature they want built - even if they never say "spec".
 ---
 
 # Feature brief
 
-Version: v1.0 — 2026-11 · Licence: MIT
+Version: v1.1 — 2026-11 · Licence: MIT
 
 Triggers: feature brief, feature spec, brief this feature, write the spec for …, define acceptance criteria, turn this into something buildable, update the spec.
 
 Naming and folders follow `project-repo-setup/references/conventions.md` (read the project's `CLAUDE.md` first). If that file is not available, use the defaults below. The spec template is in `references/template.md`; load it at step 5.
 
-One feature gets one spec. It starts as a brief and picks up rules, states and acceptance criteria as the feature is designed and built, so `feature-delivery-loop` and the people building from it read one source of truth instead of a brief, a UI note and a test list that drifted apart.
+One feature gets one spec. It starts as a brief and picks up rules, states, implementation units, acceptance criteria and a verification checklist as the feature is designed and built, so `feature-delivery-loop` and the people building from it read one source of truth instead of a brief, a UI note and a test list that drifted apart. Spec-Driven style: non-negotiables and unit limits keep the coding agent from guessing.
 
 ## Works with (Project Workflow Skills)
 This skill is one of six that share `project-repo-setup/references/conventions.md`:
@@ -49,23 +49,25 @@ Use a short kebab-case name. If the user gave a sentence, propose a name and con
 Before writing or updating a spec, open every input it will cite: meeting notes, briefs, Figma frames, earlier specs. If one cannot be opened, say which and ask: **Attach / Link the computer / Continue as Untraced**. Untraced specs use the Untraced header and cannot be handed off as final.
 
 ### 4. Ask only what you cannot infer
-Usually: who the primary user is and what problem they have, what is out of scope, who is allowed to do it, and what should happen on partial failure. Ask them together, at most five questions, before drafting. Skip any the inputs already answer.
+Usually: who the primary user is and what problem they have, what is out of scope, who is allowed to do it, and what should happen on partial failure. Ask them together, at most five questions, before drafting. Skip any the inputs already answer. If the feature will be built by an agent, also confirm any hard non-negotiables (files or areas that must stay untouched) when the inputs do not already say.
 
 ### 5. Draft
-Use `references/template.md`. Three rules shape the draft:
+Use `references/template.md`. Four rules shape the draft:
 - **Figma wins visuals, the spec wins behaviour.** In a Figma-first project, layout, visuals and final copy live in Figma. The spec links the frames from `docs/FIGMA-MAP.md` and describes behaviour, rules and states only; it does not re-describe the layout. Elsewhere, fill in the UI and copy sections.
 - **Decisions override.** A relevant `docs/decisions/` entry overrides spec and Figma until they are updated. Cite it instead of contradicting it.
 - **Unknowns stay visible.** An undecided product rule goes under Open questions, never invented. A confident guess turns into a bug later; an open question gets decided.
+- **Units stay buildable.** Prefer a short Implementation units list with limits and a Verification checklist over a vague "build the feature" task. When `docs/PROGRESS-TRACKER.md` exists, offer a progress-tracker follow-up after save (do not clear other in-progress work).
 
-Scale to the feature: delete sections that do not apply instead of padding them.
+Scale to the feature: delete sections that do not apply instead of padding them. Tiny copy or content-only changes may omit Implementation units; say so under Scope.
 
 ### 6. Show, then save
 Show the draft and save it only after the user says yes.
 
 ### 7. Follow-ups (offer each separately; the user approves or skips)
 - **Index** → add a links-only line to the feature index in `CLAUDE.md` and `docs/PRD.md`, and a status row (status words only) to the `CLAUDE.md` status table.
+- **Progress tracker** (Full, when `docs/PROGRESS-TRACKER.md` exists) → set Active feature / Spec / Phase to `planning` only if nothing else is in progress, or add a session note pointing at the new spec.
 - **Open questions** → add to `docs/OPEN-QUESTIONS.md` with the next number, owner, and a link to the spec.
-- **Tasks** → add to `docs/TODO.md` under the feature, with owner and a link to the spec.
+- **Tasks** → add to `docs/TODO.md` under the feature, with owner and a link to the spec (prefer one TODO line per Implementation unit when that section exists).
 - **Choices made** → run the project's `/log-decision` for each.
 No project yet: skip follow-ups and say they can be run once the project exists.
 

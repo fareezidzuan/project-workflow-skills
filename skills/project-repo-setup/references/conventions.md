@@ -20,11 +20,12 @@ Folders only uses the same names inside `docs/` as a repo (section 1), so adding
 
 ## 1. Repo docs naming (`docs/`, inside or outside the repo)
 1. Folders and subfolders under `docs/` are lowercase kebab-case: `features/`, `decisions/`, `session-logs/`, `uat/`, `handoff/`, `security/`, `archive/`, `features/feature-a/`.
-2. Files directly in `docs/` are ALL CAPS with hyphens: `PRD.md`, `TODO.md`, `FIGMA-MAP.md`, `OPEN-QUESTIONS.md`.
+2. Files directly in `docs/` are ALL CAPS with hyphens: `PRD.md`, `TODO.md`, `FIGMA-MAP.md`, `OPEN-QUESTIONS.md`, `PROGRESS-TRACKER.md`.
 3. Files inside any folder or subfolder are lowercase kebab-case: `decisions/001-short-title.md`, `features/feature-a/sub-feature.md`.
 4. `README.md` keeps its name everywhere. The `.md` extension is always lowercase.
-5. Outside `docs/`, repo folders and files are kebab-case; root files `CLAUDE.md`, `README.md`, `DESIGN.md`, `LICENSE` keep their conventional names.
+5. Outside `docs/`, repo folders and files are kebab-case; root files `CLAUDE.md`, `AGENTS.md`, `README.md`, `DESIGN.md`, `LICENSE` keep their conventional names.
 6. Feature specs live in `docs/features/` (one file per feature, or a folder per feature). Repos set up before v2.2 may have `docs/specs/`; record `Docs names: legacy (kept by choice)` in the repo `CLAUDE.md` to keep it.
+7. **Spec-Driven agent memory (Full setups only):** `AGENTS.md` at the repo root is the gateway for Cursor, Codex, Copilot, and similar tools; `CLAUDE.md` remains the lobby for Claude apps. Both point at the same docs. `docs/PROGRESS-TRACKER.md` is the living "where we are" file agents read and update each unit. Do not create these for Folders only or Lite unless the user asks.
 
 ## 2. Workspace folder set (outside git)
 Core folders keep the same number in every project.
@@ -69,7 +70,7 @@ Core folders keep the same number in every project.
 Figma for layout, visuals, and final copy · spec (`docs/features/`) for behaviour, rules, and states · `docs/decisions/` overrides both until they are updated · the prototype is never the source of truth.
 
 ## 5. What belongs in `CLAUDE.md`
-`CLAUDE.md` is the lobby directory, not the offices.
+`CLAUDE.md` is the lobby directory, not the offices. On Full setups it stays in sync with `AGENTS.md`: same paths, no duplicated long rules.
 
 | Belongs | Goes elsewhere, with a one-line pointer |
 |---|---|
@@ -79,6 +80,7 @@ Figma for layout, visuals, and final copy · spec (`docs/features/`) for behavio
 | Source-of-truth precedence | Dates, tickets, blockers → `docs/PRD.md`, `docs/TODO.md`, spec headers |
 | Hard rules that apply to every task | Gotchas and corrections → `docs/LESSONS.md` |
 | Doc index, inputs paths, GitHub, repo location, setup version, assets line | Session history → `docs/session-logs/` |
+| Pointer to `AGENTS.md` and `docs/PROGRESS-TRACKER.md` (Full) | Current build phase / in-progress unit → `docs/PROGRESS-TRACKER.md` |
 | Workflow commands in order | |
 | **Status table:** one row per module, status words only | |
 | **Must-know lines:** at most 5, each one line with a link to its lesson or decision | |

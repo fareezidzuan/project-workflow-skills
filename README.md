@@ -4,12 +4,12 @@ Six Claude skills for designers who work with Figma, code, and clients. No GitHu
 
 | Skill | What it does | Version |
 |---|---|---|
-| [`project-repo-setup`](skills/project-repo-setup/) | Sets up and health-checks a project's folders and repo: Folders only (no Git), Full or Lite setup, add Git later, read-only audit, health check with impact previews (changes, risk, token savings, undo), dry runs | v2.3 |
+| [`project-repo-setup`](skills/project-repo-setup/) | Sets up and health-checks a project's folders and repo: Folders only (no Git), Full or Lite setup, add Git later, read-only audit, health check with impact previews (changes, risk, token savings, undo), dry runs. Full setups also get Spec-Driven `AGENTS.md` + `docs/PROGRESS-TRACKER.md` | v2.4 |
 | [`meeting-notes`](skills/meeting-notes/) | Turns Fireflies, Granola, or Read AI transcripts, pasted notes, or Figma comments into a structured note, then offers decisions, action items, and open questions as follow-ups; saves a cleaned transcript outside the repo | v1.5 |
 | [`brand-style-profile`](skills/brand-style-profile/) | Analyses Figma files, codebase tokens, brand guides, websites, and images into a reusable style profile and a project `DESIGN.md`, flags Figma/code mismatches, then creates matching social posts, UI, marketing, icons, and illustrations | v1.3 |
 | [`security-docs`](skills/security-docs/) | Writes five security documents (rules, auth and permissions, data protection, threat model, pre-launch checklist) in `docs/security/`, then turns one rule at a time into a tested control | v1.1 |
-| [`feature-brief`](skills/feature-brief/) | Writes one feature spec in `docs/features/`: objective, scope, flow, states, rules, acceptance criteria. Opens and cites its inputs (or marks the spec Untraced), keeps Figma as the source for visuals, and files open questions and decisions where the project keeps them | v1.0 |
-| [`feature-delivery-loop`](skills/feature-delivery-loop/) | Takes an approved spec through plan, build (one task at a time), second-pass UI and backend reviews, test, PR review, and a docs update. Reviews report first and never edit until you approve | v1.0 |
+| [`feature-brief`](skills/feature-brief/) | Writes one feature spec in `docs/features/`: objective, scope, non-negotiables, flow, states, rules, implementation units, acceptance criteria, verification checklist. Opens and cites its inputs (or marks the spec Untraced), keeps Figma as the source for visuals, and files open questions and decisions where the project keeps them | v1.1 |
+| [`feature-delivery-loop`](skills/feature-delivery-loop/) | Takes an approved spec through plan, build (one unit at a time), second-pass UI and backend reviews, test, PR review, and a docs update — including `docs/PROGRESS-TRACKER.md` on Full setups. Reviews report first and never edit until you approve | v1.1 |
 
 ## Install
 
@@ -65,25 +65,35 @@ Setup asks once how familiar you are with Git. If you're new to it, every skill 
 4. **Create on-brand designs:** "Make three Instagram post variants announcing our opening."
    Built from the profile, checked against it, and saved to `05-design-files/exports/`.
 5. **Spec a feature:** "Write the spec for bulk lead assignment."
-   `feature-brief` opens the inputs it cites, asks up to five questions, and drafts `docs/features/bulk-lead-assignment.md` with a traced header. The index line, open questions, and decisions are filed only after you approve.
-6. **Build it, one step at a time:** "Plan bulk lead assignment", then "Build task 1".
-   `feature-delivery-loop` plans, builds one task, runs the second-pass UI and backend reviews (findings only, no edits until you approve), tests against the acceptance criteria, reviews the branch, and updates the status table, TODO, and session log.
+   `feature-brief` opens the inputs it cites, asks up to five questions, and drafts `docs/features/bulk-lead-assignment.md` with a traced header, non-negotiables, implementation units, and a verification checklist. The index line, open questions, and decisions are filed only after you approve.
+6. **Build it, one unit at a time:** "Plan bulk lead assignment", then "Build task 1".
+   `feature-delivery-loop` plans, builds one implementation unit, runs the second-pass UI and backend reviews (findings only, no edits until you approve), tests against the acceptance criteria and verification checklist, reviews the branch, and updates the status table, TODO, session log, and (on Full) `docs/PROGRESS-TRACKER.md`.
 7. **Secure the app:** once it has logins, a database, or outside services, say "Write the security docs."
    Claude drafts an app brief from the repo, interviews you one document at a time, and saves them to `docs/security/`. Then "Turn rule R1 into code" makes and tests one control at a time.
 8. **Keep it tidy:** "Health check my repo" every few weeks. It finds drift, oversized docs and images, and safety gaps, and shows the impact of each fix before changing anything.
 
+## Spec-Driven path (Full setups with code)
+
+For apps you will build with coding agents, choose **Full** setup. You get the usual `CLAUDE.md` lobby plus:
+
+- **`AGENTS.md`** — gateway for Cursor, Codex, Copilot, and similar tools; same read order as Claude
+- **`docs/PROGRESS-TRACKER.md`** — living "where we are" file agents read and update every unit
+
+Workflow: planning conversation → feature spec (with units and verification) → plan → build one unit → review → test → update docs/tracker. Folders-only and Lite projects stay unchanged; say "upgrade to full setup" later if you need the gateways.
+
 ## How they connect
 
 ```
-project-repo-setup ──creates──▶ CLAUDE.md · workspace folders · docs/
+project-repo-setup ──creates──▶ CLAUDE.md · AGENTS.md (Full) · workspace · docs/
         │                               ▲            ▲
         │ conventions.md                │            │
         ▼                               │            │
 meeting-notes ──writes──▶ 01-meeting-notes/ · decisions · TODO · open questions
 brand-style-profile ──writes──▶ 06-brand-assets/brand-profile.md · DESIGN.md · exports/
 security-docs ──writes──▶ docs/security/ · TODO · open questions · decisions
-feature-brief ──writes──▶ docs/features/ · index lines · open questions
-feature-delivery-loop ──reads──▶ spec · DESIGN.md · docs/security/ ──updates──▶ status table · TODO · session log
+feature-brief ──writes──▶ docs/features/ · index lines · open questions · progress (Full)
+feature-delivery-loop ──reads──▶ spec · DESIGN.md · docs/security/ · PROGRESS-TRACKER
+                     ──updates──▶ status table · TODO · session log · PROGRESS-TRACKER
 ```
 
 ## For maintainers

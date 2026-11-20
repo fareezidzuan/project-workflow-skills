@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.7.0 — 2026-11-20
+Spec-Driven P0 for Full setups (Folders only and Lite unchanged unless upgraded).
+
+- **project-repo-setup v2.4:** Full scaffolds write root `AGENTS.md` and `docs/PROGRESS-TRACKER.md`, and stamp `Agents:` / `Progress:` lines plus a Spec-Driven one-unit rule in `CLAUDE.md`. Lite → Full upgrade and health check offer the missing gateways. Conventions name `AGENTS.md` and `PROGRESS-TRACKER.md`.
+- **feature-brief v1.1:** spec template adds Non-negotiables, Implementation units, and Verification checklist; follow-ups can update the progress tracker and split TODO by unit.
+- **feature-delivery-loop v1.1:** reads `AGENTS.md` / `PROGRESS-TRACKER.md` when present; plans from Implementation units; honours non-negotiables; updates the tracker after plan/build/test/docs (with approval).
+- **README** and **starter-prompts:** Spec-Driven path documented; new prompts for planning conversations, units, and progress.
+- Plugin version `1.7.0`.
+
 ## 1.6.0 — 2026-11-05
 - **feature-brief v1.0 (new):** writes one feature spec in `docs/features/` with the project's spec header (Status, Inputs, Untraced), the inputs access rule, and Figma-wins-visuals precedence. Open questions and decisions go where the project keeps them.
 - **feature-delivery-loop v1.0 (new):** plan, build one task, second-pass UI and backend reviews, test, PR review, update docs. Reviews report first and never edit until approved. The backend review reads `docs/security/`. In Folders-only projects it offers to add Git before building.
