@@ -15,8 +15,9 @@ Folders-only setups don't use these profiles: they get the workspace folder set 
 | `docs/GLOSSARY.md`, `docs/CONTENT-RULES.md` | Second UI language, or a domain with special terms |
 | `docs/handoff/` | Someone else builds from your design |
 | `docs/uat/` | Formal test rounds |
-| `docs/ARCHITECTURE.md` | Backend, monorepo, or more than one app |
-| `docs/security/` | Logins, a database, a backend or API, or third-party services (written by security-docs) |
+| `docs/ARCHITECTURE.md` | Backend, monorepo, more than one app, or **Profile F** (full-stack AI) |
+| `docs/security/` | Logins, a database, a backend or API, third-party services, or **Profile F** (written by security-docs; Profile F always offers it at wrap-up) |
+| `.claude/rules/ai-app-rules.md` | **Profile F** only (durable jobs, hybrid storage, auth-before-realtime, tool-calling limits) |
 | `docs/SITEMAP.md`, `docs/SEO.md` | Website profile |
 | `docs/features/` | Full setup, or the first spec is written |
 | `docs/archive/` | First archive move |
@@ -90,6 +91,41 @@ Start from A, then: `ios/` and/or `android/`, each with a short `CLAUDE.md` (bui
 
 ## Profile E: Website (marketing or public)
 `src/` (or framework equivalent), `public/`, `content/` (copy as markdown), `docs/`. Extra docs: `SITEMAP.md`, `SEO.md`, `CONTENT-RULES.md`. Only optimised assets go in `public/`; originals stay in the workspace.
+
+## Profile F: Full-stack AI app (Spec-Driven)
+Web (or monorepo) apps built with coding agents under the Spec-Driven pack, usually with auth, a database, and at least one of: hybrid storage, realtime collaboration, durable background AI jobs, or an in-product tool-calling agent.
+
+**Use when** F1 is Full-stack AI app, or F2 answers show long-running AI, realtime rooms, or large artifacts that should not live in the primary database. Always Full (not Lite). Always create `context/`, `docs/ARCHITECTURE.md`, and offer `docs/security/`.
+
+Name vendors only as examples the user already chose — never require a specific auth, blob, realtime, or job product.
+
+| Path | Description |
+|---|---|
+| `context/` | Required; fill architecture with Profile F sections from `context-pack.md` |
+| `docs/ARCHITECTURE.md` | Hybrid storage, durable execution, realtime auth, tool-calling shape, invariants |
+| `DESIGN.md`, `context/ui-context.md` | UI rules for the agent |
+| `app/` or `apps/<name>/` | Routes / UI (framework as answered in F2) |
+| `lib/` or `packages/` | Domain, DB client, storage adapters, job clients — keep seams swappable |
+| `.env.example` | Variable **names** only (auth, DB, blob, realtime, job runner, model provider) |
+| `.claude/rules/ai-app-rules.md` | From `templates.md`: request handlers stay fast; membership before realtime; no secrets in docs |
+
+**F2 follow-ups (Profile F only, after stack):** ask one at a time, record answers in `CLAUDE.md` and seed `context/architecture.md` / `docs/ARCHITECTURE.md`:
+1. **Auth:** none yet / managed IdP / custom — public vs protected routes
+2. **Storage:** single database / **hybrid** (metadata in DB, large artifacts in object/blob storage with URLs in DB)
+3. **Realtime:** none / presence only / shared document or canvas state — who may join a room?
+4. **Long-running AI (> ~30–60s):** none / **durable background jobs** (enqueue from API, worker runs, client subscribes to status) — never block the HTTP request
+5. **In-product agent:** none / **tool-calling** that mutates domain state (prefer small tools over one giant structured blob)
+
+**Default invariants** (adapt, then write into architecture Invariants):
+1. Sensitive actions and realtime room tokens require server-side auth **and** membership/authorization checks.
+2. Large or frequently rewritten artifacts (canvas JSON, generated markdown, exports) are not stored as huge DB rows when hybrid storage was chosen.
+3. Work that can exceed the request timeout runs in a durable job; the API returns a run id / status handle.
+4. In-product agents change state through explicit tools with validation — not by writing arbitrary JSON into storage.
+5. Secret values never appear in source, specs, or context files.
+
+Rules for `CLAUDE.md`: Spec-Driven one-unit builds; read `context/` before coding; link security docs once written.
+Commands: `/log-decision`, `/log-session`, plus `/second-pass` when the UI stack matches Profile B/C.
+**Handoffs at wrap-up:** "Write the security docs? (security-docs)", then "Fill context/architecture from your F2 answers", then first feature via feature-brief.
 
 ## Audit patterns seen in real projects (anonymised)
 - Workspace `CLAUDE.md` folder map naming `01-ideation` and `03-documents` while the real folders were `02-ideation` and `04-documents`.

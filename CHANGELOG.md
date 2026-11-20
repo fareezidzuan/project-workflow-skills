@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.9.0 — 2026-11-20
+Spec-Driven P2: Profile F (full-stack AI app) — patterns only, no vendor lock-in.
+
+- **project-repo-setup v2.6:** F1 includes Full-stack AI app → Profile F. F2 follow-ups for auth, hybrid storage, realtime, durable jobs, tool-calling. Scaffolds Profile F `context/architecture.md`, always creates `docs/ARCHITECTURE.md`, adds `.claude/rules/ai-app-rules.md`, stamps `Profile: F`. Health check flags Profile F gaps.
+- **context-pack.md:** Profile F architecture template (storage, realtime auth handshake, durable execution, tool-calling, invariants).
+- **security-docs v1.2:** handoff to feature-brief for auth-boundary / membership-before-realtime specs.
+- **feature-brief v1.3 / feature-delivery-loop v1.3:** Profile F unit guidance; backend second-pass lens for AI-app invariants.
+- **README** / **starter-prompts** updated. Plugin version `1.9.0`.
+
 ## 1.8.0 — 2026-11-20
 Spec-Driven P1: Full `context/` agent memory pack (Folders only and Lite unchanged unless upgraded).
 

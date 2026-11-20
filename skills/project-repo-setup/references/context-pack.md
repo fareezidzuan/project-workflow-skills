@@ -87,6 +87,63 @@ Living progress is updated in `docs/PROGRESS-TRACKER.md` every unit. Feature spe
 - <How a seam or provider could change later>
 ```
 
+## Profile F — extend `context/architecture.md`
+
+When the project uses **Profile F** (full-stack AI app), use this body instead of the short architecture template above (or merge any already-filled sections). Keep vendor names only if the user chose them. Mirror the same headings into `docs/ARCHITECTURE.md` with more detail if needed.
+
+```markdown
+# Architecture
+
+> Agent blueprint and invariants. Detail: `docs/ARCHITECTURE.md`.
+
+## System shape
+- App: <framework / router>
+- Auth: <none | managed IdP | custom>
+- Data: <ORM / DB>
+- Realtime: <none | presence | shared state>
+- Background jobs: <none | durable worker>
+- In-product AI: <none | tool-calling agent>
+
+## Boundaries
+- Public routes: <list>
+- Protected routes / APIs: <list>
+- Trust: browser is untrusted; enforce authz on the server
+
+## Storage
+- **Metadata DB:** users, projects, roles, status enums, blob URLs — <DB>
+- **Object / blob (if hybrid):** large JSON, generated specs, exports — <store>; DB holds URLs only
+- **Cache / other:** <none | …>
+
+## Realtime (if any)
+- Room or channel model: <how rooms map to projects>
+- Auth handshake: issue tokens only after session auth **and** membership check
+- What syncs: <presence | document/canvas state | both>
+
+## Durable execution (if any)
+- Trigger: API enqueues job and returns <run id>
+- Worker: runs long AI / multi-step work outside the request lifecycle
+- Client: subscribes to status / streaming updates
+- Do not run >~30–60s model work inside a typical serverless request handler
+
+## Tool-calling agent (if any)
+- Tools (examples): <addNode | updateRecord | …> — each validated
+- Prefer iterative tools over one giant structured output when schemas are large
+- Side effects go through tools; humans see progress via realtime or job status
+
+## Folder map
+- <app routes, lib/domain, db, storage adapter, jobs>
+
+## Invariants (never violate)
+1. Sensitive actions and realtime tokens require server-side auth and authorization (e.g. project membership).
+2. Hybrid storage: do not stuff large or hot-rewritten artifacts into oversized DB columns when blob storage was chosen.
+3. Long-running AI runs in a durable job; the HTTP handler stays fast.
+4. In-product agents mutate state only through explicit, validated tools.
+5. No secret values in source, specs, context files, or logs.
+
+## Swap / evolution notes
+- Auth, blob, realtime, and job providers should sit behind thin adapters so one can change without rewriting the app.
+```
+
 ## `context/code-standards.md`
 ```markdown
 # Code standards
