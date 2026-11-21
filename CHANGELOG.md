@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.10.0 — 2026-11-20
+Spec-Driven P3: agent tooling layer (vendor-agnostic). Completes the Spec-Driven upgrade track (P0–P3).
+
+- **project-repo-setup v2.7:** new `references/agent-tooling.md`; Step 8 offers version-matched docs / official Agent Skills, optional PR bot note, and runtime-verify reminder. `CLAUDE.md` can record `Agent skills:` and `PR bot:`. Health check informational finding when SDKs exist without an Agent skills line.
+- **feature-delivery-loop v1.4:** optional `bot-review` step; `test` includes optional runtime verify; prefers recorded tooling over inventing APIs.
+- **context-pack:** ai-workflow-rules tooling pointer.
+- **README** / **starter-prompts** updated. Plugin version `1.10.0`.
+
 ## 1.9.0 — 2026-11-20
 Spec-Driven P2: Profile F (full-stack AI app) — patterns only, no vendor lock-in.
 

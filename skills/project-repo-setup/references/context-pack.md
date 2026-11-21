@@ -194,6 +194,10 @@ When the project uses **Profile F** (full-stack AI app), use this body instead o
 
 ## Safety
 - No secrets in code or docs. No production credentials or production data changes while testing. No commit, push, or merge unless the user asks.
+
+## Tooling (optional)
+- Prefer version-matched framework/SDK docs or vendor Agent Skills the project recorded in `CLAUDE.md` over inventing APIs.
+- Optional PR review bots and runtime verify are part of the delivery loop when configured — see project-repo-setup `agent-tooling.md`. Do not install tools without the user's yes.
 ```
 
 ## `context/ui-context.md`

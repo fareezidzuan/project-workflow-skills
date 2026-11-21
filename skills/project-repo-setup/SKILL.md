@@ -1,11 +1,11 @@
 ---
 name: project-repo-setup
-description: Set up, audit, or health-check the folders and repo for a project (Figma-first design hub, web app or dashboard, mobile app, website, full-stack AI app, or design-only client work). Folders-only setup with no Git or GitHub, Full or Lite setup (Full includes Spec-Driven AGENTS.md, context/ pack, and docs/PROGRESS-TRACKER.md; Profile F adds AI-app architecture patterns), read-only audit, health check with impact previews, add Git later, upgrade Lite to Full, and dry runs. Use when the user says new project, start a new client project, set up a project folder, organise my project files, tidy my files, set up a repo, project structure, audit my repo, health check my project or repo, re-audit, is my repo still clean, add Git, upgrade to full setup, dry run, folder organization, context pack, full-stack AI, or what goes in the repo.
+description: Set up, audit, or health-check the folders and repo for a project (Figma-first design hub, web app or dashboard, mobile app, website, full-stack AI app, or design-only client work). Folders-only setup with no Git or GitHub, Full or Lite setup (Full includes Spec-Driven AGENTS.md, context/ pack, and docs/PROGRESS-TRACKER.md; Profile F adds AI-app architecture patterns; wrap-up offers agent-tooling guidance), read-only audit, health check with impact previews, add Git later, upgrade Lite to Full, and dry runs. Use when the user says new project, start a new client project, set up a project folder, organise my project files, tidy my files, set up a repo, project structure, audit my repo, health check my project or repo, re-audit, is my repo still clean, add Git, upgrade to full setup, dry run, folder organization, context pack, full-stack AI, agent skills, or what goes in the repo.
 ---
 
 # Project repo setup
 
-Version: v2.6 — 2026-11 · Licence: MIT (see `LICENSE`)
+Version: v2.7 — 2026-11 · Licence: MIT (see `LICENSE`)
 
 Turn a project into a workspace (and, when wanted, a repo) that gives Claude and people the right context, and keep it healthy over time. Nothing is created, moved, renamed, or committed without the user's explicit approval. Git and GitHub are optional: **Folders only** works without them, and they can be added later.
 
@@ -42,6 +42,7 @@ When a handoff below suggests a skill that is not installed, say so in one line 
 | `references/profiles.md` | End of Step 3, to pick a starting layout |
 | `references/templates.md` | Step 6 (CLAUDE.md, AGENTS.md, PROGRESS-TRACKER, headers) |
 | `references/context-pack.md` | Step 6 Full only (six-file `context/` pack) |
+| `references/agent-tooling.md` | Step 8 Full / code projects (vendor skills, optional PR bots, runtime verify) |
 | `references/gitignore-template.md` | Step 6 and every safety scan |
 | `references/health-check.md` | Audit and Health check modes |
 | `references/archiving.md` | Health check group D fixes |
@@ -140,7 +141,7 @@ Ask: "Do you agree with this organisation?" (Yes / No / Other) and "Are these th
 ### Step 6: Scaffold
 1. Request folder access once for the parent paths. Create only what the table lists.
 2. Write both `CLAUDE.md` files from `references/templates.md`, following the scope rule in `references/conventions.md` (a directory, not a copy of other docs). Always include:
-   - `Setup: project-repo-setup v2.6` (the health check compares this to the installed skill version).
+   - `Setup: project-repo-setup v2.7` (the health check compares this to the installed skill version).
    - `Git: yes`, `Docs: <path>`, and `Explain: <plain | standard>` (see `references/conventions.md` section 0).
    - `Repo location:` with the choice and reason, and "Drive safety rules apply" when synced.
    - `Inputs (outside the repo):` local path, plus the cloud-drive link when F9 includes cloud sessions, plus the access-check line.
@@ -167,6 +168,14 @@ Ask: "Do you agree with this organisation?" (Yes / No / Other) and "Are these th
 
 ### Step 8: Wrap up
 A few lines: what was created, what still needs the user (secrets, GitHub, Figma sign-off), and one next step. If GitHub is pending, say so first. Mention that "health check my repo" keeps it tidy over time.
+
+**Agent tooling (Full / code only):** load `references/agent-tooling.md`. From the stack answers, offer (each separately, user approves or skips):
+1. Prefer **version-matched framework docs** or the framework's managed `AGENTS.md` block when present — do not overwrite managed regions.
+2. For SDKs the user already chose (auth, realtime, payments, etc.), recommend looking up that vendor's **official Agent Skill** or current docs so the coding agent does not invent outdated APIs. Install or add anything only after a yes; record a one-line `Agent skills:` note in `CLAUDE.md` if they accept.
+3. Optional **PR review bot** on the host (any bot the user picks) — not required; if they already have one, note `PR bot: configured` in `CLAUDE.md`.
+4. Remind that `feature-delivery-loop` can use optional `bot-review` and **runtime verify** when a dev server or project tools exist.
+
+Never run install commands or enable paid products without an explicit yes. Skip this block for Folders only.
 
 **Handoffs (offer, one line each, only when relevant):**
 - A kickoff or client meeting already happened → "Want me to turn it into notes? (meeting-notes)"
