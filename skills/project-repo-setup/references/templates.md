@@ -9,7 +9,7 @@ Replace `<…>` placeholders. Never invent product facts.
 <One or two lines: what the project is and for whom.>
 
 Repo: `<path to repo>` (code map in its CLAUDE.md).
-Setup: project-repo-setup v2.8
+Setup: project-repo-setup v2.9
 Git: yes
 Docs: `<repo>/docs/`   <!-- or the docs path when outside or split -->
 Explain: <plain | standard>
@@ -34,7 +34,7 @@ Workspace names: canonical   <!-- or: legacy (kept by choice) -->
 
 <One or two lines: what the project is and for whom.>
 
-Setup: project-repo-setup v2.8 (folders only)
+Setup: project-repo-setup v2.9 (folders only)
 Git: none   <!-- say "add Git" to set up version history later -->
 Docs: `docs/`   <!-- TODO, open questions, decisions; DESIGN.md sits at this folder's root -->
 Explain: <plain | standard>
@@ -62,7 +62,7 @@ Workspace names: canonical
 
 <2–3 lines: what it is.>
 
-Setup: project-repo-setup v2.8
+Setup: project-repo-setup v2.9
 Git: yes · Docs: `docs/` · Explain: <plain | standard>
 GitHub Repo: <url | pending> · default branch <main>
 Repo location: <path> (chosen: <reason>). <Drive safety rules apply.>
@@ -73,7 +73,7 @@ Progress: `docs/PROGRESS-TRACKER.md`   <!-- Full only; omit on Lite -->
 Profile: <A–F>   <!-- e.g. F full-stack AI -->
 Agent skills: <none yet | names the user approved>   <!-- Full / code; from agent-tooling.md -->
 PR bot: <none | configured>   <!-- optional -->
-Guardrails: <none yet | lint/type rules the user approved>   <!-- Full / code; from anti-slop.md -->
+Guardrails: <none yet | recipe ids or path from guardrails-pack.md>   <!-- Full / code; anti-slop + P1 -->
 Inputs (outside the repo):
 - Local: <path>
 - Drive: <folder link>
@@ -90,7 +90,7 @@ Raw files: <yes | no>   <!-- Lite only -->
 - Skip `docs/archive/` unless asked.
 - Spec-Driven: read `context/` before coding; plan before build; one implementation unit at a time; update `docs/PROGRESS-TRACKER.md` after every unit (Full).
 - Prefer version-matched framework/SDK docs (or approved Agent skills) over training-data guesses; leave framework-managed `AGENTS.md` regions intact.
-- Anti-slop: prefer lint/type/test constraints over growing soft rules; keep `AGENTS.md` / Must-know short. Promote recurring corrections (see `docs/LESSONS.md`) into tooling when possible.
+- Anti-slop: prefer lint/type/test constraints over growing soft rules; keep `AGENTS.md` / Must-know short. Promote recurring corrections (see `docs/LESSONS.md`) into tooling when possible; optional recipes in project-repo-setup `guardrails-pack.md`.
 <!-- Profile F: honour context/architecture.md invariants (authz, hybrid storage, durable jobs, tool-calling). -->
 ## Must-know (max 5, one line + link each)
 ## Status
@@ -118,6 +118,7 @@ Raw files: <yes | no>   <!-- Lite only -->
 - Long-running AI (>~30–60s): enqueue a durable job; do not block the HTTP request handler.
 - In-product agents: mutate state through explicit validated tools, not arbitrary JSON dumps.
 - Never write secret values into source, specs, context files, or logs. Use `.env.example` for names only.
+- When Guardrails are enabled, encode membership-before-realtime and no-long-AI-in-request as lint/test recipes (`realtime-after-membership`, `no-long-ai-in-request`) — do not leave them as prose only.
 ```
 
 ## Repo `AGENTS.md` (Full setups only)

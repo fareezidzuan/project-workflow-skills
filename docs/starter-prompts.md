@@ -66,6 +66,9 @@ Things you can say to Claude once the skills are installed. You don't need to na
 - "We keep hitting the same agent mistake: [describe]. Promote it to a lint or test rule — show the draft, don't install anything yet."
 - "Health check my repo — include soft-only rules / LESSONS that should become lint."
 - "Update docs for this session, and ask me whether each gotcha should be a LESSON or a lint rule."
+- "Scaffold agent-guardrails recipes for our ESLint/Biome setup — draft only, no install."
+- "Add no-cross-boundary-imports and no-timer-escape stubs from the guardrails pack."
+- "Profile F: draft realtime-after-membership and no-long-ai-in-request test/lint stubs — don't enable anything yet."
 
 ## Words you might see
 Claude avoids technical terms when you're new to Git, but if one comes up, the [plain-language glossary](../skills/project-repo-setup/references/plain-language.md) explains each one with a Figma comparison.

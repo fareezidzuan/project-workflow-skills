@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.12.0 — 2026-11-22
+Anti-slop P1: optional deterministic guardrails pack (recipes only — no auto-install).
+
+- **project-repo-setup v2.9:** new `references/guardrails-pack.md` (directory-boundary table; recipe IDs for useEffect/timer/cross-import bans; Profile F `realtime-after-membership` / `no-long-ai-in-request` stubs; ESLint sketch when the repo already uses ESLint). Step 8 asks once to scaffold; health check offers pack when bans are filled but `Guardrails:` is empty, and Profile F missing recipe ids. Architecture Folder map gains boundary lines for import lint.
+- **feature-delivery-loop v1.6:** promote-to-lint prefers matching `guardrails-pack.md` recipe IDs.
+- **README** / **starter-prompts** updated. Plugin version `1.12.0`.
+
 ## 1.11.0 — 2026-11-22
 Anti-slop P0: high-trust / Inverse Pyramid foundation for Full + code (Folders only unchanged).
 

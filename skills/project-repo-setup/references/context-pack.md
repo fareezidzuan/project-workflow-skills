@@ -78,6 +78,8 @@ Living progress is updated in `docs/PROGRESS-TRACKER.md` every unit. Feature spe
 
 ## Folder map
 - <Key repo folders the agent should know>
+- **Boundaries (for import lint):** Server/trusted: `<paths>` · Client/UI: `<paths>` · Shared safe: `<paths>` · (Desktop) Main vs renderer: `<paths>`
+- Cross-boundary imports: **forbidden** except via `<API / IPC / shared types path>` — encode with recipe `no-cross-boundary-imports` when Guardrails are on
 
 ## Invariants (never violate)
 1. <Rule that must always hold>
@@ -132,6 +134,9 @@ When the project uses **Profile F** (full-stack AI app), use this body instead o
 
 ## Folder map
 - <app routes, lib/domain, db, storage adapter, jobs>
+- **Boundaries (for import lint):** Server/API: `<paths>` · Client/UI: `<paths>` · Jobs/workers: `<paths>` · Shared types: `<paths>`
+- Model / AI client imports: only from jobs/workers (or named allowlist) — recipe `no-long-ai-in-request`
+- Raw realtime token APIs: only from `<lib/realtime or equivalent>` after membership — recipe `realtime-after-membership`
 
 ## Invariants (never violate)
 1. Sensitive actions and realtime tokens require server-side auth and authorization (e.g. project membership).
@@ -179,9 +184,10 @@ When the project uses **Profile F** (full-stack AI app), use this body instead o
 
 ## Encode in tooling
 - Lint / formatter: <none | eslint | biome | …> · config path: <path>
-- Custom rules or bans: <none yet | rule ids>
+- Custom rules or bans: <none yet | recipe ids from guardrails-pack.md>
+- Guardrails drafts path: <none | tools/agent-guardrails/ | …>
 - Typecheck / compile gate: <command>
-- When a LESSON or review correction repeats, promote it here and into the linter — do not only append `AGENTS.md`.
+- When a LESSON or review correction repeats, promote it here and into the linter (prefer a recipe ID) — do not only append `AGENTS.md`.
 
 ## Do not
 - <Patterns to avoid that are not yet encoded above>
