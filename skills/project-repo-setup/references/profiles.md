@@ -12,6 +12,7 @@ Folders-only setups don't use these profiles: they get the workspace folder set 
 | `docs/PRD.md`, `docs/OPEN-QUESTIONS.md`, `docs/LESSONS.md` | Always in Full; Lite adds them on upgrade |
 | `AGENTS.md`, `docs/PROGRESS-TRACKER.md`, `context/` (six-file pack + README) | Always in Full (Spec-Driven gateway, living progress, agent memory pack); Lite and Folders only skip unless the user asks; added on Lite → Full upgrade. Templates: `templates.md` + `context-pack.md` |
 | `docs/FIGMA-MAP.md`, `DESIGN.md` | A Figma file exists or the source of truth is Figma |
+| `docs/FEATURE-MAP.md` | Full/code with multiple user-facing flows, Profile F, or runtime verify — offer from `verification.md`; create only after yes |
 | `docs/GLOSSARY.md`, `docs/CONTENT-RULES.md` | Second UI language, or a domain with special terms |
 | `docs/handoff/` | Someone else builds from your design |
 | `docs/uat/` | Formal test rounds |

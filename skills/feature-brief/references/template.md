@@ -83,13 +83,15 @@ Ordered, each small enough for one `feature-delivery-loop` build task. Name the 
 - [ ] <Testable statement; another person can mark it pass or fail without asking what it meant>
 
 ## Verification checklist
-Observable checks for the units above (commands, UI checks, or AC references). Used by plan / build / test steps.
-- [ ] <Unit 1: how to prove it>
-- [ ] <Unit 2: how to prove it>
+Observable checks for the units above. Used by plan / build / test / **verify-artifacts**. Tag the artifact type when useful: `command` · `runtime:<feature-map-id>` · `visual` · `trace` · `property` (opt-in) · `formal` (opt-in). Feature-map IDs live in `docs/FEATURE-MAP.md` when the project keeps one (not the same as `FIGMA-MAP.md`).
+- [ ] <Unit 1: command or UI check>
+- [ ] <Unit 2: runtime:auth.sign-in — or other feature-map id>
 - [ ] <Cross-cutting: lint / type-check / build / security control if relevant>
+- [ ] <Optional visual: screenshot or recording path after UI change>
+- [ ] <Optional advanced: property / formal — only if the project already uses that class>
 
 ## Checks
-Results of the feature's second-pass reviews and tests that are not recorded in `docs/uat/` (for example: second-pass-ui, second-pass-backend, test), newest first, each with date and verdict.
+Results of the feature's second-pass reviews, tests, and verify-artifacts that are not recorded in `docs/uat/` (for example: second-pass-ui, second-pass-backend, test, verify-artifacts), newest first, each with date and verdict.
 
 ## Open questions
 - <Undecided rule and who decides; each also in `docs/OPEN-QUESTIONS.md`>
@@ -99,6 +101,7 @@ Results of the feature's second-pass reviews and tests that are not recorded in 
 
 - Acceptance criteria are testable and cover every state under "States and edge cases", or say which are deferred.
 - Implementation units are ordered, each has a limit, and the verification checklist covers every unit (or says which are deferred).
+- Verification checklist tags artifact types where useful; runtime rows cite a feature-map ID when `docs/FEATURE-MAP.md` exists (or note the map is missing).
 - Non-negotiables do not contradict `DESIGN.md`, `CLAUDE.md`, `context/architecture.md`, `docs/ARCHITECTURE.md`, or an accepted decision.
 - Status is words only; no dates, tickets or blockers in the header.
 - No secrets, personal data, or production URLs.

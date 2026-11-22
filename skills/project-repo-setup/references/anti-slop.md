@@ -3,6 +3,7 @@
 Load for **Full / code** projects at Step 8 wrap-up, when a health check finds soft-only rules, or when the user asks about agent slop, lint vs AGENTS.md, or high-trust agent environments. **Folders only and design-only: skip** unless they ask.
 
 **P1 scaffolds:** when the user wants concrete lint/test stubs, also load `guardrails-pack.md` (optional recipes — never auto-install).
+**P2 verification:** feature maps and artifact-first review live in `verification.md`.
 
 Source framing: *Coding at the Speed of Thought* / Inverse Pyramid of Agent Trust — patterns only; no required vendors.
 

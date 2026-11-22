@@ -226,6 +226,10 @@ When the project uses **Profile F** (full-stack AI app), use this body instead o
 ## Anti-slop
 - Prefer deterministic checks (lint, types, tests) over growing soft rules in this file or `AGENTS.md`.
 - When a correction is worth never repeating, offer to promote it to lint/type/test (project-repo-setup `anti-slop.md`) instead of only writing `docs/LESSONS.md`.
+
+## Verification
+- Prefer `docs/FEATURE-MAP.md` capability IDs for runtime checks (not `FIGMA-MAP.md`).
+- Before merge on Full/code, favour `verify-artifacts` evidence over "looks good" (project-repo-setup `verification.md`).
 ```
 
 ## `context/ui-context.md`

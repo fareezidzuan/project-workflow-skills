@@ -33,15 +33,16 @@ Examples of bot classes (not requirements): GitHub PR review apps, IDE-integrate
 
 ## 3. Runtime verify
 
-Automated unit tests miss what only shows in a running app (routing, auth redirects, realtime, job status UI).
+Automated unit tests miss what only shows in a running app (routing, auth redirects, realtime, job status UI). Deeper artifact rules and the feature-map template live in `verification.md` (Anti-slop P2).
 
 **When:** after `build` or during `test`, when a local/dev server can run safely.
 
 **How:**
-1. Prefer tools the project already has (dev script, framework MCP, browser/devtools CLI). Do not invent a new stack.
+1. Prefer tools the project already has (dev script, framework MCP, browser/devtools / CDP CLI). Do not invent a new stack.
 2. Check only what the current unit claims: route loads, protected path redirects, UI state, job status — with fake/test data.
-3. Separate **verified in runtime** from **assumed**. Never hit production or use production credentials.
-4. If nothing can run here, say why and leave a MANUAL checklist item.
+3. Prefer **feature-map IDs** from `docs/FEATURE-MAP.md` when that file exists; offer to draft the map if runtime checks are needed and it is missing.
+4. Separate **verified in runtime** from **assumed**. Never hit production or use production credentials.
+5. If nothing can run here, say why and leave a MANUAL checklist item. Follow with `verify-artifacts` in the delivery loop when the user wants an artifact-first merge gate.
 
 ## 4. What not to do
 - Do not hard-require CodeRabbit, a specific auth skill, or a specific framework MCP.

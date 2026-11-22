@@ -69,6 +69,10 @@ Things you can say to Claude once the skills are installed. You don't need to na
 - "Scaffold agent-guardrails recipes for our ESLint/Biome setup — draft only, no install."
 - "Add no-cross-boundary-imports and no-timer-escape stubs from the guardrails pack."
 - "Profile F: draft realtime-after-membership and no-long-ai-in-request test/lint stubs — don't enable anything yet."
+- "Draft a docs/FEATURE-MAP.md for this app from our routes — placeholders only."
+- "Run verify-artifacts before the PR review."
+- "Verify runtime:auth.sign-in against the feature map in the local app."
+- "Tag the verification checklist with command / runtime / visual artifact types."
 
 ## Words you might see
 Claude avoids technical terms when you're new to Git, but if one comes up, the [plain-language glossary](../skills/project-repo-setup/references/plain-language.md) explains each one with a Figma comparison.
