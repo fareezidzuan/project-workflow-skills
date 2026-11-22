@@ -31,6 +31,7 @@ Folders only uses the same names inside `docs/` as a repo (section 1), so adding
    - Living progress stays in `docs/PROGRESS-TRACKER.md` (updated every unit). `context/progress-tracker.md` is a pointer to that file so the pack stays complete without a second copy of phase state.
    - Do not create `AGENTS.md`, `context/`, or `docs/PROGRESS-TRACKER.md` for Folders only or Lite unless the user asks.
 8. **Do not duplicate long docs into `context/`.** Overview links to `docs/PRD.md`; architecture links to `docs/ARCHITECTURE.md` when that file exists; ui-context links to `DESIGN.md`. Product behaviour stays in `docs/features/`.
+9. **Anti-slop (Full / code):** prefer lint, types, and tests over growing soft rules in `AGENTS.md` or Must-know. `docs/LESSONS.md` remains the human log; recurring detectable mistakes should be promoted into tooling (see `anti-slop.md`). Do not apply this pressure to Folders-only or design-only projects.
 
 ## 2. Workspace folder set (outside git)
 Core folders keep the same number in every project.

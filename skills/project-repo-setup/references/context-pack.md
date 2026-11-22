@@ -149,6 +149,7 @@ When the project uses **Profile F** (full-stack AI app), use this body instead o
 # Code standards
 
 > Project conventions for generated and reviewed code. Prefer existing patterns in the repo over inventing new ones.
+> Soft "Do not" lines are a last resort — encode recurring bans in lint/type/test (see Encode in tooling).
 
 ## Language and types
 - <TypeScript / Swift / Kotlin / … rules>
@@ -159,14 +160,31 @@ When the project uses **Profile F** (full-stack AI app), use this body instead o
 ## Style and structure
 - <Formatting, naming, file layout, components vs utilities>
 
+## Comments (product code)
+- Prefer self-explaining names and structure over long comments.
+- Do **not** write comments that justify a workaround, timer hack, or architecture bypass — fix the root cause or ask.
+- Brief *why* comments are OK for non-obvious invariants that tooling cannot express yet.
+- Does not apply to meeting notes, Figma comments, or non-code docs.
+
 ## Errors and validation
 - <Client UX validation vs server trust boundaries; error shape>
 
 ## Testing
 - <What must have tests; commands to run>
 
+## Escape hatches / banned patterns
+- <e.g. no raw useEffect in product UI — use framework helpers; list only what this project bans>
+- <e.g. no setTimeout / rAF as a substitute for fixing a sync boundary>
+- <e.g. no cross-imports between <server> and <client> / <main> and <renderer> directories>
+
+## Encode in tooling
+- Lint / formatter: <none | eslint | biome | …> · config path: <path>
+- Custom rules or bans: <none yet | rule ids>
+- Typecheck / compile gate: <command>
+- When a LESSON or review correction repeats, promote it here and into the linter — do not only append `AGENTS.md`.
+
 ## Do not
-- <Patterns to avoid>
+- <Patterns to avoid that are not yet encoded above>
 ```
 
 ## `context/ai-workflow-rules.md`
@@ -198,6 +216,10 @@ When the project uses **Profile F** (full-stack AI app), use this body instead o
 ## Tooling (optional)
 - Prefer version-matched framework/SDK docs or vendor Agent Skills the project recorded in `CLAUDE.md` over inventing APIs.
 - Optional PR review bots and runtime verify are part of the delivery loop when configured — see project-repo-setup `agent-tooling.md`. Do not install tools without the user's yes.
+
+## Anti-slop
+- Prefer deterministic checks (lint, types, tests) over growing soft rules in this file or `AGENTS.md`.
+- When a correction is worth never repeating, offer to promote it to lint/type/test (project-repo-setup `anti-slop.md`) instead of only writing `docs/LESSONS.md`.
 ```
 
 ## `context/ui-context.md`

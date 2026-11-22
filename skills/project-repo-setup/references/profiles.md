@@ -32,7 +32,7 @@ Files that do not apply are listed in the Step 4 table as "Not created" with the
 | `PRD.md` | Short product map: goals, users, scope, non-goals, phases, status section, feature index linking to specs |
 | `TODO.md` | Active tasks grouped by feature or area |
 | `PROGRESS-TRACKER.md` | Living Spec-Driven handoff: current phase, active feature/unit, blockers, short session notes. Agents read and update this every unit; detail stays in `session-logs/` |
-| `LESSONS.md` | Corrections and gotchas so they are not repeated |
+| `LESSONS.md` | Corrections and gotchas so they are not repeated (Full/code: offer promote to lint/type/test) |
 | `OPEN-QUESTIONS.md` | Numbered open questions, owner, status |
 | `decisions/` | One file per decision: context, options, decision, approver, date, related frame. Overrides spec and Figma until they are updated |
 | `features/` | One spec per feature, or a folder with `README.md` + sub-feature files. Each spec header lists its inputs (and `Untraced` if written without them) |
@@ -48,8 +48,8 @@ Root gateway (Full): `AGENTS.md` — mandatory read order for non-Claude agents;
 | `README.md` | Read order for the pack |
 | `project-overview.md` | Goals, audience, flows, out of scope; links `docs/PRD.md` |
 | `architecture.md` | Boundaries, storage, invariants; links `docs/ARCHITECTURE.md` when present |
-| `code-standards.md` | Language, framework, testing conventions |
-| `ai-workflow-rules.md` | One-unit scope, push back on ambiguity, evidence, safety |
+| `code-standards.md` | Language, framework, testing, comments/escape hatches, encode-in-tooling |
+| `ai-workflow-rules.md` | One-unit scope, push back on ambiguity, evidence, safety, anti-slop promote path |
 | `ui-context.md` | Agent UI rules; points at `DESIGN.md` |
 | `progress-tracker.md` | Pointer to living `docs/PROGRESS-TRACKER.md` |
 

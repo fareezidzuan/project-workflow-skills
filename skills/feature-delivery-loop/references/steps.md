@@ -25,8 +25,8 @@ Read: `CLAUDE.md`, `AGENTS.md` (when present), `context/architecture.md`, `conte
 No approved plan, or the task is ambiguous → stop and propose the smallest sensible task before editing. If the task would cross a non-negotiable → stop and ask.
 
 1. State the exact unit/task and the files you expect to change; quote the unit limit from the spec when present.
-2. Make the change. Use semantic tokens from `DESIGN.md` and existing components; include loading, empty, error, disabled and success states where they apply; validate on the client for UX and on the server for trust boundaries.
-3. Run the most relevant lint, type-check, test and build commands the project has, plus any Verification checklist items for this unit that can run locally.
+2. Make the change. Use semantic tokens from `DESIGN.md` and existing components; include loading, empty, error, disabled and success states where they apply; validate on the client for UX and on the server for trust boundaries. Prefer self-explaining code; do not add long comments that justify workarounds or timer hacks — fix the root cause or ask (anti-slop).
+3. Run the most relevant lint, type-check, test and build commands the project has, plus any Verification checklist items for this unit that can run locally. If a check fails with a project guardrail message, fix the root cause — do not disable the rule or comment it away.
 4. Inspect the final git diff for unrelated changes and remove them.
 5. Report: what changed and why, files changed, commands run with results, remaining assumptions or follow-ups, and which second-pass step comes next.
 6. Proposed progress-tracker edit (when the file exists): move the finished unit to Completed, set In progress to the next unit or clear it, Phase `building` or `reviewing`, one Session notes line. Save only after the user says yes.
@@ -108,7 +108,7 @@ Update documentation only. Record confirmed facts from the diff, test results an
 | Module status changed | The `CLAUDE.md` status table row (status words only) and the status section of `docs/PRD.md`, together; the health check flags them when they disagree |
 | Tasks done or new | `docs/TODO.md`, under the feature |
 | Open question raised or answered | `docs/OPEN-QUESTIONS.md` |
-| A gotcha or correction | One line in `docs/LESSONS.md`; only the most important becomes a must-know line in `CLAUDE.md` (at most five) |
+| A gotcha or correction | Full/code: ask **Promote to lint/type/test? / Keep as LESSON only? / Both?** (project-repo-setup `anti-slop.md`). LESSON → one line in `docs/LESSONS.md`; promote/both → draft the smallest rule or test the toolchain supports (show diff; install nothing without yes); update `context/code-standards.md` Encode in tooling when present; optional `Guardrails:` note in `CLAUDE.md`. Only the most important soft lesson becomes a Must-know line (at most five). Folders only → LESSON line only |
 | Test results | `docs/uat/`, or the spec's Checks section |
 | Spec behaviour changed | The spec itself, and the header status if it moved |
 | Architecture, Figma map or security facts changed | The matching document, confirmed changes only; also refresh `context/architecture.md` or `context/ui-context.md` when those files exist and the change affects agent invariants or UI rules |

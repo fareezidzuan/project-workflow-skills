@@ -1,11 +1,11 @@
 ---
 name: feature-delivery-loop
-description: Take one feature from an approved spec to merged and documented, one small Spec-Driven step at a time - plan, build one implementation unit, second-pass UI review, second-pass backend review, test against acceptance criteria and the verification checklist (optional runtime verify), optional bot-review, review the branch or PR, update the project docs and docs/PROGRESS-TRACKER.md. Reads context/ when present. Use when the user says plan this feature, build the next task, second pass, review my UI or backend, test the feature, bot review, verify in the running app, review the PR or branch, update the docs, or asks what is next on a feature that has a spec in docs/features - even if they never name a step.
+description: Take one feature from an approved spec to merged and documented, one small Spec-Driven step at a time - plan, build one implementation unit, second-pass UI review, second-pass backend review, test against acceptance criteria and the verification checklist (optional runtime verify), optional bot-review, review the branch or PR, update the project docs and docs/PROGRESS-TRACKER.md. On Full/code projects, recurring corrections can be promoted to lint/type/test (anti-slop). Reads context/ when present. Use when the user says plan this feature, build the next task, second pass, review my UI or backend, test the feature, bot review, verify in the running app, review the PR or branch, update the docs, promote to lint, or asks what is next on a feature that has a spec in docs/features - even if they never name a step.
 ---
 
 # Feature delivery loop
 
-Version: v1.4 — 2026-11 · Licence: MIT
+Version: v1.5 — 2026-11 · Licence: MIT
 
 Triggers: plan this feature, build task 1, second pass, review my UI, review the backend, test the feature, bot review, verify in the running app, review the branch, update the docs after this feature, what's next on this feature.
 
@@ -34,7 +34,8 @@ When a handoff below suggests a skill that is not installed, say so in one line 
 - Source of truth: the feature spec in `docs/features/`. No spec → stop and offer "Write the spec first? (feature-brief)". Prefer the spec's Implementation units as the build task list when present.
 - Progress: `docs/PROGRESS-TRACKER.md` when it exists (Full Spec-Driven setups). Read it before choosing a step; update it after every completed unit (and after plan / test / docs with the user's yes). Missing on a Full project → offer to create it from project-repo-setup `templates.md`; never invent history.
 - Context pack: when `context/` exists, read it (overview → architecture → code-standards → ai-workflow-rules → ui-context → progress pointer) before plan or build. Missing on a Full project that already has `AGENTS.md` → offer "Add the context pack? (project-repo-setup)".
-- Tooling: honour `Agent skills:` / `PR bot:` lines in `CLAUDE.md` when present. Prefer version-matched framework/SDK docs over inventing APIs. Do not install skills or bots without the user's yes (see project-repo-setup `agent-tooling.md`).
+- Tooling: honour `Agent skills:` / `PR bot:` / `Guardrails:` lines in `CLAUDE.md` when present. Prefer version-matched framework/SDK docs over inventing APIs. Do not install skills or bots without the user's yes (see project-repo-setup `agent-tooling.md`).
+- Anti-slop (Full / code): when recording a gotcha, ask Promote to lint/type/test? / Keep as LESSON only? / Both? Prefer deterministic checks over growing soft rules (project-repo-setup `anti-slop.md`). Skip on Folders only.
 - Branch: `feature/<feature-name>`, kebab-case.
 - Commands the project already has (project-repo-setup creates `/log-session` and `/log-decision` in every project, `/second-pass` for mock-first web apps, and `/brief-feature` and `/design-second-pass` for Figma-first apps) do their own jobs. Use them for those jobs and use this skill for the loop around them; do not write a second copy of what they produce.
 
@@ -74,7 +75,7 @@ If the user names a step, run it. If not, read `docs/PROGRESS-TRACKER.md` (when 
 Offer each separately; the user approves or skips.
 - A review finds an undecided product rule → add to `docs/OPEN-QUESTIONS.md`; a choice is made → `/log-decision`.
 - A finding is real but out of scope → add to `docs/TODO.md` under the feature.
-- A gotcha worth never repeating → add one line to `docs/LESSONS.md`.
+- A gotcha worth never repeating → on Full/code, ask **Promote to lint/type/test? / Keep as LESSON only? / Both?** (anti-slop). Draft a rule or test stub only after yes; always allow a one-line `docs/LESSONS.md` entry when they pick keep or both. Folders only / no code → LESSON only.
 - second-pass-backend finds that auth, roles, stored data or a third-party service changed → offer "Update the security docs for this? (security-docs)".
 - second-pass-ui finds colours, type or components that are not in `DESIGN.md`, or code tokens that disagree with Figma → offer "Reconcile Figma and code tokens? (brand-style-profile)".
 - A PR exists and `PR bot: configured` (or the user asks) → offer "Run bot-review on this PR?"

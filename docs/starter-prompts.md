@@ -60,5 +60,12 @@ Things you can say to Claude once the skills are installed. You don't need to na
 - "Verify the auth redirect in the running local app as part of the test step."
 - "Skip bot-review; just do the human PR review."
 
+## Anti-slop / high-trust (Full + code)
+- "Explain the Inverse Pyramid for this repo — where should we invest next: lint, verification, or prose?"
+- "Fill the Escape hatches and Encode in tooling sections in context/code-standards.md from our stack — draft only."
+- "We keep hitting the same agent mistake: [describe]. Promote it to a lint or test rule — show the draft, don't install anything yet."
+- "Health check my repo — include soft-only rules / LESSONS that should become lint."
+- "Update docs for this session, and ask me whether each gotcha should be a LESSON or a lint rule."
+
 ## Words you might see
 Claude avoids technical terms when you're new to Git, but if one comes up, the [plain-language glossary](../skills/project-repo-setup/references/plain-language.md) explains each one with a Figma comparison.

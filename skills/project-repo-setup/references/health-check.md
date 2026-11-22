@@ -19,9 +19,13 @@ Used by Step 2 (audit) and Health check mode. All checks are read-only. Skip any
   - `context/progress-tracker.md` does not point at `docs/PROGRESS-TRACKER.md`, or the living tracker is missing while the pointer exists → **Med**; restore the pointer template and/or create the living tracker.
 - **Profile F gaps:** `Profile: F` (or architecture mentions durable jobs / hybrid storage / realtime rooms / tool-calling) and any of these are missing → **Low** (offer from templates / context-pack): `docs/ARCHITECTURE.md`, Profile F sections in `context/architecture.md`, `.claude/rules/ai-app-rules.md`; **Med** if auth/realtime exists in code but `docs/security/` is missing (suggest security-docs).
 - **Agent tooling (Full / code, informational):** no `Agent skills:` line and the stack names third-party SDKs → **Low**; offer the Step 8 recommendations from `agent-tooling.md` (version-matched docs / official skills). Missing `PR bot:` is not a finding — bots stay optional.
+- **Anti-slop / soft-only rules (Full / code):**
+  - `docs/LESSONS.md` has **5+** entries (or Must-know is full at 5) and `context/code-standards.md` has empty **Encode in tooling** / no lint config referenced, and no `Guardrails:` line beyond `none yet` → **Low**; offer promote-to-lint from `anti-slop.md` (show which LESSONS look encodable; draft only after yes).
+  - Root `AGENTS.md` is long (**>~80 lines** or many bullet rules) while lint/type commands exist but custom bans for repeated LESSONS are absent → **Low**; offer to trim soft rules and encode the hard ones (do not delete Spec-Driven read-order).
+  - `context/code-standards.md` missing Comments / Escape hatches / Encode in tooling sections on a Full repo that already has the pack → **Low**; offer to add those sections from `context-pack.md` without overwriting filled content.
 - **Progress tracker stale shape:** `docs/PROGRESS-TRACKER.md` exists but lacks Current phase / In progress / Completed sections → **Low**; offer to restore the template headings without wiping session notes.
 - **Duplicated content:** a `CLAUDE.md` paragraph that repeats a decision, spec, or FIGMA-MAP entry. Fix: first merge any detail found only in `CLAUDE.md` into the target doc, then replace the paragraph with a one-line pointer.
-- **Must-know lines:** more than 5 → flag for review.
+- **Must-know lines:** more than 5 → flag for review; when over 5 on a Full/code project, also offer anti-slop promote-to-lint for any that are detectable by tooling.
 - **Status table** disagrees with `docs/PRD.md` (status section) → flag.
 - **Untraced specs:** any spec with `Untraced` in its header → list until re-traced.
 - **Workspace names** differ from the canonical set in `conventions.md` and legacy is not recorded → offer rename (with impact preview) or "keep legacy names".
