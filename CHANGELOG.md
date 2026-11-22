@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.14.0 — 2026-11-22
+Anti-slop P3: gated autonomous factory loop (default off). Completes the Anti-slop track (P0–P3).
+
+- **project-repo-setup v2.11:** new `references/factory-loop.md` (prerequisites, `Factory:` modes, auto-merge gates, hard “slop accelerates slop” warning). Step 8 may explain factory once on mature Full/code setups; never enables auto-merge at setup. Health check flags unsafe `auto-merge` stamps.
+- **feature-delivery-loop v1.8:** optional `factory-run` step (explore → report/PR; merge only if opted in + gates).
+- **README** / **starter-prompts** updated. Plugin version `1.14.0`.
+
 ## 1.13.0 — 2026-11-22
 Anti-slop P2: verification-first delivery (feature map + verify-artifacts).
 

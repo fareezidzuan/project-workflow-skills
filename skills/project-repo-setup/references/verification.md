@@ -93,5 +93,5 @@ If the user asks for stronger assurance on a complex flow, **describe** property
 ## What not to do
 - Do not replace Spec-Driven specs or Figma as sources of truth — feature map is navigation/proof aid only.
 - Do not require recordings or formal proofs for every PR.
-- Do not enable autonomous factory / auto-merge (P3).
+- Do not enable autonomous factory / auto-merge here — that is opt-in P3 (`factory-loop.md`), default off.
 - Do not invent product capabilities; leave unknown rows as placeholders or open questions.

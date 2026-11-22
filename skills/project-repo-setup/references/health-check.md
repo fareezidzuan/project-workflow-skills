@@ -26,6 +26,10 @@ Used by Step 2 (audit) and Health check mode. All checks are read-only. Skip any
   - Escape hatches / banned patterns are **filled** but `Guardrails:` is still `none yet` (or Encode in tooling has no recipe ids / draft path) while a linter or test runner exists → **Low**; offer optional scaffold from `guardrails-pack.md` (draft only after yes; no install without a second yes).
   - **Profile F:** `Profile: F` (or architecture lists realtime / durable jobs) and neither `realtime-after-membership` nor `no-long-ai-in-request` appears under Guardrails / Encode in tooling → **Low**; offer those recipe stubs from `guardrails-pack.md`.
 - **Feature map (Full / code, informational):** app has multiple user-facing routes (or Profile F / runtime verify in use) and no `docs/FEATURE-MAP.md` → **Low**; offer draft from `verification.md` (placeholders only; save after yes). Do not flag Folders-only. Having `FIGMA-MAP.md` alone does not satisfy this — different purpose.
+- **Factory loop (Full / code):**
+  - `Factory: auto-merge` while CI/tests are missing, or soft-only LESSONS pile with empty Guardrails → **High**; recommend downgrade to `pr-only` or `off` until P0–P2 gaps close (`factory-loop.md`).
+  - `Factory: pr-only` or `auto-merge` on a multi-route app without `FEATURE-MAP.md` → **Low**; offer map draft for exploration quality.
+  - Missing `Factory:` line is **not** a finding (default off).
 - **Progress tracker stale shape:** `docs/PROGRESS-TRACKER.md` exists but lacks Current phase / In progress / Completed sections → **Low**; offer to restore the template headings without wiping session notes.
 - **Duplicated content:** a `CLAUDE.md` paragraph that repeats a decision, spec, or FIGMA-MAP entry. Fix: first merge any detail found only in `CLAUDE.md` into the target doc, then replace the paragraph with a one-line pointer.
 - **Must-know lines:** more than 5 → flag for review; when over 5 on a Full/code project, also offer anti-slop promote-to-lint for any that are detectable by tooling.

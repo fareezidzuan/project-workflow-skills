@@ -1,13 +1,13 @@
 ---
 name: feature-delivery-loop
-description: Take one feature from an approved spec to merged and documented, one small Spec-Driven step at a time - plan, build one implementation unit, second-pass UI review, second-pass backend review, test against acceptance criteria and the verification checklist (optional runtime verify with feature-map IDs), optional bot-review, verify-artifacts, review the branch or PR, update the project docs and docs/PROGRESS-TRACKER.md. On Full/code projects, recurring corrections can be promoted to lint/type/test using optional guardrails-pack recipes (anti-slop). Reads context/ and docs/FEATURE-MAP.md when present. Use when the user says plan this feature, build the next task, second pass, review my UI or backend, test the feature, bot review, verify artifacts, verify in the running app, feature map, review the PR or branch, update the docs, promote to lint, scaffold guardrails, or asks what is next on a feature that has a spec in docs/features - even if they never name a step.
+description: Take one feature from an approved spec to merged and documented, one small Spec-Driven step at a time - plan, build one implementation unit, second-pass UI review, second-pass backend review, test against acceptance criteria and the verification checklist (optional runtime verify with feature-map IDs), optional bot-review, verify-artifacts, review the branch or PR, optional gated factory-run, update the project docs and docs/PROGRESS-TRACKER.md. On Full/code projects, recurring corrections can be promoted to lint/type/test using optional guardrails-pack recipes (anti-slop). Reads context/ and docs/FEATURE-MAP.md when present. Use when the user says plan this feature, build the next task, second pass, review my UI or backend, test the feature, bot review, verify artifacts, verify in the running app, feature map, factory loop, fuzz the release, review the PR or branch, update the docs, promote to lint, scaffold guardrails, or asks what is next on a feature that has a spec in docs/features - even if they never name a step.
 ---
 
 # Feature delivery loop
 
-Version: v1.7 — 2026-11 · Licence: MIT
+Version: v1.8 — 2026-11 · Licence: MIT
 
-Triggers: plan this feature, build task 1, second pass, review my UI, review the backend, test the feature, bot review, verify artifacts, verify in the running app, feature map, review the branch, update the docs after this feature, what's next on this feature.
+Triggers: plan this feature, build task 1, second pass, review my UI, review the backend, test the feature, bot review, verify artifacts, verify in the running app, feature map, factory loop, fuzz the release, review the branch, update the docs after this feature, what's next on this feature.
 
 Naming and folders follow `project-repo-setup/references/conventions.md` (read the project's `CLAUDE.md` first). If that file is not available, use the defaults below. The detail of each step is in `references/steps.md`; load only the step you are running.
 
@@ -37,6 +37,7 @@ When a handoff below suggests a skill that is not installed, say so in one line 
 - Tooling: honour `Agent skills:` / `PR bot:` / `Guardrails:` lines in `CLAUDE.md` when present. Prefer version-matched framework/SDK docs over inventing APIs. Do not install skills or bots without the user's yes (see project-repo-setup `agent-tooling.md`).
 - Anti-slop (Full / code): when recording a gotcha, ask Promote to lint/type/test? / Keep as LESSON only? / Both? Prefer deterministic checks over growing soft rules (project-repo-setup `anti-slop.md`). When promoting, prefer a recipe ID from `guardrails-pack.md` if one fits. Skip on Folders only.
 - Verification (Full / code): prefer artifact-first merge gates via `verify-artifacts` and `docs/FEATURE-MAP.md` for runtime navigation (project-repo-setup `verification.md`). Skip on Folders only unless asked.
+- Factory (Full / code, rare): honour `Factory:` in `CLAUDE.md` when present; default off. Run `factory-run` only when asked or stamped and prerequisites pass (project-repo-setup `factory-loop.md`). Never auto-merge unless `Factory: auto-merge` and gates green.
 - Branch: `feature/<feature-name>`, kebab-case.
 - Commands the project already has (project-repo-setup creates `/log-session` and `/log-decision` in every project, `/second-pass` for mock-first web apps, and `/brief-feature` and `/design-second-pass` for Figma-first apps) do their own jobs. Use them for those jobs and use this skill for the loop around them; do not write a second copy of what they produce.
 
@@ -52,9 +53,10 @@ When a handoff below suggests a skill that is not installed, say so in one line 
 | bot-review | Optional; when a PR review bot is configured or the user asks | No | Bot findings summarised; no edits until approved |
 | verify-artifacts | After test (Full/code); before review-pr when artifact-first | No | Artifact table; gaps called out |
 | review-pr | Before merge | No | Merge verdict on the diff + artifact readiness |
+| factory-run | Optional; after a stable release when Factory is enabled or user asks | Explore / fix PRs only as stamped | Fuzz → report or PR; auto-merge only if opted in + gates |
 | update-docs | End of session, after QA, after release | Docs only | Project docs reflect confirmed facts |
 
-Fixes from a review go back through `build`, one approved task at a time. Skip `bot-review` when no bot is configured and the user did not ask for one. Skip `verify-artifacts` on Folders-only / docs-only unless the user asks; on Full/code prefer it before Approve when the checklist has runtime or visual claims.
+Fixes from a review go back through `build`, one approved task at a time. Skip `bot-review` when no bot is configured and the user did not ask for one. Skip `verify-artifacts` on Folders-only / docs-only unless the user asks; on Full/code prefer it before Approve when the checklist has runtime or visual claims. Skip `factory-run` unless `Factory:` is set or the user explicitly asks; never on Folders-only / Lite.
 
 ## Choosing the step
 If the user names a step, run it. If not, read `docs/PROGRESS-TRACKER.md` (when present), the spec header status, the `CLAUDE.md` status row and the git state (branch, diff, whether a plan was approved in this conversation) and propose the single next step with one sentence on why. Do not chain steps without the user's go-ahead; the approval gates are what keep the loop from drifting.
@@ -84,6 +86,7 @@ Offer each separately; the user approves or skips.
 - The unit needs a running app to prove (auth redirect, realtime, job status) → include runtime verify in `test`, or offer it explicitly; offer `docs/FEATURE-MAP.md` if missing.
 - After test on Full/code → offer "Run verify-artifacts before PR review?"
 - Property / formal / statechart assurance for a complex flow → describe optional classes from `verification.md`; do not install tools without a yes.
+- After a stable release on Full/code with CI → offer "Explain or run a gated factory loop? (factory-run)" only if they ask or `Factory:` is not `off`; warn slop accelerates slop.
 - The spec is missing, outdated or Untraced → offer "Update the spec? (feature-brief)".
 - No project yet → offer "Set up a project for this? (project-repo-setup)".
 

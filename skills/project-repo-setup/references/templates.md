@@ -9,7 +9,7 @@ Replace `<…>` placeholders. Never invent product facts.
 <One or two lines: what the project is and for whom.>
 
 Repo: `<path to repo>` (code map in its CLAUDE.md).
-Setup: project-repo-setup v2.10
+Setup: project-repo-setup v2.11
 Git: yes
 Docs: `<repo>/docs/`   <!-- or the docs path when outside or split -->
 Explain: <plain | standard>
@@ -34,7 +34,7 @@ Workspace names: canonical   <!-- or: legacy (kept by choice) -->
 
 <One or two lines: what the project is and for whom.>
 
-Setup: project-repo-setup v2.10 (folders only)
+Setup: project-repo-setup v2.11 (folders only)
 Git: none   <!-- say "add Git" to set up version history later -->
 Docs: `docs/`   <!-- TODO, open questions, decisions; DESIGN.md sits at this folder's root -->
 Explain: <plain | standard>
@@ -62,7 +62,7 @@ Workspace names: canonical
 
 <2–3 lines: what it is.>
 
-Setup: project-repo-setup v2.10
+Setup: project-repo-setup v2.11
 Git: yes · Docs: `docs/` · Explain: <plain | standard>
 GitHub Repo: <url | pending> · default branch <main>
 Repo location: <path> (chosen: <reason>). <Drive safety rules apply.>
@@ -74,6 +74,9 @@ Profile: <A–F>   <!-- e.g. F full-stack AI -->
 Agent skills: <none yet | names the user approved>   <!-- Full / code; from agent-tooling.md -->
 PR bot: <none | configured>   <!-- optional -->
 Guardrails: <none yet | recipe ids or path from guardrails-pack.md>   <!-- Full / code; anti-slop + P1 -->
+Factory: <off | explore-only | pr-only | auto-merge>   <!-- Full / code; default off; factory-loop.md -->
+Factory trigger: <manual | after-release-tag | after-stable-channel>   <!-- only if Factory ≠ off -->
+Factory runner: <none | cloud-agent | other the user named>   <!-- optional -->
 Inputs (outside the repo):
 - Local: <path>
 - Drive: <folder link>
@@ -91,6 +94,7 @@ Raw files: <yes | no>   <!-- Lite only -->
 - Spec-Driven: read `context/` before coding; plan before build; one implementation unit at a time; update `docs/PROGRESS-TRACKER.md` after every unit (Full).
 - Prefer version-matched framework/SDK docs (or approved Agent skills) over training-data guesses; leave framework-managed `AGENTS.md` regions intact.
 - Anti-slop: prefer lint/type/test constraints over growing soft rules; keep `AGENTS.md` / Must-know short. Promote recurring corrections (see `docs/LESSONS.md`) into tooling when possible; optional recipes in project-repo-setup `guardrails-pack.md`.
+- Factory loop stays **off** unless stamped; automating a sloppy inner loop accelerates slop (`factory-loop.md`). Auto-merge needs explicit opt-in and green gates.
 <!-- Profile F: honour context/architecture.md invariants (authz, hybrid storage, durable jobs, tool-calling). -->
 ## Must-know (max 5, one line + link each)
 ## Status

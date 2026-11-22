@@ -2,7 +2,7 @@
 
 Load only the step you are running. The shared rules in `SKILL.md` apply to every step. Table columns are the output format for review steps.
 
-Contents: plan · build · second-pass-ui · second-pass-backend · test · bot-review · verify-artifacts · review-pr · update-docs
+Contents: plan · build · second-pass-ui · second-pass-backend · test · bot-review · verify-artifacts · review-pr · factory-run · update-docs
 
 ## plan
 Read: `CLAUDE.md`, `AGENTS.md` (when present), `context/` in order when present, `docs/PROGRESS-TRACKER.md` (when present), the spec, `DESIGN.md`, `docs/FIGMA-MAP.md` (Figma-first), `docs/FEATURE-MAP.md` when present, `docs/PRD.md`, `docs/ARCHITECTURE.md`, relevant `docs/decisions/` and `docs/security/` entries, and the source and reusable components the feature will touch.
@@ -108,6 +108,22 @@ Do not change code, commit, merge or push. Review the diff, not only the final f
 
 Output findings ranked Critical / High / Medium / Low with location, impact and fix. Then: what is strong and should stay; required before merge; follow-ups that are not blockers; a verdict (`Approve`, `Approve with follow-ups`, `Request changes`, `Blocked`).
 
+## factory-run
+Optional outer loop. Load project-repo-setup `factory-loop.md`. Run only when the user asks ("fuzz the last release", "run the factory loop") or `CLAUDE.md` has `Factory: explore-only | pr-only | auto-merge` and they confirm this trigger. **Skip** on Folders-only / Lite, when `Factory: off` or unset (unless they explicitly ask to enable), and when prerequisites fail.
+
+Read: `CLAUDE.md` Factory lines, release tag/channel the user names, `docs/FEATURE-MAP.md`, CI status, guardrails / verification readiness.
+
+Do not start paid cloud runners, push, or merge without a yes for **this run**.
+1. Prerequisites table (lint/tests on main, anti-slop/guardrails posture, verification path) — if any blocker, stop and point at P0–P2; do not proceed.
+2. Confirm mode (`explore-only` / `pr-only` / `auto-merge`) and trigger artifact.
+3. Plan exploration from feature-map IDs (bounded scope).
+4. Explore/fuzz with fake/test data only; collect failures.
+5. If mode allows fixes: one minimal PR per actionable failure when practical → lint/tests → verify-artifacts evidence → open PR.
+6. Merge **only** if `Factory: auto-merge` and every auto-merge gate in `factory-loop.md` is green; otherwise leave PRs for humans.
+7. Report: attempts, bugs, PRs, merges (if any), residual risk. Warn again if the inner loop looked soft.
+
+Never use production credentials or production data. Never bypass branch protection.
+
 ## update-docs
 The user may give a mode: `session` (end of a working session), `qa` (after test), or `released` (after merge or release).
 
@@ -127,6 +143,7 @@ Update documentation only. Record confirmed facts from the diff, test results an
 | Test results | `docs/uat/`, or the spec's Checks section |
 | Verification artifacts (runtime / visual / trace) | Spec Checks and/or `docs/uat/`; note feature-map IDs used |
 | New or changed user-facing capabilities | `docs/FEATURE-MAP.md` when the project keeps one (draft only after yes) |
+| Factory mode / trigger / runner changed | `CLAUDE.md` `Factory:` lines only after explicit yes (`factory-loop.md`); never silently enable auto-merge |
 | Spec behaviour changed | The spec itself, and the header status if it moved |
 | Architecture, Figma map or security facts changed | The matching document, confirmed changes only; also refresh `context/architecture.md` or `context/ui-context.md` when those files exist and the change affects agent invariants or UI rules |
 

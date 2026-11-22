@@ -33,6 +33,7 @@ Folders only uses the same names inside `docs/` as a repo (section 1), so adding
 8. **Do not duplicate long docs into `context/`.** Overview links to `docs/PRD.md`; architecture links to `docs/ARCHITECTURE.md` when that file exists; ui-context links to `DESIGN.md`. Product behaviour stays in `docs/features/`.
 9. **Anti-slop (Full / code):** prefer lint, types, and tests over growing soft rules in `AGENTS.md` or Must-know. `docs/LESSONS.md` remains the human log; recurring detectable mistakes should be promoted into tooling (see `anti-slop.md`). Optional recipe stubs live in `guardrails-pack.md` — never auto-install. Do not apply this pressure to Folders-only or design-only projects.
 10. **Feature map (Full / code, optional):** `docs/FEATURE-MAP.md` lists user-facing capability IDs for agents and runtime verify. It is not `FIGMA-MAP.md` (visuals). Create only after a yes; template in `verification.md`.
+11. **Factory loop (Full / code, optional):** `Factory:` on `CLAUDE.md` defaults to off / absent. Modes and auto-merge gates live in `factory-loop.md`. Never enable on Folders-only or Lite.
 
 ## 2. Workspace folder set (outside git)
 Core folders keep the same number in every project.

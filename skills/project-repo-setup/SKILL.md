@@ -1,11 +1,11 @@
 ---
 name: project-repo-setup
-description: Set up, audit, or health-check the folders and repo for a project (Figma-first design hub, web app or dashboard, mobile app, website, full-stack AI app, or design-only client work). Folders-only setup with no Git or GitHub, Full or Lite setup (Full includes Spec-Driven AGENTS.md, context/ pack, and docs/PROGRESS-TRACKER.md; Profile F adds AI-app architecture patterns; wrap-up offers agent-tooling, anti-slop, optional guardrails recipes, and verification-first feature maps), read-only audit, health check with impact previews, add Git later, upgrade Lite to Full, and dry runs. Use when the user says new project, start a new client project, set up a project folder, organise my project files, tidy my files, set up a repo, project structure, audit my repo, health check my project or repo, re-audit, is my repo still clean, add Git, upgrade to full setup, dry run, folder organization, context pack, full-stack AI, agent skills, agent slop, lint rules, guardrails, feature map, verification artifacts, eslint, biome, or what goes in the repo.
+description: Set up, audit, or health-check the folders and repo for a project (Figma-first design hub, web app or dashboard, mobile app, website, full-stack AI app, or design-only client work). Folders-only setup with no Git or GitHub, Full or Lite setup (Full includes Spec-Driven AGENTS.md, context/ pack, and docs/PROGRESS-TRACKER.md; Profile F adds AI-app architecture patterns; wrap-up offers agent-tooling, anti-slop, optional guardrails, verification-first feature maps, and a gated factory loop that stays off by default), read-only audit, health check with impact previews, add Git later, upgrade Lite to Full, and dry runs. Use when the user says new project, start a new client project, set up a project folder, organise my project files, tidy my files, set up a repo, project structure, audit my repo, health check my project or repo, re-audit, is my repo still clean, add Git, upgrade to full setup, dry run, folder organization, context pack, full-stack AI, agent skills, agent slop, lint rules, guardrails, feature map, verification artifacts, factory loop, auto-merge, eslint, biome, or what goes in the repo.
 ---
 
 # Project repo setup
 
-Version: v2.10 — 2026-11 · Licence: MIT (see `LICENSE`)
+Version: v2.11 — 2026-11 · Licence: MIT (see `LICENSE`)
 
 Turn a project into a workspace (and, when wanted, a repo) that gives Claude and people the right context, and keep it healthy over time. Nothing is created, moved, renamed, or committed without the user's explicit approval. Git and GitHub are optional: **Folders only** works without them, and they can be added later.
 
@@ -46,6 +46,7 @@ When a handoff below suggests a skill that is not installed, say so in one line 
 | `references/anti-slop.md` | Step 8 Full / code (inverse pyramid; promote corrections to lint; comment escape hatches) |
 | `references/guardrails-pack.md` | Step 8 Full / code optional (lint/test recipe stubs; directory boundaries; Profile F checks) |
 | `references/verification.md` | Step 8 Full / code (feature map, artifact types, verify-artifacts; advanced classes opt-in) |
+| `references/factory-loop.md` | Step 8 Full / code rare (gated fuzz→fix PR; auto-merge only if opted in) |
 | `references/gitignore-template.md` | Step 6 and every safety scan |
 | `references/health-check.md` | Audit and Health check modes |
 | `references/archiving.md` | Health check group D fixes |
@@ -144,7 +145,7 @@ Ask: "Do you agree with this organisation?" (Yes / No / Other) and "Are these th
 ### Step 6: Scaffold
 1. Request folder access once for the parent paths. Create only what the table lists.
 2. Write both `CLAUDE.md` files from `references/templates.md`, following the scope rule in `references/conventions.md` (a directory, not a copy of other docs). Always include:
-   - `Setup: project-repo-setup v2.10` (the health check compares this to the installed skill version).
+   - `Setup: project-repo-setup v2.11` (the health check compares this to the installed skill version).
    - `Git: yes`, `Docs: <path>`, and `Explain: <plain | standard>` (see `references/conventions.md` section 0).
    - `Repo location:` with the choice and reason, and "Drive safety rules apply" when synced.
    - `Inputs (outside the repo):` local path, plus the cloud-drive link when F9 includes cloud sessions, plus the access-check line.
@@ -184,7 +185,9 @@ A few lines: what was created, what still needs the user (secrets, GitHub, Figma
 
 **Verification-first (Full / code only):** load `references/verification.md`. Offer once to draft `docs/FEATURE-MAP.md` (user-facing capability sitemap for agents — not `FIGMA-MAP.md`). Remind that `feature-delivery-loop` has `verify-artifacts` and runtime verify should cite feature-map IDs when the map exists. Mention advanced classes (property / formal) only if asked — never install those tools without a yes. Skip for Folders only.
 
-Never run install commands or enable paid products without an explicit yes. Skip tooling, anti-slop, guardrails, and verification blocks for Folders only.
+**Factory loop (Full / code only, rare):** load `references/factory-loop.md` only if CI/tests look present or the user asks. Warn that automating slop accelerates slop. Ask once: explain gated factory (fuzz after release → fix PR) or skip. Default stays **off** — do not set `Factory: auto-merge` at setup; at most leave `Factory:` unset or `off`. Skip for Folders only / Lite.
+
+Never run install commands or enable paid products without an explicit yes. Skip tooling, anti-slop, guardrails, verification, and factory blocks for Folders only.
 
 **Handoffs (offer, one line each, only when relevant):**
 - A kickoff or client meeting already happened → "Want me to turn it into notes? (meeting-notes)"

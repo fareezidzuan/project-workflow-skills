@@ -230,6 +230,7 @@ When the project uses **Profile F** (full-stack AI app), use this body instead o
 ## Verification
 - Prefer `docs/FEATURE-MAP.md` capability IDs for runtime checks (not `FIGMA-MAP.md`).
 - Before merge on Full/code, favour `verify-artifacts` evidence over "looks good" (project-repo-setup `verification.md`).
+- Factory / auto-merge stays off unless `CLAUDE.md` stamps it; never fuzz production (project-repo-setup `factory-loop.md`).
 ```
 
 ## `context/ui-context.md`

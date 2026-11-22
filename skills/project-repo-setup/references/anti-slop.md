@@ -4,6 +4,7 @@ Load for **Full / code** projects at Step 8 wrap-up, when a health check finds s
 
 **P1 scaffolds:** when the user wants concrete lint/test stubs, also load `guardrails-pack.md` (optional recipes — never auto-install).
 **P2 verification:** feature maps and artifact-first review live in `verification.md`.
+**P3 factory:** gated outer loop (fuzz → fix PR → optional auto-merge) lives in `factory-loop.md` — default **off**; never accelerate a sloppy inner loop.
 
 Source framing: *Coding at the Speed of Thought* / Inverse Pyramid of Agent Trust — patterns only; no required vendors.
 
@@ -48,5 +49,5 @@ If nothing can encode it yet → keep the LESSON and note "encode later" in `doc
 ## What not to do
 - Do not delete Spec-Driven gateways (`AGENTS.md`, `context/`, progress tracker) — keep them short and point hard rules at tooling.
 - Do not require Electron, TLA+, Lean, or any named linter product.
-- Do not enable auto-merge or autonomous factory loops here (later, gated phases).
+- Do not enable auto-merge or factory loops unless the user opts in via `factory-loop.md` gates.
 - Do not apply anti-slop pressure to Folders-only / brand-only projects.
