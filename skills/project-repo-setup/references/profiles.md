@@ -48,7 +48,7 @@ Root gateway (Full): `AGENTS.md` — mandatory read order for non-Claude agents;
 | `README.md` | Read order for the pack |
 | `project-overview.md` | Goals, audience, flows, out of scope; links `docs/PRD.md` |
 | `architecture.md` | Boundaries, storage, invariants; links `docs/ARCHITECTURE.md` when present |
-| `code-standards.md` | Language, framework, testing, comments/escape hatches, encode-in-tooling |
+| `code-standards.md` | Language, framework, testing, comments/escape hatches, encode-in-tooling / guardrails recipe ids |
 | `ai-workflow-rules.md` | One-unit scope, push back on ambiguity, evidence, safety, anti-slop promote path |
 | `ui-context.md` | Agent UI rules; points at `DESIGN.md` |
 | `progress-tracker.md` | Pointer to living `docs/PROGRESS-TRACKER.md` |
@@ -125,7 +125,7 @@ Name vendors only as examples the user already chose — never require a specifi
 
 Rules for `CLAUDE.md`: Spec-Driven one-unit builds; read `context/` before coding; link security docs once written.
 Commands: `/log-decision`, `/log-session`, plus `/second-pass` when the UI stack matches Profile B/C.
-**Handoffs at wrap-up:** "Write the security docs? (security-docs)", then "Fill context/architecture from your F2 answers", then first feature via feature-brief.
+**Handoffs at wrap-up:** "Write the security docs? (security-docs)", then "Fill context/architecture from your F2 answers", then optional guardrails recipes `realtime-after-membership` / `no-long-ai-in-request` (`guardrails-pack.md`), then first feature via feature-brief.
 
 ## Audit patterns seen in real projects (anonymised)
 - Workspace `CLAUDE.md` folder map naming `01-ideation` and `03-documents` while the real folders were `02-ideation` and `04-documents`.

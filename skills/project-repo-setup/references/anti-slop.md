@@ -1,6 +1,8 @@
-# Anti-slop / high-trust codebases (P0)
+# Anti-slop / high-trust codebases (P0+)
 
 Load for **Full / code** projects at Step 8 wrap-up, when a health check finds soft-only rules, or when the user asks about agent slop, lint vs AGENTS.md, or high-trust agent environments. **Folders only and design-only: skip** unless they ask.
+
+**P1 scaffolds:** when the user wants concrete lint/test stubs, also load `guardrails-pack.md` (optional recipes — never auto-install).
 
 Source framing: *Coding at the Speed of Thought* / Inverse Pyramid of Agent Trust — patterns only; no required vendors.
 
@@ -38,12 +40,12 @@ Whenever a gotcha is recorded (delivery-loop `update-docs`, second-pass follow-u
 2. **Keep as LESSON only?** (judgment / product nuance)
 3. **Both?** (lint now + one LESSON line for humans)
 
-If they pick promote or both: draft the smallest rule or test stub the project's existing toolchain supports (ESLint/Biome/SwiftLint/etc.). Show the diff; **install or enable nothing** without an explicit yes. Record accepted tooling under Platform and stack or a short `Guardrails:` line in `CLAUDE.md` if useful.
+If they pick promote or both: draft the smallest rule or test stub the project's existing toolchain supports (ESLint/Biome/SwiftLint/etc.), preferring a matching recipe ID from `guardrails-pack.md` when one fits. Show the diff; **install or enable nothing** without an explicit yes. Record accepted tooling under Platform and stack or a short `Guardrails:` line in `CLAUDE.md` if useful.
 
 If nothing can encode it yet → keep the LESSON and note "encode later" in `docs/TODO.md`.
 
 ## What not to do
 - Do not delete Spec-Driven gateways (`AGENTS.md`, `context/`, progress tracker) — keep them short and point hard rules at tooling.
 - Do not require Electron, TLA+, Lean, or any named linter product.
-- Do not enable auto-merge or autonomous factory loops in P0 (later, gated phases).
+- Do not enable auto-merge or autonomous factory loops here (later, gated phases).
 - Do not apply anti-slop pressure to Folders-only / brand-only projects.
