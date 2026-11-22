@@ -73,6 +73,10 @@ Things you can say to Claude once the skills are installed. You don't need to na
 - "Run verify-artifacts before the PR review."
 - "Verify runtime:auth.sign-in against the feature map in the local app."
 - "Tag the verification checklist with command / runtime / visual artifact types."
+- "Explain the gated factory loop — keep Factory off for now."
+- "Set Factory to pr-only after releases; never auto-merge."
+- "Fuzz the last stable tag with the factory loop — explore-only, no PRs yet."
+- "Run factory-run on the last release and open fix PRs only if checks pass."
 
 ## Words you might see
 Claude avoids technical terms when you're new to Git, but if one comes up, the [plain-language glossary](../skills/project-repo-setup/references/plain-language.md) explains each one with a Figma comparison.
