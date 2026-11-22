@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.11.0 — 2026-11-22
+Anti-slop P0: high-trust / Inverse Pyramid foundation for Full + code (Folders only unchanged).
+
+- **project-repo-setup v2.8:** new `references/anti-slop.md` (deterministic base → verification → short prose); Step 8 offers anti-slop briefing; `CLAUDE.md` can record `Guardrails:`; `context/code-standards.md` adds Comments, Escape hatches, Encode in tooling; health check flags soft-only LESSONS / long `AGENTS.md` without tooling.
+- **feature-delivery-loop v1.5:** gotchas ask Promote to lint/type/test? / Keep as LESSON only? / Both?; build avoids comment-as-workaround; update-docs records promotion path.
+- **README** / **starter-prompts** updated. Plugin version `1.11.0`.
+
 ## 1.10.0 — 2026-11-20
 Spec-Driven P3: agent tooling layer (vendor-agnostic). Completes the Spec-Driven upgrade track (P0–P3).
 

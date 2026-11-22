@@ -5,7 +5,7 @@
     {
       "name": "project-workflow-skills",
       "source": "./",
-      "description": "Repo setup and health checks, meeting notes, brand style profiles, security docs, and Spec-Driven feature specs with a context/ pack, Profile F patterns, agent-tooling guidance, and a one-unit build-and-review loop."
+      "description": "Repo setup and health checks, meeting notes, brand style profiles, security docs, and Spec-Driven feature specs with a context/ pack, Profile F patterns, agent-tooling and anti-slop guidance, and a one-unit build-and-review loop."
     }
   ]
 }
