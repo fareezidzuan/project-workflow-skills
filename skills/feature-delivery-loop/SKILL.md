@@ -1,13 +1,13 @@
 ---
 name: feature-delivery-loop
-description: Take one feature from an approved spec to merged and documented, one small Spec-Driven step at a time - plan, build one implementation unit, second-pass UI review, second-pass backend review, test against acceptance criteria and the verification checklist (optional runtime verify), optional bot-review, review the branch or PR, update the project docs and docs/PROGRESS-TRACKER.md. On Full/code projects, recurring corrections can be promoted to lint/type/test using optional guardrails-pack recipes (anti-slop). Reads context/ when present. Use when the user says plan this feature, build the next task, second pass, review my UI or backend, test the feature, bot review, verify in the running app, review the PR or branch, update the docs, promote to lint, scaffold guardrails, or asks what is next on a feature that has a spec in docs/features - even if they never name a step.
+description: Take one feature from an approved spec to merged and documented, one small Spec-Driven step at a time - plan, build one implementation unit, second-pass UI review, second-pass backend review, test against acceptance criteria and the verification checklist (optional runtime verify with feature-map IDs), optional bot-review, verify-artifacts, review the branch or PR, update the project docs and docs/PROGRESS-TRACKER.md. On Full/code projects, recurring corrections can be promoted to lint/type/test using optional guardrails-pack recipes (anti-slop). Reads context/ and docs/FEATURE-MAP.md when present. Use when the user says plan this feature, build the next task, second pass, review my UI or backend, test the feature, bot review, verify artifacts, verify in the running app, feature map, review the PR or branch, update the docs, promote to lint, scaffold guardrails, or asks what is next on a feature that has a spec in docs/features - even if they never name a step.
 ---
 
 # Feature delivery loop
 
-Version: v1.6 — 2026-11 · Licence: MIT
+Version: v1.7 — 2026-11 · Licence: MIT
 
-Triggers: plan this feature, build task 1, second pass, review my UI, review the backend, test the feature, bot review, verify in the running app, review the branch, update the docs after this feature, what's next on this feature.
+Triggers: plan this feature, build task 1, second pass, review my UI, review the backend, test the feature, bot review, verify artifacts, verify in the running app, feature map, review the branch, update the docs after this feature, what's next on this feature.
 
 Naming and folders follow `project-repo-setup/references/conventions.md` (read the project's `CLAUDE.md` first). If that file is not available, use the defaults below. The detail of each step is in `references/steps.md`; load only the step you are running.
 
@@ -36,6 +36,7 @@ When a handoff below suggests a skill that is not installed, say so in one line 
 - Context pack: when `context/` exists, read it (overview → architecture → code-standards → ai-workflow-rules → ui-context → progress pointer) before plan or build. Missing on a Full project that already has `AGENTS.md` → offer "Add the context pack? (project-repo-setup)".
 - Tooling: honour `Agent skills:` / `PR bot:` / `Guardrails:` lines in `CLAUDE.md` when present. Prefer version-matched framework/SDK docs over inventing APIs. Do not install skills or bots without the user's yes (see project-repo-setup `agent-tooling.md`).
 - Anti-slop (Full / code): when recording a gotcha, ask Promote to lint/type/test? / Keep as LESSON only? / Both? Prefer deterministic checks over growing soft rules (project-repo-setup `anti-slop.md`). When promoting, prefer a recipe ID from `guardrails-pack.md` if one fits. Skip on Folders only.
+- Verification (Full / code): prefer artifact-first merge gates via `verify-artifacts` and `docs/FEATURE-MAP.md` for runtime navigation (project-repo-setup `verification.md`). Skip on Folders only unless asked.
 - Branch: `feature/<feature-name>`, kebab-case.
 - Commands the project already has (project-repo-setup creates `/log-session` and `/log-decision` in every project, `/second-pass` for mock-first web apps, and `/brief-feature` and `/design-second-pass` for Figma-first apps) do their own jobs. Use them for those jobs and use this skill for the loop around them; do not write a second copy of what they produce.
 
@@ -47,12 +48,13 @@ When a handoff below suggests a skill that is not installed, say so in one line 
 | build | After plan approval | Yes, one task | Small tested change, diff checked |
 | second-pass-ui | After the UI works | No | Ranked findings and a verdict |
 | second-pass-backend | After API, database, auth or server work | No | Ranked findings and a verdict |
-| test | Before merge | No | Acceptance criteria mapped to evidence; optional runtime verify |
+| test | Before merge | No | Acceptance criteria mapped to evidence; optional runtime verify (feature-map IDs) |
 | bot-review | Optional; when a PR review bot is configured or the user asks | No | Bot findings summarised; no edits until approved |
-| review-pr | Before merge | No | Merge verdict on the diff |
+| verify-artifacts | After test (Full/code); before review-pr when artifact-first | No | Artifact table; gaps called out |
+| review-pr | Before merge | No | Merge verdict on the diff + artifact readiness |
 | update-docs | End of session, after QA, after release | Docs only | Project docs reflect confirmed facts |
 
-Fixes from a review go back through `build`, one approved task at a time. Skip `bot-review` when no bot is configured and the user did not ask for one.
+Fixes from a review go back through `build`, one approved task at a time. Skip `bot-review` when no bot is configured and the user did not ask for one. Skip `verify-artifacts` on Folders-only / docs-only unless the user asks; on Full/code prefer it before Approve when the checklist has runtime or visual claims.
 
 ## Choosing the step
 If the user names a step, run it. If not, read `docs/PROGRESS-TRACKER.md` (when present), the spec header status, the `CLAUDE.md` status row and the git state (branch, diff, whether a plan was approved in this conversation) and propose the single next step with one sentence on why. Do not chain steps without the user's go-ahead; the approval gates are what keep the loop from drifting.
@@ -79,7 +81,9 @@ Offer each separately; the user approves or skips.
 - second-pass-backend finds that auth, roles, stored data or a third-party service changed → offer "Update the security docs for this? (security-docs)".
 - second-pass-ui finds colours, type or components that are not in `DESIGN.md`, or code tokens that disagree with Figma → offer "Reconcile Figma and code tokens? (brand-style-profile)".
 - A PR exists and `PR bot: configured` (or the user asks) → offer "Run bot-review on this PR?"
-- The unit needs a running app to prove (auth redirect, realtime, job status) → include runtime verify in `test`, or offer it explicitly.
+- The unit needs a running app to prove (auth redirect, realtime, job status) → include runtime verify in `test`, or offer it explicitly; offer `docs/FEATURE-MAP.md` if missing.
+- After test on Full/code → offer "Run verify-artifacts before PR review?"
+- Property / formal / statechart assurance for a complex flow → describe optional classes from `verification.md`; do not install tools without a yes.
 - The spec is missing, outdated or Untraced → offer "Update the spec? (feature-brief)".
 - No project yet → offer "Set up a project for this? (project-repo-setup)".
 

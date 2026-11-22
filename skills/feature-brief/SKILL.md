@@ -5,7 +5,7 @@ description: Write or update one feature spec in docs/features/ (objective, scop
 
 # Feature brief
 
-Version: v1.3 — 2026-11 · Licence: MIT
+Version: v1.4 — 2026-11 · Licence: MIT
 
 Triggers: feature brief, feature spec, brief this feature, write the spec for …, define acceptance criteria, turn this into something buildable, update the spec.
 
@@ -77,6 +77,7 @@ No project yet: skip follow-ups and say they can be run once the project exists.
 - The feature adds logins, roles, stored data or a third-party service → offer "Write or update the security docs for this? (security-docs)".
 - The feature needs tokens or components that `DESIGN.md` does not have → offer "Update the style profile and DESIGN.md? (brand-style-profile)".
 - The user approves the spec and wants to build → offer "Plan the build? (feature-delivery-loop)".
+- Full/code with runtime checks and no `docs/FEATURE-MAP.md` → offer "Draft a feature map for runtime verify? (project-repo-setup verification)".
 
 ### 8. Keep it current
 Move the header status Draft → In review → Final as inputs are traced and the spec is approved. Final means every input was opened. When rules change, edit the spec and log the choice as a decision; do not leave the old rule in place with a note beside it.

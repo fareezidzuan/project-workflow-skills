@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.13.0 — 2026-11-22
+Anti-slop P2: verification-first delivery (feature map + verify-artifacts).
+
+- **project-repo-setup v2.10:** new `references/verification.md` (`docs/FEATURE-MAP.md` template, artifact types, advanced classes opt-in). Step 8 offers a feature-map draft; health check flags missing map when multi-route / Profile F / runtime verify applies. Conventions name `FEATURE-MAP.md` (distinct from `FIGMA-MAP.md`).
+- **feature-delivery-loop v1.7:** new `verify-artifacts` step; runtime verify prefers feature-map IDs; `review-pr` respects artifact gaps; plan notes artifact types.
+- **feature-brief v1.4:** Verification checklist supports artifact-type tags (`command`, `runtime:<id>`, `visual`, …).
+- **README** / **starter-prompts** updated. Plugin version `1.13.0`.
+
 ## 1.12.0 — 2026-11-22
 Anti-slop P1: optional deterministic guardrails pack (recipes only — no auto-install).
 

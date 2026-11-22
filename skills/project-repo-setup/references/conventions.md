@@ -20,7 +20,7 @@ Folders only uses the same names inside `docs/` as a repo (section 1), so adding
 
 ## 1. Repo docs naming (`docs/`, inside or outside the repo)
 1. Folders and subfolders under `docs/` are lowercase kebab-case: `features/`, `decisions/`, `session-logs/`, `uat/`, `handoff/`, `security/`, `archive/`, `features/feature-a/`.
-2. Files directly in `docs/` are ALL CAPS with hyphens: `PRD.md`, `TODO.md`, `FIGMA-MAP.md`, `OPEN-QUESTIONS.md`, `PROGRESS-TRACKER.md`.
+2. Files directly in `docs/` are ALL CAPS with hyphens: `PRD.md`, `TODO.md`, `FIGMA-MAP.md`, `FEATURE-MAP.md`, `OPEN-QUESTIONS.md`, `PROGRESS-TRACKER.md`.
 3. Files inside any folder or subfolder are lowercase kebab-case: `decisions/001-short-title.md`, `features/feature-a/sub-feature.md`.
 4. `README.md` keeps its name everywhere. The `.md` extension is always lowercase.
 5. Outside `docs/`, repo folders and files are kebab-case; root files `CLAUDE.md`, `AGENTS.md`, `README.md`, `DESIGN.md`, `LICENSE` keep their conventional names. The Spec-Driven pack folder is `context/` (lowercase).
@@ -32,6 +32,7 @@ Folders only uses the same names inside `docs/` as a repo (section 1), so adding
    - Do not create `AGENTS.md`, `context/`, or `docs/PROGRESS-TRACKER.md` for Folders only or Lite unless the user asks.
 8. **Do not duplicate long docs into `context/`.** Overview links to `docs/PRD.md`; architecture links to `docs/ARCHITECTURE.md` when that file exists; ui-context links to `DESIGN.md`. Product behaviour stays in `docs/features/`.
 9. **Anti-slop (Full / code):** prefer lint, types, and tests over growing soft rules in `AGENTS.md` or Must-know. `docs/LESSONS.md` remains the human log; recurring detectable mistakes should be promoted into tooling (see `anti-slop.md`). Optional recipe stubs live in `guardrails-pack.md` — never auto-install. Do not apply this pressure to Folders-only or design-only projects.
+10. **Feature map (Full / code, optional):** `docs/FEATURE-MAP.md` lists user-facing capability IDs for agents and runtime verify. It is not `FIGMA-MAP.md` (visuals). Create only after a yes; template in `verification.md`.
 
 ## 2. Workspace folder set (outside git)
 Core folders keep the same number in every project.

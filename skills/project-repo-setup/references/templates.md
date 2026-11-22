@@ -9,7 +9,7 @@ Replace `<…>` placeholders. Never invent product facts.
 <One or two lines: what the project is and for whom.>
 
 Repo: `<path to repo>` (code map in its CLAUDE.md).
-Setup: project-repo-setup v2.9
+Setup: project-repo-setup v2.10
 Git: yes
 Docs: `<repo>/docs/`   <!-- or the docs path when outside or split -->
 Explain: <plain | standard>
@@ -34,7 +34,7 @@ Workspace names: canonical   <!-- or: legacy (kept by choice) -->
 
 <One or two lines: what the project is and for whom.>
 
-Setup: project-repo-setup v2.9 (folders only)
+Setup: project-repo-setup v2.10 (folders only)
 Git: none   <!-- say "add Git" to set up version history later -->
 Docs: `docs/`   <!-- TODO, open questions, decisions; DESIGN.md sits at this folder's root -->
 Explain: <plain | standard>
@@ -62,7 +62,7 @@ Workspace names: canonical
 
 <2–3 lines: what it is.>
 
-Setup: project-repo-setup v2.9
+Setup: project-repo-setup v2.10
 Git: yes · Docs: `docs/` · Explain: <plain | standard>
 GitHub Repo: <url | pending> · default branch <main>
 Repo location: <path> (chosen: <reason>). <Drive safety rules apply.>
@@ -104,6 +104,8 @@ Raw files: <yes | no>   <!-- Lite only -->
 | `PROGRESS-TRACKER.md` | Current phase, active unit, blockers (Full) |
 | `../context/` | Spec-Driven agent memory pack (Full) |
 | `ARCHITECTURE.md` | System wiring (Profile F and backends) |
+| `FEATURE-MAP.md` | User-facing capability IDs for runtime verify (Full/code; optional) |
+| `FIGMA-MAP.md` | Visual design links (when Figma-first) |
 ## Commands
 ```
 
